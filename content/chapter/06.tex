@@ -7,6 +7,21 @@ In den vorherigen Kapiteln wurde zunächst die bisherige Webseite analysiert, um
 
 Diese Erkenntnisse sollen nun genutzt werden, um eine verbesserte Version der Webseite zu entwickeln. Bevor dies geschehen kann, muss jedoch die bisherige Codebasis auf ein neues Frontend-Framework migriert werden, da die Zufriedenheit mit dem vorherigen Framework nicht sehr hoch war. Nach der Migration werden trotzdem die Ergebnisse der Nutzerumfrage genutzt, um die Webseite zu optimieren. Dabei wird auf die Ergebnisse der Umfrage eingegangen, und die Webseite wird entsprechend angepasst, um die Nutzererfahrung zu verbessern. Außerdem werden neue Features und Funktionen hinzugefügt, die die Nutzererfahrung bereichern und die Nutzer dazu anregen sollen, die Webseite vermehrt zu nutzen.
 
+Bei jedem Relevanten Kapitel werden die entsprechenden Anforderungen welche dadurch Erfüllt werden referenziert. Dadurch das aber manche Anforderungen keine explizite Umsetzung erfordern bzw halt bei der kompletten Umsetzung beachtet werden sollen sind diese implizit von Anfang an zu beachten und sind bei allen anderen Aufgaben im Hinterkopf. Folgende Anforderungen werden konstant beachtet und angewendet.
+
+\begin{enumerate}
+
+    \item \textbf{[R08] Integration von Grafiken}
+    \item \textbf{[R10] Modernisierung des Designs}
+    \item \textbf{[R12] Benutzerfreundlichkeit}
+    \item \textbf{[R13] Modernes Design}
+    \item \textbf{[R14] Zuverlässigkeit}
+    \item \textbf{[R15] Wartbarkeit und Erweiterbarkeit}
+    \item \textbf{[R16] Code Qualität und Styleguide Einhaltung}
+
+\end{enumerate}
+
+
 \section{Frameworkwechsel und Verbesserungen}
 
 \subsection{Motivation für den Frameworkwechsel}
@@ -246,10 +261,52 @@ Bisher wurden essentielle veränderungen an dem Framework gemacht, bevor es weit
 
 \section{Erstellung der neuen Landing Page}
 
-Die Landing Page ist die erste Seite, die der Nutzer sieht, wenn er die Webseite besucht. Sie ist somit das Aushängeschild der Webseite und sollte den Nutzer dazu animieren, die Webseite zu nutzen. Die Landing Page sollte also ansprechend und informativ sein, um den Nutzer zu überzeugen, die Webseite zu nutzen. Die neue Landing Page wird mit \textbf{Vuetify} erstellt, einem Material Design Framework für Vue.js. Vuetify bietet viele vorgefertigte Komponenten, die es ermöglichen, schnell und einfach ansprechende Webseiten zu erstellen. Die Landing Page könnte wie folgt aussehen:
+Die Landing Page ist die erste Seite, die der Nutzer sieht, wenn er die Webseite besucht. Sie ist somit das Aushängeschild der Webseite und sollte den Nutzer dazu animieren, die Webseite zu nutzen. Die Landing Page sollte also ansprechend und informativ sein, um den Nutzer zu überzeugen, die Webseite zu nutzen als auch die zuvor definierte Anforderung \textbf{[R04]} erfüllen. Die neue Landing Page wird mit \textbf{Vuetify} erstellt, einem Material Design Framework für Vue.js. Vuetify bietet viele vorgefertigte Komponenten, die es ermöglichen, schnell und einfach ansprechende Webseiten zu erstellen. Die Landing Page könnte wie folgt aussehen:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/06/HomePage-Design.jpeg}
+    \caption{Das neu erstelle CO2Runter Design der Landigpage anhand der Nutzerzentrierten Umfrage}
+    \label{fig:new-co2runter-homepage-design}
+\end{figure}
+
+Das Design welches in \hyperref[fig:new-co2runter-homepage-design]{vorheriger Abbildung} zu sehen war wurde anhand der evaluierung der Umfrage und der erstellten Personas erstellt. Dafür wurde das Tool Figma genutzt und auch direkt Vuetify Komponenten, wodurch die Entwicklungsarbeitszeit immense verkürzt wurde weil man sich eins zu eins an das Design halten konnte.
+
+Für die neue Homepage konnte man diese in drei Sektionen unterteilen. Einmal die Navigationsleiste, den Kontent der Landing Page und dann der Footer mit relevanten Informationen. Zu beachten ist hierbei das die Navigationsleiste als auch der Footer auf allen Seiten Identisch sein sollen, nur der Kontent ist der Part wo auf den unterschiedlihen Seiten anderst ist. Daher werden die drei Sektionen im folgenden nacheinander durchgearbeitet. Zuvor aber werden wichtige änderungen vorgenommen.
+
+\subsection{Änderungen}
+
+Farben anpassen
+Layout anpassen
+
+\subsection{Navigationsleiste}
+
+Navigationsleiste als auch Drawer und das Mobil freundlich machen, weil man die Webseite auch als Mobile PWA App Installieren kann und das den Nutzer bei der Benutzung hilft.
+
+\subsection{Footer}
+
+Hier ist nichts besonderes actually
+
+\subsection{Kontent}
+
+Wie wir den Kontent so Anordnen mit den Karten und dann auch mit Mediaqueries ausbauen
+
+Hier kann man eine Karte einfach zeigen und dann einfach sagen das man die Rows changen kann so auch nix großes.
 
 \section{Der neue CO2 Rechner}
 
+% TODO: Anforderung [R05] umsetzen
+% TODO: Anforderung [R07] umsetzen
+% TODO: Anforderung [R09] umsetzen
+% TODO: Anforderung [R11] umsetzen
+% TODO: Anforderung [R06] umsetzen
+% TODO: Anforderung [R03] umsetzen
+% TODO: Anforderung [R02] umsetzen
+% TODO: Anforderung [R01] umsetzen
+
 \section{Das neue Dashboard}
+
+% TODO: Anforderung [R01] umsetzen
+% TODO: Anforderung [R05] umsetzen
 
 \section{Anreize zur Aktivität und Engagement der Nutzer}
