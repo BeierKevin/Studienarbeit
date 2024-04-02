@@ -279,76 +279,77 @@ Für die neue Homepage konnte man diese in drei Sektionen unterteilen. Einmal di
 Eine wichtige Änderung ist die Anpassung des Farbschemas, um die Webseite ansprechender zu gestalten. Dafür wird das Farbschema von Vuetify angepasst, um eine konsistente Farbgebung zu gewährleisten. Hierfür erstellen wir lediglich nach der Vuetify dokumentation ein neues Farbschema und passen die Farben an. Dieses Farbschema wird dann in der Vuetify Konfiguration eingebunden. Das Farbschema sieht dann wie folgt aus: \cite{vuetiy-custom-color-theme}
 
 \begin{lstlisting}[language={JavaScript}, caption={Vuetify Farbschema anpassung}]
-    const customLightTheme = {
-        dark: false,
-        colors: {
-            background: '#FFFFFF',
-            surface: '#FFFFFF',
-            'surface-bright': '#FFFFFF',
-            'surface-light': '#EEEEEE',
-            'surface-variant': '#424242',
-            'on-surface-variant': '#EEEEEE',
-            primary: '#D0ECDE',
-            'primary-darken-1': '#01502D',
-            secondary: '#004725',
-            'secondary-darken-1': '#018786',
-            error: '#B00020',
-            info: '#2196F3',
-            success: '#4CAF50',
-            warning: '#FB8C00',
+const customLightTheme = {
+    dark: false,
+    colors: {
+        background: '#FFFFFF',
+        surface: '#FFFFFF',
+        'surface-bright': '#FFFFFF',
+        'surface-light': '#EEEEEE',
+        'surface-variant': '#424242',
+        'on-surface-variant': '#EEEEEE',
+        primary: '#D0ECDE',
+        'primary-darken-1': '#01502D',
+        secondary: '#004725',
+        'secondary-darken-1': '#018786',
+        error: '#B00020',
+        info: '#2196F3',
+        success: '#4CAF50',
+        warning: '#FB8C00',
+    },
+    variables: {
+        'border-color': '#000000',
+        'border-opacity': 0.12,
+        'high-emphasis-opacity': 0.87,
+        'medium-emphasis-opacity': 0.6,
+        'disabled-opacity': 0.38,
+        'idle-opacity': 0.04,
+        'hover-opacity': 0.04,
+        'focus-opacity': 0.12,
+        'selected-opacity': 0.08,
+        'activated-opacity': 0.12,
+        'pressed-opacity': 0.12,
+        'dragged-opacity': 0.08,
+        'theme-kbd': '#212529',
+        'theme-on-kbd': '#FFFFFF',
+        'theme-code': '#F5F5F5',
+        'theme-on-code': '#000000',
+    },
+};
+
+export default createVuetify({
+    theme: {
+        defaultTheme: 'customLightTheme',
+        themes: {
+            customLightTheme,
         },
-        variables: {
-            'border-color': '#000000',
-            'border-opacity': 0.12,
-            'high-emphasis-opacity': 0.87,
-            'medium-emphasis-opacity': 0.6,
-            'disabled-opacity': 0.38,
-            'idle-opacity': 0.04,
-            'hover-opacity': 0.04,
-            'focus-opacity': 0.12,
-            'selected-opacity': 0.08,
-            'activated-opacity': 0.12,
-            'pressed-opacity': 0.12,
-            'dragged-opacity': 0.08,
-            'theme-kbd': '#212529',
-            'theme-on-kbd': '#FFFFFF',
-            'theme-code': '#F5F5F5',
-            'theme-on-code': '#000000',
-        },
-    };
-    export default createVuetify({
-        theme: {
-            defaultTheme: 'customLightTheme',
-            themes: {
-                customLightTheme,
-            },
-        },
-    });
+    },
+});
 \end{lstlisting}
 
 Nicht nur die Farben sonder auch das Layout sollte angepasst werden. Dafür wird ein Layout erstellt welches auf allen Seiten gleich ist und nur der Kontent sich ändert. Dieses Layout wird dann in jeder Seite eingebunden durch die Vue Router Funktionalität das diese Seite folgende Komponente Nutzt und dann den Kontent der jeweiligen Seite einbindet. Das einbinden sieht wie folgt aus:
 
 \begin{lstlisting}[language={JavaScript}, caption={Einbindung des Layouts in der Vue Router Konfiguration}]
-    const routes = [
-        {
-            path: '/',
-            component: () => import('@/layouts/default/Default.vue'),
-            children: [
-                {
-                    path: '',
-                    name: 'Home',
-                    component: () => import('@/views/HomeView.vue'),
-                },
-            ],
-        },
-        ...
-    ];
+const routes = [
+    {
+        path: '/',
+        component: () => import('@/layouts/default/Default.vue'),
+        children: [
+            {
+                path: '',
+                name: 'Home',
+                component: () => import('@/views/HomeView.vue'),
+            },
+        ],
+    },
+    ...
+];
 \end{lstlisting}
 
 Und das dies so funktioniert muss in der \texttt{Default.vue} Datei mindestes ein \texttt{<router-view />} Tag eingebunden werden, damit die jeweilige Seite eingebunden wird und angezeigt. Das angepasste Layout der CO2Runter Webseite beinhaltet das auf jeder seite die Navigationsleiste, der Kontent und der Footer angezeigt wird. Dieses Layout wird dann in der \texttt{App.vue} Datei wiederum über ein \texttt{<router-view />} Tag eingebunden und sieht wie folgt aus:
 
 \begin{lstlisting}[language={JavaScript}, caption={Layout Definition}]
-    <template>
+<template>
     <v-locale-provider>
         <v-app>
             <TheNavigationHeader />
@@ -364,29 +365,7 @@ Und das dies so funktioniert muss in der \texttt{Default.vue} Datei mindestes ei
         </v-app>
     </v-locale-provider>
 </template>
-
-<script lang="ts" setup>
-import TheNavigationHeader from '@/components/TheNavigationHeader.vue';
-import TheFooter from '@/components/TheFooter.vue';
-</script>
-
-<style scoped>
-.page-wrapper {
-    padding: 24px;
-    padding-bottom: 30px;
-
-    @media screen and (max-width: 600px) {
-        padding: 10px;
-    }
-}
-
-.maxWidth {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-</style>
 \end{lstlisting}
-
 
 Nachdem diese schritte befogt wurden und jede Seite das Layout eingebunden hat, als auch das Farbschema passet zu der Webseite angepasst wurde, kann sich nun um die restliche Komponenten gekümmert werden welche zuvor erwähnt wurde, die Navigationsleiste, der Kontent und der Footer.
 
@@ -394,9 +373,8 @@ Nachdem diese schritte befogt wurden und jede Seite das Layout eingebunden hat, 
 
 Navigationsleiste als auch Drawer und das Mobil freundlich machen, weil man die Webseite auch als Mobile PWA App Installieren kann und das den Nutzer bei der Benutzung hilft.
 
-% TODO: Snippet anpassen!
-\begin{lstlisting}[language={JavaScript}, caption={Navigation Definition}]
-    <template>
+\begin{lstlisting}[language={JavaScript}, caption={Navigationsleiste für Web als auch Mobile}]
+<template>
     <v-app-bar :elevation="0">
         <v-app-bar-nav-icon
             class="hidden-md-and-up ms-md-3 ms-sm-5 ms-3 text-muted"
@@ -605,28 +583,6 @@ Navigationsleiste als auch Drawer und das Mobil freundlich machen, weil man die 
 
     <PWAInstallationDialog />
 </template>
-
-<script setup lang="ts">
-import { ref, watch } from 'vue';
-import useAuth from '@/composables/useAuth';
-import PWAInstallationDialog from '@/components/PWAInstallationDialog.vue';
-
-// Use the composable
-const { isLoggedIn, logout } = useAuth();
-
-// Your remaining code stays the same
-const isDrawerOpen = ref(false);
-
-watch(isDrawerOpen, (newValue) => {
-    if (newValue) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = 'visible';
-    }
-});
-</script>
-
-<style scoped></style>
 \end{lstlisting}
 
 \subsection{Footer}
@@ -747,23 +703,6 @@ Um den Footer zu erzeugen gibt es drei bereiche. Einmal die Logos der Partner, d
         </div>
     </v-footer>
 </template>
-
-<script setup lang="ts">
-const navigate = (link: string) => {
-    window.open(link, '_blank');
-};
-</script>
-
-<style scoped>
-.clickable-image {
-    cursor: pointer;
-    transition: transform 0.15s ease-in-out;
-}
-
-.clickable-image:hover {
-    transform: scale(1.05);
-}
-</style>
 \end{lstlisting}
 
 \subsection{Kontent}
@@ -774,7 +713,7 @@ Hier kann man eine Karte einfach zeigen und dann einfach sagen das man die Rows 
 
 % TODO: Snippet anpassen!
 \begin{lstlisting}[language={JavaScript}, caption={Home Page Kontent}]
-    <template>
+<template>
     <v-container justify="center">
         <v-row class="d-flex flex-column-reverse flex-md-row my-16">
             <v-col cols="12" md="7" class="text-center text-md-start">
@@ -852,11 +791,6 @@ Hier kann man eine Karte einfach zeigen und dann einfach sagen das man die Rows 
         </v-row>
     </v-container>
 </template>
-
-<script lang="ts" setup></script>
-
-<style scoped></style>
-
 \end{lstlisting}
 
 \section{Der neue CO2 Rechner}
