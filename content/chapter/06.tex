@@ -883,4 +883,118 @@ Die Herausforderung besteht darin, die Funktionsweise des React-Codes in den neu
 Anschließend müssen verschiedene Anpassungen vorgenommen werden, um sicherzustellen, dass alle Funktionalitäten problemlos funktionieren.
 Die Umsetzung ist weniger kompliziert, als es zunächst erscheinen mag, erfordert jedoch Zeit, um die Integration in das neue Framework zu vollenden und den bestehenden React-Code zu verstehen.
 
-Das Endresultat sieht dann wie folgt aus: % TODO: Endresultat einfügen
+
+\subsection{React Echarts alternative für Vue.js}
+
+Der erste Schritt bevor es an die eigentliche implementierung geht ist es eine alternative Bibiliothek zu finden welche die selben Grafiken erstellen kann wie ECharts bzw React-Echarts welche in der alten Webseite genutzt wurden. Dadurch das Echarts so populär ist gab es glücklicherweise auch eine Vue-ECharts variante wodurch die essentiellen Konfigurationen für die dargestellten Grafiken die selben waren war natürlich uns die Arbeit erleichterte. Jetzt muss lediglich der Installations Prozess der Bibiliothek durchgeführt werden lediglich durch die Installation der Bibiliothek und das einbinden in die Vue Komponenten bestand.
+
+\begin{lstlisting}[language={bash}, caption={Installation von Vue-ECharts}]
+npm i echarts vue-echarts
+\end{lstlisting}
+
+Hiernach kann die Bibiliothek in den Vue Komponenten eingebunden werden und die Grafiken erstellt werden. \cite{vue-echarts}
+
+\subsection{Integration von Echtzeitdaten}
+
+Wie bereits bei der neuen CO2-Rechner implementierung sind die Echtzeitdaten von der Datenbank hierfür relevant und dafür muss wie zuvor sich an dem bisherigen Code orientiert werden und die Datenbankabfragen angepasst werden. Im beispiel für die Fußabdrücke der Nutzer könnte dies wie folgt aussehen:
+
+\begin{lstlisting}[language={JavaScript}, caption={Laden der Fußabdrücke der Nutzer}]
+const fetchFootprints = async () => {
+    const response = await fetch('/api/dashboard/footprints');
+    const data: FootprintResponse = await response.json();
+    return data;
+};
+\end{lstlisting}
+
+Hierbei wird eine Funktion erstellt welche die Fußabdrücke der Nutzer aus der Datenbank abruft. Die Funktion kann dann in einer \textbf{onMounted} Funktion aufgerufen werden, damit die Daten beim laden der Komponente angezeigt werden.
+
+\begin{lstlisting}[language={JavaScript}, caption={Bei laden der Komponente die Fußabdrücke der Nutzer speichern}]
+onMounted(async () => {
+    footprintsData.value = await fetchFootprints();
+});
+\end{lstlisting}
+
+\subsection{Erstellung der Karte mit Vue-ECharts}
+
+Um die Karte zu erstellen, wird wie zuvor erklärt die Vue-ECharts Bibliothek verwendet, die es ermöglicht, interaktive Karten zu erstellen. Die Karte soll die Stadtteile von Karlsruhe und den durchschnittlichen CO2-Verbrauch gemäß den Angaben der Nutzer, die ihren Stadtteilen zugeordnet anzeigen. Die Karte wird in einer Vue-Komponente erstellt und die Daten aus der Datenbank abgerufen und entsprechend angepasst, um die Karte zu erstellen. Die Karte könnte wie folgt aussehen:
+
+\begin{lstlisting}[language={html}, caption={Vue-ECharts Diagramm Beispiel}]
+<v-chart
+    :option="chartOptions"
+    style="height: 600px; width: 100%"
+/>
+\end{lstlisting}
+
+Es ist relativ einfach eine Karte mit Vue-ECharts zu erstellen, aber das wichtigste worüber die Daten in die Grafik gegeben wird und auch gesagt wird wie die Grafik aussehen soll, ob Karte, Balkendiagram oder viele andere Möglichkeiten. Wichtig bevor auf die \textbf{chartOptions} eingegangen wird es ist essentiel das Diagram eine höhe und breite bekommt um korrekt angezeigt zu werden.
+
+Bei den \textbf{chartOptions} handelt es sich um ein Objekt welches die Daten für die Grafik enthält. Hierbei wird die Karte erstellt und die Daten aus der Datenbank abgerufen und entsprechend angepasst, um die Karte zu erstellen. Die Karte könnte wie folgt aussehen:
+
+Dabei wird zunächst die \textbf{onMounted} Funktion erweiter. Sie soll nicht nur die Daten aus der Datenbank laden sondern auch direkt die konkreten Kartendaten erstellen. Danach sieht die Funktion wie folgt aus:
+
+\begin{lstlisting}[language={JavaScript}, caption={Laden der Fußabdrücke und erstellen der Diagramm Daten und Konfiguration}]
+onMounted(async () => {
+    footprintsData.value = await fetchFootprints();
+    chartOptions.value = getData();
+});
+\end{lstlisting}
+
+Die \textbf{getData} Funktion ist dafür zuständig die Daten aus der Datenbank in ein Format zu bringen welches von der Vue-ECharts Bibliothek verstanden wird. Hierbei wird die Karte erstellt und die Daten aus der Datenbank abgerufen und entsprechend angepasst, um die Karte zu erstellen. Dabei konnten wir die bisherigen Konfigurationen von React-ECharts übernehmen und mussten lediglich die Daten anpassen. Um einen einblick zu erhalten was die \textbf{getData} beinhaltet hier ein Beispiel:
+
+\begin{lstlisting}[language={JavaScript}, caption={Beispiels Konfiguration für ECharts Diagramme}]
+function getData() {
+    return {
+        title: {
+            text: 'CO2 Emissionen in Karlsruhe pro Stadtteil',
+        },
+        legend: {
+            top: 35,
+        },
+        visualMap: {
+            min: 0,
+            max: 20,
+            orient: 'horizontal',
+            left: 'center',
+            bottom: '5%',
+            text: ['High', 'Low'],
+            calculable: true,
+        },
+        roam: 'scale',
+        scaleLimit: {
+            min: 1,
+            max: 5,
+        },
+        series: loading.value
+            ? [
+                {
+                    name: "Mobilitaet",
+                    type: 'map',
+                    map: 'Karlsruhe',
+                    showLegendSymbol: false,
+                    emphasis: {
+                        label: {
+                            show: true,
+                        },
+                    },
+                    data: footprintsData.value!.mobility,
+                },
+                {
+                    // weitere Kategorien
+                }
+            ]
+        : [],
+    };
+}
+\end{lstlisting}
+
+Das Folgende vorgehen konnte dann bei allen Grafiken und Diagrammen durchgeführt werden und somit das Dashboard erfolgreich in die neue Webseite integriert werden. Im folgenden ist ein Screenshot von dem Kartendiagramm in der neuen Webseite zu sehen.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{images/06/Dashboard-Design.jpeg}
+    \caption{Kartendiagramm des Dashboards in der neuen Webseite}
+    \label{fig:new-co2runter-dashboard-design}
+\end{figure}
+
+\section{FAQ und Gruppensystem}
+
+% TODO: sollen wir hierzu was schreiben?
