@@ -30,7 +30,6 @@ Folgende Anforderungen werden konstant beachtet und angewendet:
 
 \end{enumerate}
 
-
 \section{Frameworkwechsel und Verbesserungen}
 
 \subsection{Motivation für den Frameworkwechsel}
@@ -289,8 +288,6 @@ Dies beinhaltet das Erstellen von Ordnern für Komponenten, Seiten, Services und
 Die Ordnerstruktur könnte wie folgt aussehen:
 
 % TODO: Ordnerstruktur demonstrieren
-
-
 
 \section{Erstellung der neuen Landing Page}
 
@@ -875,9 +872,7 @@ Die Fragen könnten wie folgt aussehen:
 
 \section{Übernahme und Anpassung des Dashboards}
 
-Das Dashboard spielt eine entscheidende Rolle auf der Webseite, indem es dem Nutzer ermöglicht, CO2-Emissionen zu verfolgen, zu analysieren und zu reduzieren. Es präsentiert dem Nutzer eine Vielzahl von Informationen über die Stadtteile von Karlsruhe. Insbesondere bietet das Dashboard eine interaktive Karte, die die Stadtteile von Karlsruhe und den durchschnittlichen CO2-Verbrauch gemäß den Angaben der Nutzer, die ihren Stadtteilen zugeordnet sind, darstellt. Um die \textbf{Anforderung [R05]} zu erfüllen, wird das Dashboard für die neue Webseite neu entwickelt und an das Framework sowie an die Benutzeroberfläche angepasst.
-
-Da dieses Feature bereits in der vorherigen Webseite implementiert war, kann darauf aufgebaut werden, um die \textbf{Anforderung [R05]} zu erfüllen. Das Dashboard wird in mehrere Komponenten unterteilt, die jeweils für einen bestimmten Teil des Dashboards verantwortlich sind.
+Das Dashboard spielt eine entscheidende Rolle auf der Webseite, indem es dem Nutzer ermöglicht, CO2-Emissionen zu verfolgen, zu analysieren und zu reduzieren. Es präsentiert dem Nutzer eine Vielzahl von Informationen über die Stadtteile von Karlsruhe. Insbesondere bietet das Dashboard eine interaktive Karte, die die Stadtteile von Karlsruhe und den durchschnittlichen CO2-Verbrauch gemäß den Angaben der Nutzer, die ihren Stadtteilen zugeordnet sind, darstellt. Um die \textbf{Anforderung [R05]} zu erfüllen, wird das Dashboard für die neue Webseite neu entwickelt und an das Framework sowie an die Benutzeroberfläche angepasst. Da dieses Feature bereits in der vorherigen Webseite implementiert war, kann darauf aufgebaut werden, um die \textbf{Anforderung [R05]} zu erfüllen. Das Dashboard wird in mehrere Komponenten unterteilt, die jeweils für einen bestimmten Teil des Dashboards verantwortlich sind.
 
 Die Herausforderung besteht darin, die Funktionsweise des React-Codes in den neuen Vue-Code zu überführen und sicherzustellen, dass alles einwandfrei funktioniert. Die Bibliothek ECharts, die für die Grafiken genutzt wurde, kann auch problemlos in Vue verwendet werden, wodurch die gleichen Grafikoptionen wie zuvor verfügbar sind. Es müssen lediglich die Daten aus der Datenbank abgerufen und entsprechend angepasst werden, um die \textbf{Anforderung [R01]} zu erfüllen.
 Anschließend müssen verschiedene Anpassungen vorgenommen werden, um sicherzustellen, dass alle Funktionalitäten problemlos funktionieren.
@@ -943,24 +938,8 @@ function getData() {
         title: {
             text: 'CO2 Emissionen in Karlsruhe pro Stadtteil',
         },
-        legend: {
-            top: 35,
-        },
-        visualMap: {
-            min: 0,
-            max: 20,
-            orient: 'horizontal',
-            left: 'center',
-            bottom: '5%',
-            text: ['High', 'Low'],
-            calculable: true,
-        },
-        roam: 'scale',
-        scaleLimit: {
-            min: 1,
-            max: 5,
-        },
-        series: loading.value
+        ...
+        series: loading.value // Die Daten
             ? [
                 {
                     name: "Mobilitaet",
@@ -973,12 +952,8 @@ function getData() {
                         },
                     },
                     data: footprintsData.value!.mobility,
-                },
-                {
-                    // weitere Kategorien
-                }
-            ]
-        : [],
+                }, // weitere Kategorien folgen
+            ] : [],
     };
 }
 \end{lstlisting}
