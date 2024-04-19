@@ -211,7 +211,7 @@ Ebenfalls erfordert es die Anpassung der \texttt{index.html}-Datei, um die im Ma
 </html>
 \end{lstlisting}
 
-Das Manifest ist eine JSON-Datei, die im Hintergrund von Vite generiert wird und Informationen über die Webseite enthält, wie den Namen, die Beschreibung, das Icon und die Farbe. Der Service Worker ist ein Skript, das im Hintergrund ausgeführt wird und die Offline-Funktionalität der App ermöglicht. Nun ist die Webseite als \acs{PWA} konfiguriert und kann auf dem Homescreen des Smartphones installiert werden. Um dies zu erleichtern, kann eine Komponente erstellt werden, die den Nutzer dazu auffordert, die Webseite zu installieren. Diese könnte wie folgt aussehen:
+Das Manifest ist eine \acf{JSON}-Datei, die im Hintergrund von Vite generiert wird und Informationen über die Webseite enthält, wie den Namen, die Beschreibung, das Icon und die Farbe. Der Service Worker ist ein Skript, das im Hintergrund ausgeführt wird und die Offline-Funktionalität der App ermöglicht. Nun ist die Webseite als \acs{PWA} konfiguriert und kann auf dem Homescreen des Smartphones installiert werden. Um dies zu erleichtern, kann eine Komponente erstellt werden, die den Nutzer dazu auffordert, die Webseite zu installieren. Diese könnte wie folgt aussehen:
 
 \begin{lstlisting}[language={JavaScript}, caption={PWA Vue Komponente}]
 <script setup lang="ts">
@@ -879,7 +879,7 @@ Besonders viel hat sich nicht am Design einer Frage innerhalb des Rechners geän
 Es wurden jedoch mehr Fragen in den Rechner eingebaut, die im alten Design als "detailliert" beschrieben wurden.
 Zusätzlich wurde, wie bereits im Abschnitt
 % TODO: Abschnitt mit JSON Veränderung einfügen
-, der Wert hinter den Anwortmöglichkeiten angepasst sowie die gesamte Struktur des generierten JSON.
+, der Wert hinter den Anwortmöglichkeiten angepasst sowie die gesamte Struktur des generierten \acs{JSON}.
 
 Die größte Veränderung erlebt der neue CO2-Rechner in Sachen Allgemeindesign und Nutzerfreundlichkeit.
 Wie in Abbildung \ref{fig:new-co2runter-calculator-design} zu sehen ist, wurde hier besonders darauf geachtet, dem Nutzer eine ansprechende Webseite zu präsentieren, die nicht nur als langweiliger und stumpfer Fragebogen durchgeht.
@@ -935,7 +935,7 @@ In diesem Ordner befinden sich alle weiteren Komponenten, die für die Darstellu
 So auch die Komponenten \textit{QuestionStepper} und \textit{CurrentCO2}, die durch die entsprechenden ".vue" Dateiendungen erzeugt werden und bereits in der vorherigen Abbildung erschienen sind.
 
 CurrentCO2 ist dafür zuständig, aus den gegebenen Antworten des Nutzers den Wert des CO2-Fußabdrucks zu berechnen und diesen darzustellen.
-Diese importiert den \textit{totalCo2Emission Store}, der dafür zuständig ist, die Werte der gewählten Antworten aus einer JSON zu nehmen und auf den Gesamtwert zu addieren.
+Diese importiert den \textit{totalCo2Emission Store}, der dafür zuständig ist, die Werte der gewählten Antworten aus einer \acs{JSON} zu nehmen und auf den Gesamtwert zu addieren.
 Anschließend wird der Gesamtwert in einer Card dargestellt.
 Der Code für die CurrentCO2-Komponente sieht dabei folgendermaßen aus:
 
@@ -1167,6 +1167,52 @@ Dieses Vorgehen konnte dann bei allen Grafiken und Diagrammen durchgeführt werd
     \label{fig:new-co2runter-dashboard-design}
 \end{figure}
 
-\section{FAQ und Gruppensystem}
+\section{Das neue Gruppensystem}
 
-% TODO: sollen wir hierzu was schreiben?
+\section{FAQ-Seite}
+
+Und zu guter Letzt wurde noch eine FAQ-Seite der neuen CO2-Runter Webseite hinzugefügt. Der Hintergrund dafür bestand darin, dass es bisher keine Möglichkeit gab, Nutzern Informationen zu geben, die nicht direkt mit dem CO2-Rechner oder dem Dashboard zu tun haben.
+
+Die FAQ-Seite soll Nutzern die Möglichkeit geben, Antworten auf häufig gestellte Fragen zu finden und zusätzlich eine Literaturliste enthalten, die die Nutzer:innen nutzen können, um sich weiter zu informieren.
+
+% TODO: Diese Literaturen werden außderdem auch genutzt um beim CO2-Rechner Tips und Tricks anzuzeigen, die den Nutzern helfen können ihren CO2-Fußabdruck zu reduzieren.
+
+Die Implementierung dieser Seite ist relativ einfach, da es sich um eine statische Seite handelt. Die Daten für die FAQ-Seite werden aus einer \acs{JSON}-Datei abgerufen und entsprechend angepasst, um die FAQ-Seite zu erstellen. Hierfür wurden viele Designaspekte übernommen, die bereits auf der Landing Page verwendet wurden. Das Einzige Neue ist die Literaturliste, die durch eine Tabelle realisiert wurde. Hierfür wird lediglich die \acs{JSON}-Datei abgerufen und die Daten in die Tabelle eingefügt. Dies geschieht wie folgt:
+
+\begin{lstlisting}[language={JavaScript}, caption={Laden der Literaturliste}]
+<v-data-table
+    v-model:page="page"
+    :headers="headers"
+    :items="LiteratureSources"
+    :search="search"
+>...</v-data-table>
+\end{lstlisting}
+
+Die Literaturliste wird in einer Tabelle dargestellt, die es den Nutzern ermöglicht, die Literaturquellen zu durchsuchen und auf die Quellen zuzugreifen. Die Tabelle enthält eine Spalte für den Titel der Quelle, eine Spalte für den Autor, eine Spalte für das Erscheinungsjahr und eine Spalte für den Link zur Quelle. Die Tabelle ist durchsuchbar und paginiert, um die Benutzerfreundlichkeit zu verbessern.
+
+Alle Literaturelemente befinden sich in der \textbf{LiteratureSources}-Variable, die in einer separaten TypeScript-Datei definiert wurde. Dabei handelt es sich um ein Array von Objekten, die die Literaturquellen repräsentieren.
+
+\begin{lstlisting}[language={JavaScript}, caption={Literaturelemente}]
+export default const literatureSources: LiteratureSource[] = [
+    {
+        title: 'Test Title of a Book',
+        author: 'Test Name',
+        publisher: 'Test Publisher',
+        publicationYear: '2019',
+        url: 'http://example.com/test-title-of-a-book',
+    },
+];
+\end{lstlisting}
+
+Das finale Design der FAQ-Seite sieht sehr modern und übersichtlich aus und lädt den Nutzer dazu ein, sich weiter zu informieren.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/06/FAQ-Design.jpeg}
+    \caption{Design der FAQ-Seite der neuen Webseite}
+    \label{fig:new-co2runter-faq-design}
+\end{figure}
+
+% Überleitung zum nächsten Kapitel
+
+Nachdem die neue Webseite erfolgreich implementiert wurde, wird im nächsten Kapitel noch einmal alles zusammengefasst und ein Fazit über die Arbeit und die Ergebnisse gezogen.
