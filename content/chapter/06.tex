@@ -298,7 +298,7 @@ Die neue Landing Page wird mit \textbf{Vuetify} erstellt, einem Material Design 
 Vuetify bietet viele vorgefertigte Komponenten, die es ermöglichen, schnell und einfach ansprechende Webseiten zu erstellen.
 Die Landing Page könnte wie folgt aussehen:
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/06/HomePage-Design.jpeg}
     \caption{Das neu erstelle CO2-Runter Design der Landigpage anhand der nuterzentrierten Umfrage}
@@ -868,7 +868,7 @@ Der Nutzer muss für jede Kategorie verschiedene Fragen beantworten, um seinen C
 Die Fragen sind so gestaltet, dass der Nutzer sie leicht beantworten kann.
 Die Fragen könnten wie folgt aussehen:
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{images/06/Question_New_Design.png}
     \caption{Design einer Frage des neuen CO2-Rechners}
@@ -884,9 +884,9 @@ Zusätzlich wurde, wie bereits im Abschnitt
 Die größte Veränderung erlebt der neue CO2-Rechner in Sachen Allgemeindesign und Nutzerfreundlichkeit.
 Wie in Abbildung \ref{fig:new-co2runter-calculator-design} zu sehen ist, wurde hier besonders darauf geachtet, dem Nutzer eine ansprechende Webseite zu präsentieren, die nicht nur als langweiliger und stumpfer Fragebogen durchgeht.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{images/06/Calculator_New_Design.png}
+    \includegraphics[width=0.8\textwidth]{images/06/Calculator_New_Design.png}
     \caption{Design des neuen CO2-Rechners}
     \label{fig:new-co2runter-calculator-design}
 \end{figure}
@@ -927,13 +927,6 @@ Diese bildet die Hauptansicht des Rechners und implementiert weitere, kleinere K
         </v-row>
     </v-container>
 </template>
-
-<script setup lang="ts">
-import QuestionStepper from '@/components/Calculator/QuestionStepper.vue';
-import CurrentCO2 from '@/components/Calculator/CurrentCO2.vue';
-</script>
-
-<style scoped></style>
 \end{lstlisting}
 
 Wie bereits eingangs erwähnt, implementiert die CalculatorView-Komponente weitere Components.
@@ -946,14 +939,12 @@ Diese importiert den \textit{totalCo2Emission Store}, der dafür zuständig ist,
 Anschließend wird der Gesamtwert in einer Card dargestellt.
 Der Code für die CurrentCO2-Komponente sieht dabei folgendermaßen aus:
 
-\begin{lstlisting}[language={JavaScript}, caption={CurrentCO2.vue}]
+% TODO: readd Code-Snippet caused compilation problems
+\begin{lstlisting}[language={html}, caption={CurrentCO2.vue}]
 <template>
     <v-card class="text-primary" elevation="0">
-        <v-card-title class="text-h5 text-primary-darken-1">Dein aktueller CO₂-Fußabdruck beträgt: {{
-        totalCo2EmissionStore.total }}</v-card-title>
         <v-card-text class="text-secondary">
-        Und Setzt sich wie folgt zusammen:
-
+            Und Setzt sich wie folgt zusammen:
         </v-card-text>
     </v-card>
 </template>
@@ -963,8 +954,6 @@ import { useTotalCo2EmissionStore } from '@/store/totalCo2Emission';
 
 const totalCo2EmissionStore = useTotalCo2EmissionStore();
 </script>
-
-<style scoped></style>
 \end{lstlisting}
 
 Der QuestionStepper ist für die Darstellung des eigentlichen Fragebogens zuständig.
@@ -979,15 +968,15 @@ Für das Laden der Fragen und Antworten ist eine weitere Komponente zuständige,
 \textit{QuestionBlock} ist dafür zuständig, die Fragen und Antworten aus der \textit{questions.json} zu laden und diese so darzustellen, dass QuestionStepper diese nur noch im richtigen Format einfügen muss.
 Nachfolgend ist der Code für QuestionBlock.vue und QuestionStepper.vue aufgelistet:
 
-\begin{lstlisting}[language={JavaScript}, caption={QuestionStepper.vue}]
+\begin{lstlisting}[language={html}, caption={QuestionStepper.vue}]
 <template>
     <v-stepper>
         <v-stepper-header>
-        <v-stepper-item title="Mobilität" value="1"></v-stepper-item>
+        <v-stepper-item title="Mobilitaet" value="1"></v-stepper-item>
 
         <v-divider></v-divider>
 
-        <v-stepper-item title="Ernährung" value="2"></v-stepper-item>
+        <v-stepper-item title="Ernaehrung" value="2"></v-stepper-item>
 
         <v-divider></v-divider>
 
@@ -1027,7 +1016,7 @@ Nachfolgend ist der Code für QuestionBlock.vue und QuestionStepper.vue aufgelis
 </template>
 \end{lstlisting}
 
-\begin{lstlisting}[language={JavaScript}, caption={QuestionBlock.vue}]
+\begin{lstlisting}[language={html}, caption={QuestionBlock.vue}]
 <template>
     <div
     v-for="(item, index) in questions.questions"
@@ -1040,18 +1029,10 @@ Nachfolgend ist der Code für QuestionBlock.vue und QuestionStepper.vue aufgelis
         :items="item.replies.map((replies) => replies.text)"
         :return-object="true"
         class="mt-16"
-        placeholder="Wählen Sie eine Option"
+        placeholder="Waehlen Sie eine Option"
         variant="outlined"
         @update:modelValue="UpdateEmissions(index)"
         ></v-select>
-
-        <v-alert type="info" variant="tonal" tex>
-            <template #title> Titel für Tips und Tricks </template>
-            <template #text>
-            Beschriebung zu Tips und Tricks als auch eine Verlinkung die
-            dann gemacht werden muss
-            </template>
-        </v-alert>
     </div>
 </template>
 
@@ -1087,9 +1068,7 @@ textValue: string
 return array.find((item) => item.text === textValue);
 }
 </script>
-<style scoped></style>
 \end{lstlisting}
-
 
 \section{Übernahme und Anpassung des Dashboards}
 
@@ -1181,7 +1160,7 @@ function getData() {
 
 Dieses Vorgehen konnte dann bei allen Grafiken und Diagrammen durchgeführt werden, um das Dashboard erfolgreich in die neue Webseite zu integrieren. Im Folgenden ist ein Screenshot des Kartendiagramms in der neuen Webseite zu sehen:
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{images/06/Dashboard-Design.jpeg}
     \caption{Kartendiagramm des Dashboards in der neuen Webseite}
