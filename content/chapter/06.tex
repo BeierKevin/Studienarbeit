@@ -859,16 +859,237 @@ Einmal die Logos der Partner, dann die rechtlichen Informationen und die technis
 % TODO: Anforderung [R01] umsetzen
 % TODO: Anpasung der JSON Datei für den CO2 Rechner, welche einfach besser strukturiert ist
 
-Der CO2-Rechner ist ein wichtiges Feature der Webseite, da dem dadurch ermöglicht wird, seinen CO2-Fußabdruck zu berechnen und Tipps zur Reduzierung zu erhalten.
+Der CO2-Rechner ist ein wichtiges Feature der Webseite, da dem Nutzer dadurch ermöglicht wird, seinen CO2-Fußabdruck zu berechnen und Tipps zur Reduzierung zu erhalten.
 Bei der Neuerstellung hat man sich an der bisherigen Implementierung orientiert und diese verbessert.
 
 Der CO2-Rechner besteht aus mehreren Kategorien, die der Nutzer durchlaufen muss, um seinen CO2-Fußabdruck zu berechnen.
-Die Kategorien lauten: Mobilität, Ernährung und Energieverbrauch.
+Die Kategorien lauten: Mobilität, Ernährung, Wohnen und Konsum.
 Der Nutzer muss für jede Kategorie verschiedene Fragen beantworten, um seinen CO2-Fußabdruck zu berechnen.
 Die Fragen sind so gestaltet, dass der Nutzer sie leicht beantworten kann.
 Die Fragen könnten wie folgt aussehen:
 
-% TODO: hier den neuen CO2 Rechner und das Design präsentieren
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{images/06/Question_New_Design.png}
+    \caption{Design einer Frage des neuen CO2-Rechners}
+    \label{fig:new-co2runter-question-design}
+\end{figure}
+
+Besonders viel hat sich nicht am Design einer Frage innerhalb des Rechners geändert.
+Es wurden jedoch mehr Fragen in den Rechner eingebaut, die im alten Design als "detailliert" beschrieben wurden.
+Zusätzlich wurde, wie bereits im Abschnitt
+% TODO: Abschnitt mit JSON Veränderung einfügen
+, der Wert hinter den Anwortmöglichkeiten angepasst sowie die gesamte Struktur des generierten JSON.
+
+Die größte Veränderung erlebt der neue CO2-Rechner in Sachen Allgemeindesign und Nutzerfreundlichkeit.
+Wie in Abbildung \ref{fig:new-co2runter-calculator-design} zu sehen ist, wurde hier besonders darauf geachtet, dem Nutzer eine ansprechende Webseite zu präsentieren, die nicht nur als langweiliger und stumpfer Fragebogen durchgeht.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{images/06/Calculator_New_Design.png}
+    \caption{Design des neuen CO2-Rechners}
+    \label{fig:new-co2runter-calculator-design}
+\end{figure}
+
+Der berechnete CO2-Wert aus den gewählten Antwortmöglichkeiten befindet sich nun direkt am Start der Webseite.
+Um den berechneten Fußabdruck noch deutlicher in den Vordergrund zu setzen, wurde diesem die Primärfarbe verpasst, so dass er in einem dunkelgrün erscheint.
+
+Eine weitere grundlegende Veränderung des neuen CO2-Rechners findet man unmittelbar unterhalb der Kategorienauflistung.
+Bevor der Nutzer auf den eigentlichen Rechner stößt, wurde für jede Kategorie ein kleiner Einführungsabschnitt geschrieben und ein dazu passendes Bild hinzugefügt.
+Diese Neuerung soll dafür sorgen, dass sich der Nutzer nicht direkt in den Rechner stürzt, sondern über das aktuelle Thema aufgeklärt und informiert wird.
+Außerdem bringt der Abschnitt mit dem Bild einen positiven Aspekt im Bereich der Nutzerfreundlichkeit.
+
+Für die Implementierung des neuen CO2-Rechner wurde eine neue Komponente namens "CalculatorView.vue" erstellt.
+Diese bildet die Hauptansicht des Rechners und implementiert weitere, kleinere Komponenten, so genannte \textit{Components} und ist in der folgenden Abbildung zu sehen.
+
+\begin{lstlisting}[language={JavaScript}, caption={Aufbau der CalculatorView.vue Komponente}]
+<template>
+    <v-container>
+        <v-row
+        class= ...
+        >
+            <v-col ...>
+                <CurrentCO2 />
+            </v-col>
+            <v-col ... >
+                <v-img
+                width="360px"
+                height="200px"
+                src="../assets/undraw_nature_m5ll.svg"
+                />
+            </v-col>
+        </v-row>
+
+        <v-row ... >
+            <v-col>
+                <QuestionStepper />
+            </v-col>
+        </v-row>
+    </v-container>
+</template>
+
+<script setup lang="ts">
+import QuestionStepper from '@/components/Calculator/QuestionStepper.vue';
+import CurrentCO2 from '@/components/Calculator/CurrentCO2.vue';
+</script>
+
+<style scoped></style>
+\end{lstlisting}
+
+Wie bereits eingangs erwähnt, implementiert die CalculatorView-Komponente weitere Components.
+In der Ordnerstruktur des Projekts findet man deshalb innerhalb des Components-Ordner einen Ordner mit dem Namen \textit{Calculator}.
+In diesem Ordner befinden sich alle weiteren Komponenten, die für die Darstellung des CO2-Rechners benötigt werden.
+So auch die Komponenten \textit{QuestionStepper} und \textit{CurrentCO2}, die durch die entsprechenden ".vue" Dateiendungen erzeugt werden und bereits in der vorherigen Abbildung erschienen sind.
+
+CurrentCO2 ist dafür zuständig, aus den gegebenen Antworten des Nutzers den Wert des CO2-Fußabdrucks zu berechnen und diesen darzustellen.
+Diese importiert den \textit{totalCo2Emission Store}, der dafür zuständig ist, die Werte der gewählten Antworten aus einer JSON zu nehmen und auf den Gesamtwert zu addieren.
+Anschließend wird der Gesamtwert in einer Card dargestellt.
+Der Code für die CurrentCO2-Komponente sieht dabei folgendermaßen aus:
+
+\begin{lstlisting}[language={JavaScript}, caption={CurrentCO2.vue}]
+<template>
+    <v-card class="text-primary" elevation="0">
+        <v-card-title class="text-h5 text-primary-darken-1">Dein aktueller CO₂-Fußabdruck beträgt: {{
+        totalCo2EmissionStore.total }}</v-card-title>
+        <v-card-text class="text-secondary">
+        Und Setzt sich wie folgt zusammen:
+
+        </v-card-text>
+    </v-card>
+</template>
+
+<script lang="ts" setup>
+import { useTotalCo2EmissionStore } from '@/store/totalCo2Emission';
+
+const totalCo2EmissionStore = useTotalCo2EmissionStore();
+</script>
+
+<style scoped></style>
+\end{lstlisting}
+
+Der QuestionStepper ist für die Darstellung des eigentlichen Fragebogens zuständig.
+Der Fragebogen wird über den \textit{v-stepper} implementiert.
+Dieser wird von Vuetify geliefert und ist in zwei Teile aufgeteilt: v-stepper-header und v-stepper-window.
+Der \textit{v-stepper-header} ist für die Kategorienauflistung zuständig und begleitet den Nutzer durch den Fragebogen.
+Durch den \textit{v-stepper-header} wird genau angezeigt, in welcher Kategorie des Fragebogens man sich gerade befindet und wie viele Kategorien es noch zu erledigen gibt.
+Auf der anderen Seite ist das \textit{v-stepper-window} für die Auflistung der Fragen und somit für den Fragebogen zuständig.
+Über so genannte \textit{v-stepper-window-items} werden die einzelnen Fragen dargestellt.
+Für das Laden der Fragen und Antworten ist eine weitere Komponente zuständige, die in QuestionStepper.vue importiert wird: \textit{QuestionBlock}
+
+\textit{QuestionBlock} ist dafür zuständig, die Fragen und Antworten aus der \textit{questions.json} zu laden und diese so darzustellen, dass QuestionStepper diese nur noch im richtigen Format einfügen muss.
+Nachfolgend ist der Code für QuestionBlock.vue und QuestionStepper.vue aufgelistet:
+
+\begin{lstlisting}[language={JavaScript}, caption={QuestionStepper.vue}]
+<template>
+    <v-stepper>
+        <v-stepper-header>
+        <v-stepper-item title="Mobilität" value="1"></v-stepper-item>
+
+        <v-divider></v-divider>
+
+        <v-stepper-item title="Ernährung" value="2"></v-stepper-item>
+
+        <v-divider></v-divider>
+
+        <v-stepper-item title="Wohnen" value="3"></v-stepper-item>
+
+        <v-divider></v-divider>
+
+        <v-stepper-item title="Konsum" value="4"></v-stepper-item>
+        </v-stepper-header>
+
+        <v-stepper-window>
+            <v-stepper-window-item>
+
+                .
+                .
+                .
+
+                <v-row class="my-16">
+                <v-col>
+                <QuestionsBlock
+                v-if="data"
+                :category-index="QuestionsIndices.MOBILITY"
+                :questions="
+                data.category[QuestionsIndices.MOBILITY]
+                "
+                />
+                </v-col>
+                </v-row>
+
+                .
+                .
+                .
+
+            </v-stepper-window-item>
+        </v-stepper-window>
+    </v-stepper>
+</template>
+\end{lstlisting}
+
+\begin{lstlisting}[language={JavaScript}, caption={QuestionBlock.vue}]
+<template>
+    <div
+    v-for="(item, index) in questions.questions"
+    :key="index"
+    class="my-16"
+    >
+        <h3 class="text-center">{{ item.text }}</h3>
+        <v-select
+        v-model="item.selected.text"
+        :items="item.replies.map((replies) => replies.text)"
+        :return-object="true"
+        class="mt-16"
+        placeholder="Wählen Sie eine Option"
+        variant="outlined"
+        @update:modelValue="UpdateEmissions(index)"
+        ></v-select>
+
+        <v-alert type="info" variant="tonal" tex>
+            <template #title> Titel für Tips und Tricks </template>
+            <template #text>
+            Beschriebung zu Tips und Tricks als auch eine Verlinkung die
+            dann gemacht werden muss
+            </template>
+        </v-alert>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { Category, Replies } from '@/types/Questionnaire';
+import useQuestions from '@/composables/useQuestions';
+import { useTotalCo2EmissionStore } from '@/store/totalCo2Emission';
+
+const props = defineProps<{
+categoryIndex: number;
+questions: Category;
+}>();
+
+const { updateSelectedValue, calculateTotalCo2Emission } = useQuestions();
+const totalCo2EmissionStore = useTotalCo2EmissionStore();
+
+const UpdateEmissions = (questionIndex: number) => {
+const array = props.questions.questions[questionIndex].replies;
+const textValue = props.questions.questions[questionIndex].selected.text;
+
+const object = findObjectInArray(array, textValue);
+updateSelectedValue(props.categoryIndex, questionIndex, object!);
+
+totalCo2EmissionStore.calculateTotalCo2Emission(
+calculateTotalCo2Emission()
+);
+};
+
+function findObjectInArray(
+array: Replies[],
+textValue: string
+): Replies | undefined {
+return array.find((item) => item.text === textValue);
+}
+</script>
+<style scoped></style>
+\end{lstlisting}
+
 
 \section{Übernahme und Anpassung des Dashboards}
 
