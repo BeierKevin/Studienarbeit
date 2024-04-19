@@ -4,7 +4,7 @@
 \label{chapter:6}
 
 In den vorherigen Kapiteln wurde zunächst die bisherige Webseite analysiert, um ihre Stärken und Schwächen zu identifizieren.
-Anschließend wurde eine Nutzerumfrage durchgeführt, um die Zufriedenheit der Nutzer mit der Webseite zu ermitteln.
+Anschließend wurde eine Nutzerumfrage durchgeführt, um die Zufriedenheit der NutzerInnen mit der Webseite zu ermitteln.
 Darauf aufbauend wurden aus den Ergebnissen der Nutzerumfrage Personas erstellt und Anforderungen abgeleitet.
 Diese Anforderungen wurden im \hyperref[chapter:5]{Kapitel 5} spezifiziert und in die Kategorien Muss-, Soll- und Kann-Anforderungen eingeteilt.
 
@@ -12,7 +12,7 @@ Diese Erkenntnisse sollen nun genutzt werden, um eine verbesserte Version der We
 Bevor dies geschehen kann, muss jedoch die bisherige Codebasis auf ein neues Frontend-Framework migriert werden, da die Zufriedenheit mit dem vorherigen Framework nicht sehr hoch war.
 Nach der Migration werden trotzdem die Ergebnisse der Nutzerumfrage genutzt, um die Webseite zu optimieren.
 Dabei wird auf die Ergebnisse der Umfrage eingegangen, und die Webseite wird entsprechend angepasst, um die Nutzererfahrung zu verbessern.
-Außerdem werden neue Features und Funktionen hinzugefügt, die die Nutzererfahrung bereichern und die Nutzer dazu anregen sollen, die Webseite vermehrt zu nutzen.
+Außerdem werden neue Features und Funktionen hinzugefügt, die die Nutzererfahrung bereichern und die NutzerInnen dazu anregen sollen, die Webseite vermehrt zu nutzen.
 
 Bei jedem relevanten Kapitel werden die entsprechenden Anforderungen, welche dadurch Erfüllt werden, referenziert.
 Dadurch, dass manche Anforderungen keine explizite Umsetzung erfordern, da diese in jedem Implemtierungsschritt beachtet werden sollten, werden diese durch das Projekt hinweg konstant betrachtet.
@@ -119,7 +119,7 @@ export default defineConfig({
 
 Nach diesem Schritt ist das Projekt erfolgreich migriert und kann nun mit dem neuen Framework weiterentwickelt werden. Es ist auch möglich, alles über die Docker Compose Datei zu starten und zu stoppen.
 
-\section{Unterstützung von PWA für Mobile Nutzer}
+\section{Unterstützung von PWA für Mobile NutzerInnen}
 
 Zu Beginn dieser Arbeit wurde in \hyperref[chapter:2]{Kapitel 2} erwähnt, dass die Webseite trotz ihrer webbasierten Natur als App bezeichnet wird.
 Um die Nutzererfahrung zu optimieren und die Benutzerfreundlichkeit der Webseite zu erhöhen, wird die Integration von \acf{PWA} angestrebt.
@@ -211,7 +211,7 @@ Ebenfalls erfordert es die Anpassung der \texttt{index.html}-Datei, um die im Ma
 </html>
 \end{lstlisting}
 
-Das Manifest ist eine \acf{JSON}-Datei, die im Hintergrund von Vite generiert wird und Informationen über die Webseite enthält, wie den Namen, die Beschreibung, das Icon und die Farbe. Der Service Worker ist ein Skript, das im Hintergrund ausgeführt wird und die Offline-Funktionalität der App ermöglicht. Nun ist die Webseite als \acs{PWA} konfiguriert und kann auf dem Homescreen des Smartphones installiert werden. Um dies zu erleichtern, kann eine Komponente erstellt werden, die den Nutzer dazu auffordert, die Webseite zu installieren. Diese könnte wie folgt aussehen:
+Das Manifest ist eine \acf{JSON}-Datei, die im Hintergrund von Vite generiert wird und Informationen über die Webseite enthält, wie den Namen, die Beschreibung, das Icon und die Farbe. Der Service Worker ist ein Skript, das im Hintergrund ausgeführt wird und die Offline-Funktionalität der App ermöglicht. Nun ist die Webseite als \acs{PWA} konfiguriert und kann auf dem Homescreen des Smartphones installiert werden. Um dies zu erleichtern, kann eine Komponente erstellt werden, die den NutzerInnen dazu auffordert, die Webseite zu installieren. Diese könnte wie folgt aussehen:
 
 \begin{lstlisting}[language={JavaScript}, caption={PWA Vue Komponente}]
 <script setup lang="ts">
@@ -276,7 +276,7 @@ const install = () => {
 
 \end{lstlisting}
 
-Die Integration dieser Komponente in die \texttt{App.vue}-Datei ist unkompliziert und wird dem Nutzer angezeigt, wenn die Webseite als \acs{PWA} installiert werden kann. Dadurch wird die Nutzererfahrung verbessert und die Webseite kann auch offline genutzt werden, ähnlich wie eine native App. \cite{vite-plugin-pwa}
+Die Integration dieser Komponente in die \texttt{App.vue}-Datei ist unkompliziert und wird dem NutzerInnen angezeigt, wenn die Webseite als \acs{PWA} installiert werden kann. Dadurch wird die Nutzererfahrung verbessert und die Webseite kann auch offline genutzt werden, ähnlich wie eine native App. \cite{vite-plugin-pwa}
 
 \section{Projekt aufräumen und Strukturierung}
 
@@ -291,9 +291,9 @@ Die Ordnerstruktur könnte wie folgt aussehen:
 
 \section{Erstellung der neuen Landing Page}
 
-Die Landing Page ist die erste Seite, die der Nutzer sieht, wenn er die Webseite besucht.
-Sie ist somit das Aushängeschild der Webseite und sollte den Nutzer dazu animieren, die Webseite zu nutzen.
-Die Landing Page sollte also ansprechend und informativ sein, um den Nutzer zu überzeugen, die Webseite zu nutzen als auch die zuvor definierte Anforderung \textbf{[R04]} erfüllen.
+Die Landing Page ist die erste Seite, die der NutzerInnen sieht, wenn er die Webseite besucht.
+Sie ist somit das Aushängeschild der Webseite und sollte den NutzerInnen dazu animieren, die Webseite zu nutzen.
+Die Landing Page sollte also ansprechend und informativ sein, um den NutzerInnen zu überzeugen, die Webseite zu nutzen als auch die zuvor definierte Anforderung \textbf{[R04]} erfüllen.
 Die neue Landing Page wird mit \textbf{Vuetify} erstellt, einem Material Design Framework für Vue.js.
 Vuetify bietet viele vorgefertigte Komponenten, die es ermöglichen, schnell und einfach ansprechende Webseiten zu erstellen.
 Die Landing Page könnte wie folgt aussehen:
@@ -419,7 +419,7 @@ Dabei handelt es sich um die Komponenten der Navigationsleiste, des Kontents und
 
 \subsection{Navigationsleiste}
 
-Eine Navigationsleiste dient dem Nutzer einer Webseite dazu, den Überblick über den aktuell zu sehenden Bereich einer Webseite zu behalten und biete eine schnelle und einfache Navigation über die Webseite.
+Eine Navigationsleiste dient dem NutzerInnen einer Webseite dazu, den Überblick über den aktuell zu sehenden Bereich einer Webseite zu behalten und biete eine schnelle und einfache Navigation über die Webseite.
 Im Fall der CO2-Runter-App gibt es die Startseite, den CO2-Rechner, das Dashboard, sowie eine FAQ- und Gruppensystemseite.
 Diese sollen über die Navigationsleiste erreichbar sein.
 Die folgende Abbildung zeigt, wie die Navigationsleiste implementiert wurde:
@@ -859,13 +859,13 @@ Einmal die Logos der Partner, dann die rechtlichen Informationen und die technis
 % TODO: Anforderung [R01] umsetzen
 % TODO: Anpasung der JSON Datei für den CO2 Rechner, welche einfach besser strukturiert ist
 
-Der CO2-Rechner ist ein wichtiges Feature der Webseite, da dem Nutzer dadurch ermöglicht wird, seinen CO2-Fußabdruck zu berechnen und Tipps zur Reduzierung zu erhalten.
+Der CO2-Rechner ist ein wichtiges Feature der Webseite, da dem NutzerInnen dadurch ermöglicht wird, seinen CO2-Fußabdruck zu berechnen und Tipps zur Reduzierung zu erhalten.
 Bei der Neuerstellung hat man sich an der bisherigen Implementierung orientiert und diese verbessert.
 
-Der CO2-Rechner besteht aus mehreren Kategorien, die der Nutzer durchlaufen muss, um seinen CO2-Fußabdruck zu berechnen.
+Der CO2-Rechner besteht aus mehreren Kategorien, die der NutzerInnen durchlaufen muss, um seinen CO2-Fußabdruck zu berechnen.
 Die Kategorien lauten: Mobilität, Ernährung, Wohnen und Konsum.
-Der Nutzer muss für jede Kategorie verschiedene Fragen beantworten, um seinen CO2-Fußabdruck zu berechnen.
-Die Fragen sind so gestaltet, dass der Nutzer sie leicht beantworten kann.
+Der NutzerInnen muss für jede Kategorie verschiedene Fragen beantworten, um seinen CO2-Fußabdruck zu berechnen.
+Die Fragen sind so gestaltet, dass der NutzerInnen sie leicht beantworten kann.
 Die Fragen könnten wie folgt aussehen:
 
 \begin{figure}[H]
@@ -882,7 +882,7 @@ Zusätzlich wurde, wie bereits im Abschnitt
 , der Wert hinter den Anwortmöglichkeiten angepasst sowie die gesamte Struktur des generierten \acs{JSON}.
 
 Die größte Veränderung erlebt der neue CO2-Rechner in Sachen Allgemeindesign und Nutzerfreundlichkeit.
-Wie in Abbildung \ref{fig:new-co2runter-calculator-design} zu sehen ist, wurde hier besonders darauf geachtet, dem Nutzer eine ansprechende Webseite zu präsentieren, die nicht nur als langweiliger und stumpfer Fragebogen durchgeht.
+Wie in Abbildung \ref{fig:new-co2runter-calculator-design} zu sehen ist, wurde hier besonders darauf geachtet, dem NutzerInnen eine ansprechende Webseite zu präsentieren, die nicht nur als langweiliger und stumpfer Fragebogen durchgeht.
 
 \begin{figure}[H]
     \centering
@@ -895,8 +895,8 @@ Der berechnete CO2-Wert aus den gewählten Antwortmöglichkeiten befindet sich n
 Um den berechneten Fußabdruck noch deutlicher in den Vordergrund zu setzen, wurde diesem die Primärfarbe verpasst, so dass er in einem dunkelgrün erscheint.
 
 Eine weitere grundlegende Veränderung des neuen CO2-Rechners findet man unmittelbar unterhalb der Kategorienauflistung.
-Bevor der Nutzer auf den eigentlichen Rechner stößt, wurde für jede Kategorie ein kleiner Einführungsabschnitt geschrieben und ein dazu passendes Bild hinzugefügt.
-Diese Neuerung soll dafür sorgen, dass sich der Nutzer nicht direkt in den Rechner stürzt, sondern über das aktuelle Thema aufgeklärt und informiert wird.
+Bevor der NutzerInnen auf den eigentlichen Rechner stößt, wurde für jede Kategorie ein kleiner Einführungsabschnitt geschrieben und ein dazu passendes Bild hinzugefügt.
+Diese Neuerung soll dafür sorgen, dass sich der NutzerInnen nicht direkt in den Rechner stürzt, sondern über das aktuelle Thema aufgeklärt und informiert wird.
 Außerdem bringt der Abschnitt mit dem Bild einen positiven Aspekt im Bereich der Nutzerfreundlichkeit.
 
 Für die Implementierung des neuen CO2-Rechner wurde eine neue Komponente namens "CalculatorView.vue" erstellt.
@@ -959,7 +959,7 @@ const totalCo2EmissionStore = useTotalCo2EmissionStore();
 Der QuestionStepper ist für die Darstellung des eigentlichen Fragebogens zuständig.
 Der Fragebogen wird über den \textit{v-stepper} implementiert.
 Dieser wird von Vuetify geliefert und ist in zwei Teile aufgeteilt: v-stepper-header und v-stepper-window.
-Der \textit{v-stepper-header} ist für die Kategorienauflistung zuständig und begleitet den Nutzer durch den Fragebogen.
+Der \textit{v-stepper-header} ist für die Kategorienauflistung zuständig und begleitet den NutzerInnen durch den Fragebogen.
 Durch den \textit{v-stepper-header} wird genau angezeigt, in welcher Kategorie des Fragebogens man sich gerade befindet und wie viele Kategorien es noch zu erledigen gibt.
 Auf der anderen Seite ist das \textit{v-stepper-window} für die Auflistung der Fragen und somit für den Fragebogen zuständig.
 Über so genannte \textit{v-stepper-window-items} werden die einzelnen Fragen dargestellt.
@@ -1072,7 +1072,7 @@ return array.find((item) => item.text === textValue);
 
 \section{Übernahme und Anpassung des Dashboards}
 
-Das Dashboard spielt eine entscheidende Rolle auf der Webseite, indem es dem Nutzer ermöglicht, CO2-Emissionen zu verfolgen, zu analysieren und zu reduzieren. Es präsentiert dem Nutzer eine Vielzahl von Informationen über die Stadtteile von Karlsruhe. Insbesondere bietet das Dashboard eine interaktive Karte, die die Stadtteile von Karlsruhe und den durchschnittlichen CO2-Verbrauch gemäß den Angaben der Nutzer, die ihren Stadtteilen zugeordnet sind, darstellt. Um die \textbf{Anforderung [R05]} zu erfüllen, wird das Dashboard für die neue Webseite neu entwickelt und an das Framework sowie an die Benutzeroberfläche angepasst. Da dieses Feature bereits in der vorherigen Webseite implementiert war, kann darauf aufgebaut werden, um die \textbf{Anforderung [R05]} zu erfüllen. Das Dashboard wird in mehrere Komponenten unterteilt, die jeweils für einen bestimmten Teil des Dashboards verantwortlich sind.
+Das Dashboard spielt eine entscheidende Rolle auf der Webseite, indem es dem NutzerInnen ermöglicht, CO2-Emissionen zu verfolgen, zu analysieren und zu reduzieren. Es präsentiert dem NutzerInnen eine Vielzahl von Informationen über die Stadtteile von Karlsruhe. Insbesondere bietet das Dashboard eine interaktive Karte, die die Stadtteile von Karlsruhe und den durchschnittlichen CO2-Verbrauch gemäß den Angaben der NutzerInnen, die ihren Stadtteilen zugeordnet sind, darstellt. Um die \textbf{Anforderung [R05]} zu erfüllen, wird das Dashboard für die neue Webseite neu entwickelt und an das Framework sowie an die Benutzeroberfläche angepasst. Da dieses Feature bereits in der vorherigen Webseite implementiert war, kann darauf aufgebaut werden, um die \textbf{Anforderung [R05]} zu erfüllen. Das Dashboard wird in mehrere Komponenten unterteilt, die jeweils für einen bestimmten Teil des Dashboards verantwortlich sind.
 
 Die Herausforderung besteht darin, die Funktionsweise des React-Codes in den neuen Vue-Code zu überführen und sicherzustellen, dass alles einwandfrei funktioniert. Die Bibliothek ECharts, die für die Grafiken genutzt wurde, kann auch problemlos in Vue verwendet werden, wodurch die gleichen Grafikoptionen wie zuvor verfügbar sind. Es müssen lediglich die Daten aus der Datenbank abgerufen und entsprechend angepasst werden, um die \textbf{Anforderung [R01]} zu erfüllen.
 Anschließend müssen verschiedene Anpassungen vorgenommen werden, um sicherzustellen, dass alle Funktionalitäten problemlos funktionieren.
@@ -1090,9 +1090,9 @@ Danach kann die Bibliothek in den Vue-Komponenten eingebunden werden und die Gra
 
 \subsection{Integration von Echtzeitdaten}
 
-Wie bereits bei der Implementierung des neuen CO2-Rechners sind Echtzeitdaten aus der Datenbank relevant. Dafür muss sich wie zuvor am bisherigen Code orientiert und die Datenbankabfragen angepasst werden. Zum Beispiel für die Fußabdrücke der Nutzer könnte dies wie folgt aussehen:
+Wie bereits bei der Implementierung des neuen CO2-Rechners sind Echtzeitdaten aus der Datenbank relevant. Dafür muss sich wie zuvor am bisherigen Code orientiert und die Datenbankabfragen angepasst werden. Zum Beispiel für die Fußabdrücke der NutzerInnen könnte dies wie folgt aussehen:
 
-\begin{lstlisting}[language={JavaScript}, caption={Laden der Fußabdrücke der Nutzer}]
+\begin{lstlisting}[language={JavaScript}, caption={Laden der Fußabdrücke der NutzerInnen}]
 const fetchFootprints = async () => {
     const response = await fetch('/api/dashboard/footprints');
     const data: FootprintResponse = await response.json();
@@ -1100,9 +1100,9 @@ const fetchFootprints = async () => {
 };
 \end{lstlisting}
 
-Hier wird eine Funktion erstellt, die die Fußabdrücke der Nutzer aus der Datenbank abruft. Die Funktion kann dann in einer \textbf{onMounted} Funktion aufgerufen werden, damit die Daten beim Laden der Komponente angezeigt werden.
+Hier wird eine Funktion erstellt, die die Fußabdrücke der NutzerInnen aus der Datenbank abruft. Die Funktion kann dann in einer \textbf{onMounted} Funktion aufgerufen werden, damit die Daten beim Laden der Komponente angezeigt werden.
 
-\begin{lstlisting}[language={JavaScript}, caption={Bei laden der Komponente die Fußabdrücke der Nutzer speichern}]
+\begin{lstlisting}[language={JavaScript}, caption={Bei laden der Komponente die Fußabdrücke der NutzerInnen speichern}]
 onMounted(async () => {
     footprintsData.value = await fetchFootprints();
 });
@@ -1110,7 +1110,7 @@ onMounted(async () => {
 
 \subsection{Erstellung der Karte mit Vue-ECharts}
 
-Um die Karte zu erstellen, wird wie zuvor erklärt die Vue-ECharts Bibliothek verwendet, die es ermöglicht, interaktive Karten zu erstellen. Die Karte soll die Stadtteile von Karlsruhe und den durchschnittlichen CO2-Verbrauch gemäß den Angaben der Nutzer, die ihren Stadtteilen zugeordnet sind, anzeigen. Die Karte wird in einer Vue-Komponente erstellt und die Daten aus der Datenbank abgerufen und entsprechend angepasst, um die Karte zu erstellen. Die Karte könnte wie folgt aussehen:
+Um die Karte zu erstellen, wird wie zuvor erklärt die Vue-ECharts Bibliothek verwendet, die es ermöglicht, interaktive Karten zu erstellen. Die Karte soll die Stadtteile von Karlsruhe und den durchschnittlichen CO2-Verbrauch gemäß den Angaben der NutzerInnen, die ihren Stadtteilen zugeordnet sind, anzeigen. Die Karte wird in einer Vue-Komponente erstellt und die Daten aus der Datenbank abgerufen und entsprechend angepasst, um die Karte zu erstellen. Die Karte könnte wie folgt aussehen:
 
 \begin{lstlisting}[language={html}, caption={Vue-ECharts Diagramm Beispiel}]
 <v-chart
