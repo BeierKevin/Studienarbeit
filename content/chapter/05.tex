@@ -6,7 +6,7 @@
 Zur Ermittlung der Anforderungen an die neue Webanwendung wurde im Rahmen eines Brainstormings bestehende und weitere Aspekte zusammengetragen, die in der alten Webanwendung nicht oder nur unzureichend umgesetzt wurden.
 Aber auch Grundfunktionen, welche die neue Webanwendung haben muss, wurden gesammelt.
 Die Ergebnisse wurden anschließend in einer Liste zusammengefasst.
-Die insgesamt \textbf{16} Anforderungen wurden zusätzlich in folgende Kategorien eingeteilt: Muss-, Soll- und Kann-Anforderungen
+Die insgesamt \textbf{19} Anforderungen wurden zusätzlich in folgende Kategorien eingeteilt: Muss-, Soll- und Kann-Anforderungen
 
 \begin{itemize}
     \item \textbf{Muss-Anforderungen} beschreiben essentielle Anforderungen an die neue Webanwendung, die unbedingt erfüllt werden müssen. Bei diesen Anforderungen handelt es sich um Kernfunktionalitäten und wichtige Merkmale. Die Erfüllung dieser Anforderungen ist unerlässlich und stellt dadurch den Basisumfang der Software dar.
@@ -49,41 +49,53 @@ Die Homepage der Webanwendung muss ansprechend gestaltet sein und den BenutzerIn
 
 Ein Dashboard soll wichtige Informationen zum CO2-Fußabdruck auf einen Blick darstellen. Dabei sollen relevante Kennzahlen, Grafiken und Vergleiche präsentiert werden, um dem BenutzerIn eine schnelle und übersichtliche Einsicht in seinen aktuellen CO2-Verbrauch zu ermöglichen. - (Muss-Anforderung).
 
+\subsubsection{[R06] Gruppensystem einbindung}
+
+Das Gruppensystem soll es den BenutzerInnen ermöglichen, sich mit anderen NutzerInnen zu vernetzen und gemeinsam als Gruppe ihre CO2-Einsparungen zu verfolgen, als auch die möglichkeit bieten sich mit anderen Gruppen zu vergleichen. - (Soll-Anforderung).
+
+\subsubsection{[R07] FAQ und Literaturlisten Seite}
+
+Als zusätzliche Informationsquelle soll eine FAQ und Literaturlisten Seite bereitgestellt werden, um den BenutzerInnen weiterführende Informationen und Quellen zum Thema CO2-Fußabdruck zur Verfügung zu stellen. - (Soll-Anforderung).
+
 \subsection{CO2-Rechner}
 
-\subsubsection{[R06] Tipps und Tricks zur Reduktion des CO2-Fußabdrucks}
+\subsubsection{[R08] Tipps und Tricks zur Reduktion des CO2-Fußabdrucks}
 
 Der CO2-Rechner soll den BenutzerInnen basierend auf den eingegebenen Daten Tipps und Tricks zur Reduktion seines CO2-Fußabdrucks geben.
 Diese Empfehlungen sollen dem BenutzerInnen praktische Anleitungen bieten, wie er seinen Lebensstil anpassen kann, um seinen ökologischen Fußabdruck zu verringern. - (Soll-Anforderung).
 
-\subsubsection{[R07] Durchführung des CO2-Rechner-Workflows}
+\subsubsection{[R09] Durchführung des CO2-Rechner-Workflows}
 
 Die BenutzerIn soll durch den CO2-Rechner geleitet werden, um die CO2-Daten hochzuladen und zu speichern. Dabei soll der Workflow klar strukturiert sein und den BenutzerIn schrittweise Anleitungen bieten, um die erforderlichen Informationen korrekt einzugeben und den Prozess reibungslos abzuschließen. - (Kann-Anforderung).
 
-\subsubsection{[R08] Integration von Grafiken}
+\subsubsection{[R10] Integration von Grafiken}
 
 Die Integration von ansprechenden Stockphotos und Grafiken auf der Webseite soll die Benutzererfahrung verbessern und die Inhalte visuell ansprechender gestalten. Durch die Verwendung von hochwertigen Bildern können komplexe Konzepte einfacher vermittelt und die Aufmerksamkeit der BenutzerIn besser auf bestimmte Inhalte gelenkt werden. - (Kann-Anforderung).
 
-\subsubsection{[R09] Visualisierung und Vergleich des CO2-Fußabdrucks}
+\subsubsection{[R11] Visualisierung und Vergleich des CO2-Fußabdrucks}
 
 Das System soll das Ergebnis des CO2-Fußabdrucks mit relevanten Vergleichsdaten visualisieren und vergleichen, um den BenutzerInnen eine sinnvolle Perspektive zu bieten. Grafische Darstellungen und Vergleichsdiagramme können den BenutzerInnen dabei zu helfen, seinen CO2-Verbrauch besser zu verstehen und geeignete Maßnahmen zur Reduzierung zu identifizieren. - (Kann-Anforderung).
 
-\subsubsection{[R10] Modernisierung des Designs}
+\subsubsection{[R12] Modernisierung des Designs}
 
 Die Homepage und der CO2-Rechner sollen ein modernes Design erhalten, das die Benutzererfahrung verbessert und wichtige Informationen hervorhebt. Durch eine klare visuelle Gestaltung und die gezielte Platzierung relevanter Inhalte kann die Benutzerführung optimiert und die Nutzung der Webanwendung erleichtert werden. - (Muss-Anforderung).
 
-\subsubsection{[R11] Anzeige von weiteren Quellen/Infos im CO2-Rechner}
+\subsubsection{[R13] Anzeige von weiteren Quellen/Infos im CO2-Rechner}
 
 Zusätzliche Quellen und Informationen sollen im CO2-Rechner sowie auf einer separaten Seite angezeigt werden, um den BenutzerInnen weitere Einsichten zu ermöglichen und sein Verständnis für das Thema zu vertiefen.
 Durch die Bereitstellung von weiterführenden Informationen kann der Benutzer sein Wissen erweitern und gezieltere Maßnahmen in Betracht ziehen.
 - (Soll-Anforderung).
+
+\subsubsection{[R14] Question.json anpassen}
+
+Die Fragestellung im CO2-Rechner soll durch die Anpassung der Question.json Datei verändert werden, sodass diese einerseits verständlicher und andererseits aussagekräftiger wird. - (Kann-Anforderung).
 
 \section{Nichtfunktionale Anforderungen}
 \label{chapter:3-section:nichtfunktionale-anforderungen}
 
 Die nachfolgenden, nicht-funktionalen Anforderungen beschreiben Einschränkungen und Qualitätsmerkmale, die für die Entwicklung und den Betrieb des Systems gelten.
 
-\subsection{[R12] Benutzerfreundlichkeit}
+\subsection{[R15] Benutzerfreundlichkeit}
 
 Die neue CO2-Webanwendung muss eine hohe Benutzerfreundlichkeit aufweisen, um eine breite Nutzerbasis anzusprechen und die Nutzererfahrung im Vergleich zur alten Webseite verbessern.
 Dafür sollte die Benutzeroberfläche modernisiert werden und dennoch viele wichtige Informationen für den/die NutzerIn bereitstellen.
@@ -91,27 +103,27 @@ Durch eine benutzerzentrierte Gestaltung soll das Interesse der NutzerInnen gewe
 Dafür sollen Personas angewendet werden, um die passenden NutzerInnen anzusprechen und den Anforderungen der NutzerInnen gerecht zu werden.
 - (Muss-Anforderung).
 
-\subsection{[R13] Modernes Design}
+\subsection{[R16] Modernes Design}
 
 Bei der Webanwendung wird versucht, interessierte NutzerInnen durch ein modernes und attraktives Design anzusprechen.
 Dadurch soll die Benutzererfahrung verbessert und die Interaktion mit der Seite gefördert werden.
 Durch die Integration von hochwertigen Bildern und Eyecatchern wird die visuelle Attraktivität der Webseite erhöht und das Interesse der BenutzerInnen geweckt Ein ästhetisches Design trägt dazu bei, das Markenimage zu stärken und das Vertrauen der BenutzerInnen in die Webanwendung zu stärken.
 - (Muss-Anforderung).
 
-\subsection{[R14] Zuverlässigkeit}
+\subsection{[R17] Zuverlässigkeit}
 
 Eine moderne Webanwendung sollte eine hohe Verfügbarkeit aufweisen und den BenutzerInnen eine reibungslose Nutzung ermöglichen.
 Durch die Verwendung von zuverlässigen Technologien und die Einhaltung bewährter Entwicklungspraktiken soll die Stabilität und Leistungsfähigkeit des Systems sichergestellt werden.
 - (Muss-Anforderung).
 
-\subsection{[R15] Wartbarkeit und Erweiterbarkeit}
+\subsection{[R18] Wartbarkeit und Erweiterbarkeit}
 
 Die Wartbarkeit und Erweiterbarkeit des Systems ist ein wichtiger Aspekt für die langfristige Entwicklung und Pflege der Webanwendung.
 Durch eine klare und strukturierte Codierung sowie die Einhaltung von bewährten Entwicklungspraktiken wird die Wartbarkeit des Systems verbessert.
 Eine umfassende Dokumentation und die Einhaltung eines Styleguides erleichtern zudem die Zusammenarbeit im Entwicklerteam und ermöglichen es, das System effizient zu erweitern und anzupassen.
 - (Muss-Anforderung).
 
-\subsection{[R16] Code Qualität und Styleguide Einhaltung}
+\subsection{[R19] Code Qualität und Styleguide Einhaltung}
 
 Die Qualität des Codes einer Software ist essentielle und sorgt für die Stabilität, Sicherheit und Skalierbarkeit des Systems.
 Um dies zu erreichen ist das Einhalten von festgelegten Coding-Standards und Best Practices notwendig.
@@ -157,26 +169,26 @@ Darüber hinaus hat jede Anforderung einen Verweis auf das Kapitel, in dem das K
     R03                  & Hochladen von CO2 Daten                            & f  & 6.5.X \\ \hline
     R04                  & Homepage                                           & f  & 6.4   \\ \hline
     R05                  & Dashboard                                          & f  & 6.6   \\ \hline
-    R10                  & Modernisierung des Designs                         & f  & 6     \\ \hline
-    R12                  & Benutzerfreundlichkeit                             & nf & 6     \\ \hline
-    R13                  & Modernes Design                                    & nf & 6     \\ \hline
-    R14                  & Zuverlässigkeit                                    & nf & 6     \\ \hline
-    R15                  & Wartbarkeit und Erweiterbarkeit                    & nf & 6     \\ \hline
-    R16                  & Code Qualität und Styleguide Einhaltung            & nf & 6     \\ \hline
+    R12                  & Modernisierung des Designs                         & f  & 6     \\ \hline
+    R15                  & Benutzerfreundlichkeit                             & nf & 6     \\ \hline
+    R16                  & Modernes Design                                    & nf & 6     \\ \hline
+    R17                  & Zuverlässigkeit                                    & nf & 6     \\ \hline
+    R18                  & Wartbarkeit und Erweiterbarkeit                    & nf & 6     \\ \hline
+    R19                  & Code Qualität und Styleguide Einhaltung            & nf & 6     \\ \hline
 
     \multicolumn{4}{|c|}{\textbf{Soll-Anforderungen}}                                      \\ \hline
 
-    R06                  & Tipps und Tricks zur Reduktion des CO2-Fußabdrucks & f  & 6.5.X \\ \hline
-    R11                  & Anzeige von weiteren Quellen/Infos im CO2 Rechner  & f  & 6.5.X \\ \hline
-    R17                  & Gruppensystem einbindung                           & f  & 6.7   \\ \hline
-    R18                  & FAQ und Literaturlisten Seite                      & f  & 6.8   \\ \hline
+    R06                  & Gruppensystem einbindung                           & f  & 6.7   \\ \hline
+    R07                  & FAQ und Literaturlisten Seite                      & f  & 6.8   \\ \hline
+    R08                  & Tipps und Tricks zur Reduktion des CO2-Fußabdrucks & f  & 6.5.X \\ \hline
+    R13                  & Anzeige von weiteren Quellen/Infos im CO2 Rechner  & f  & 6.5.X \\ \hline
 
     \multicolumn{4}{|c|}{\textbf{Kann-Anforderungen}}                                      \\ \hline
 
-    R07                  & Durchführung des CO2-Rechner-Workflows             & f  & 6.5.X \\ \hline
-    R08                  & Integration von Grafiken                           & f  & 6     \\ \hline
-    R09                  & Visualisierung und Vergleich des CO2-Fußabdrucks   & f  & 6.6.3 \\ \hline
-    R19                  & Question.json anpassen                             & f  & 6.5.X \\ \hline
+    R09                  & Durchführung des CO2-Rechner-Workflows             & f  & 6.5.X \\ \hline
+    R10                  & Integration von Grafiken                           & f  & 6     \\ \hline
+    R11                  & Visualisierung und Vergleich des CO2-Fußabdrucks   & f  & 6.6.3 \\ \hline
+    R14                  & Question.json anpassen                             & f  & 6.5.X \\ \hline
     \caption{Übersicht der funktionalen und nicht-funktionalen Anforderungen}
     \\
 \end{longtable}
