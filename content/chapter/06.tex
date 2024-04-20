@@ -300,8 +300,8 @@ Die Landing Page könnte wie folgt aussehen:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{images/06/HomePage-Design.jpeg}
-    \caption{Das neu erstelle CO2-Runter Design der Landigpage anhand der nuterzentrierten Umfrage}
+    \includegraphics[width=0.8\textwidth]{images/06/HomePage-Design.jpeg}
+    \caption{Die neu erstellte CO2-Runter Landing Page}
     \label{fig:new-co2runter-homepage-design}
 \end{figure}
 
@@ -321,49 +321,18 @@ Zuvor aber werden wichtige Änderungen vorgenommen.
 Eine wichtige Änderung ist die Anpassung des Farbschemas, um die Webseite ansprechender zu gestalten. Dafür wird das Farbschema von Vuetify angepasst, um eine konsistente Farbgebung zu gewährleisten. Hierfür erstellen wir lediglich nach der Vuetify dokumentation ein neues Farbschema und passen die Farben an. Dieses Farbschema wird dann in der Vuetify Konfiguration eingebunden. Das Farbschema sieht dann wie folgt aus: \cite{vuetiy-custom-color-theme}
 
 \begin{lstlisting}[language={JavaScript}, caption={Vuetify Farbschema anpassung}]
-const customLightTheme = {
-    dark: false,
-    colors: {
-        background: '#FFFFFF',
-        surface: '#FFFFFF',
-        'surface-bright': '#FFFFFF',
-        'surface-light': '#EEEEEE',
-        'surface-variant': '#424242',
-        'on-surface-variant': '#EEEEEE',
-        primary: '#D0ECDE',
-        'primary-darken-1': '#01502D',
-        secondary: '#004725',
-        'secondary-darken-1': '#018786',
-        error: '#B00020',
-        info: '#2196F3',
-        success: '#4CAF50',
-        warning: '#FB8C00',
-    },
-    variables: {
-        'border-color': '#000000',
-        'border-opacity': 0.12,
-        'high-emphasis-opacity': 0.87,
-        'medium-emphasis-opacity': 0.6,
-        'disabled-opacity': 0.38,
-        'idle-opacity': 0.04,
-        'hover-opacity': 0.04,
-        'focus-opacity': 0.12,
-        'selected-opacity': 0.08,
-        'activated-opacity': 0.12,
-        'pressed-opacity': 0.12,
-        'dragged-opacity': 0.08,
-        'theme-kbd': '#212529',
-        'theme-on-kbd': '#FFFFFF',
-        'theme-code': '#F5F5F5',
-        'theme-on-code': '#000000',
-    },
-};
-
 export default createVuetify({
     theme: {
-        defaultTheme: 'customLightTheme',
         themes: {
-            customLightTheme,
+            dark: false,
+            colors: {
+                primary: '#D0ECDE',
+                'primary-darken-1': '#01502D',
+                ...
+            },
+            variables: {
+                ...
+            },
         },
     },
 });
@@ -387,7 +356,7 @@ const routes = [
             },
         ],
     },
-    ...
+    ... weitere Routen ...
 ];
 \end{lstlisting}
 
@@ -397,20 +366,11 @@ Dieses Layout wird dann in der \texttt{App.vue} Datei wiederum über ein \texttt
 
 \begin{lstlisting}[language={JavaScript}, caption={Layout Definition}]
 <template>
-    <v-locale-provider>
-        <v-app>
-            <TheNavigationHeader />
-            <v-main>
-                <v-divider />
-                <v-container :fluid="true" class="page-wrapper">
-                    <div class="maxWidth">
-                        <RouterView />
-                    </div>
-                </v-container>
-            </v-main>
-            <TheFooter />
-        </v-app>
-    </v-locale-provider>
+    <v-app>
+        <TheNavigationHeader />
+        <RouterView />
+        <TheFooter />
+    </v-app>
 </template>
 \end{lstlisting}
 
@@ -427,211 +387,20 @@ Die folgende Abbildung zeigt, wie die Navigationsleiste implementiert wurde:
 \begin{lstlisting}[language={JavaScript}, caption={Navigationsleiste für Web als auch Mobile}]
 <template>
     <v-app-bar :elevation="0">
-        <v-app-bar-nav-icon
-            class="hidden-md-and-up ms-md-3 ms-sm-5 ms-3 text-muted"
-            @click.capture="isDrawerOpen = !isDrawerOpen"
-        ></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon @click="isDrawerOpen = !isDrawerOpen" />
 
         <v-toolbar-title>
-            <v-list class="d-flex">
-                <v-list-item
-                    to="/"
-                    :exact="true"
-                    title="CO2Runter"
-                    class="rounded-lg"
-                    prepend-avatar="../assets/co2runter-logo.png"
-                    color="primary-darken-1"
-                />
-            </v-list>
+            <Co2RunterLogo />
         </v-toolbar-title>
 
-        <div class="hidden-sm-and-down">
-            <v-list class="d-flex">
-                <v-list-item
-                    to="/co2Rechner"
-                    title="CO2 Rechner"
-                    prepend-icon="mdi-calculator-variant-outline"
-                    class="mx-1 rounded-lg"
-                    color="primary-darken-1"
-                />
-
-                <v-list-item
-                    to="/dashboard"
-                    title="Dashboard"
-                    prepend-icon="mdi-view-dashboard-outline"
-                    class="mx-1 rounded-lg"
-                    color="primary-darken-1"
-                />
-
-                <v-list-item
-                    to="/faq"
-                    title="FAQ"
-                    prepend-icon="mdi-frequently-asked-questions"
-                    class="mx-1 rounded-lg"
-                    color="primary-darken-1"
-                />
-
-                <v-list-item
-                    to="/gruppensystem"
-                    :exact="true"
-                    title="Gruppensystem"
-                    prepend-icon="mdi-account-group-outline"
-                    class="mx-1 rounded-lg"
-                    color="primary-darken-1"
-                />
-
-                <v-list-item
-                    v-if="!isLoggedIn"
-                    to="/login-registration"
-                    :exact="true"
-                    title="Login"
-                    prepend-icon="mdi-login-variant"
-                    class="rounded-lg mx-1 mr-3"
-                    color="primary-darken-1"
-                    :active="true"
-                />
-
-                <v-menu v-else :close-on-content-click="false">
-                    <template v-slot:activator="{ props }">
-                        <v-list-item
-                            v-bind="props"
-                            class="rounded-lg mx-1 mr-3"
-                            color="primary-darken-1"
-                            :active="true"
-                        >
-                            <template v-slot:prepend>
-                                <v-icon>mdi-account</v-icon>
-                            </template>
-
-                            <v-list-item-title>Konto </v-list-item-title>
-
-                            <template v-slot:append>
-                                <v-icon>mdi-unfold-more-horizontal</v-icon>
-                            </template>
-                        </v-list-item>
-                    </template>
-
-                    <v-sheet rounded="lg" elevation="10" class="mt-2">
-                        <v-list class="pa-4">
-                            <v-list-subheader>Konto Aktionen </v-list-subheader>
-
-                            <v-list-item
-                                title="Gruppen Infos"
-                                prepend-icon="mdi-information-outline"
-                                class="mb-1 rounded-lg"
-                                color="primary-darken-1"
-                                to="/gruppensystem/gruppen-informationen"
-                            />
-
-                            <v-list-item
-                                title="Logout"
-                                prepend-icon="mdi-logout"
-                                class="mb-1 rounded-lg"
-                                color="primary-darken-1"
-                                @click="logout()"
-                            />
-                        </v-list>
-                    </v-sheet>
-                </v-menu>
-            </v-list>
+        <div>
+            <Navigationsleiste />
         </div>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="isDrawerOpen" class="hidden-md-and-up">
-        <v-divider />
-
-        <v-list class="pa-4">
-            <v-list-subheader>Navigation</v-list-subheader>
-
-            <v-list-item
-                to="/co2Rechner"
-                title="CO2 Rechner"
-                prepend-icon="mdi-calculator-variant-outline"
-                class="mb-1 rounded-lg"
-                color="primary-darken-1"
-            />
-
-            <v-list-item
-                to="/dashboard"
-                title="Dashboard"
-                prepend-icon="mdi-view-dashboard-outline"
-                class="mb-1 rounded-lg"
-                color="primary-darken-1"
-            />
-
-            <v-list-item
-                to="/faq"
-                title="FAQ"
-                prepend-icon="mdi-frequently-asked-questions"
-                class="mb-1 rounded-lg"
-                color="primary-darken-1"
-            />
-
-            <v-list-item
-                to="/gruppensystem"
-                :exact="true"
-                title="Gruppensysten"
-                prepend-icon="mdi-account-group-outline"
-                class="mb-1 rounded-lg"
-                color="primary-darken-1"
-            />
-
-            <v-list-item
-                v-if="!isLoggedIn"
-                to="/login-registration"
-                :exact="true"
-                title="Login"
-                prepend-icon="mdi-login-variant"
-                class="mb-1 rounded-lg"
-                color="primary-darken-1"
-                :active="true"
-            />
-
-            <v-menu v-else :close-on-content-click="false">
-                <template v-slot:activator="{ props }">
-                    <v-list-item
-                        v-bind="props"
-                        class="rounded-lg"
-                        color="primary-darken-1"
-                        :active="true"
-                    >
-                        <template v-slot:prepend>
-                            <v-icon>mdi-account</v-icon>
-                        </template>
-
-                        <v-list-item-title>Konto </v-list-item-title>
-
-                        <template v-slot:append>
-                            <v-icon>mdi-unfold-more-horizontal</v-icon>
-                        </template>
-                    </v-list-item>
-                </template>
-
-                <v-sheet rounded="lg" elevation="10" class="mt-2">
-                    <v-list class="pa-4">
-                        <v-list-subheader>Konto Aktionen </v-list-subheader>
-
-                        <v-list-item
-                            title="Gruppen Infos"
-                            prepend-icon="mdi-information-outline"
-                            class="mb-1 rounded-lg"
-                            color="primary-darken-1"
-                            to="/gruppensystem/gruppen-informationen"
-                        />
-
-                        <v-list-item
-                            title="Logout"
-                            prepend-icon="mdi-logout"
-                            class="mb-1 rounded-lg"
-                            color="primary-darken-1"
-                            @click="logout()"
-                        />
-                    </v-list>
-                </v-sheet>
-            </v-menu>
-        </v-list>
+    <v-navigation-drawer v-model="isDrawerOpen">
+        ...
     </v-navigation-drawer>
-
     <PWAInstallationDialog />
 </template>
 \end{lstlisting}
@@ -645,106 +414,14 @@ Einmal die Logos der Partner, dann die rechtlichen Informationen und die technis
 
 % TODO: Snippet anpassen!
 \begin{lstlisting}[language={JavaScript}, caption={Footer Definition}]
-    <template>
-    <v-divider />
-
-    <div class="">
-        <div class="d-flex justify-center align-center mt-16">
-            <h1 class="text-primary-darken-1">Erstellt in Kollaboration</h1>
-        </div>
-
+<template>
+    <div>
+        <h1 class="text-primary-darken-1">Erstellt in Kollaboration</h1>
         <v-container class="my-16">
-            <v-row
-                class="d-flex flex-column flex-md-row justify-center align-center"
-                align-content="center"
-                :no-gutters="true"
-            >
-                <v-col class="d-flex justify-center mb-3 mb-md-0">
-                    <v-img
-                        height="60px"
-                        class="clickable-image"
-                        src="../../public/images/Logos/Stadtkarlsruhe-logo.svg"
-                        @click="navigate('https://www.karlsruhe.de/')"
-                    />
-                </v-col>
-                <v-col class="d-flex justify-center mb-3 mb-md-0">
-                    <v-img
-                        height="120px"
-                        class="clickable-image"
-                        src="../../public/images/Logos/CodeFor-karlsruhe.svg"
-                        @click="navigate('https://ok-lab-karlsruhe.de/')"
-                    />
-                </v-col>
-                <v-col class="d-flex justify-center">
-                    <v-img
-                        height="60px"
-                        class="clickable-image"
-                        src="../../public/images/Logos/dhbw-logo.svg"
-                        @click="
-                            navigate(
-                                'https://www.karlsruhe.dhbw.de/startseite.html'
-                            )
-                        "
-                    />
-                </v-col>
-            </v-row>
+            <Logos />
         </v-container>
-
-        <v-divider />
-
         <v-container class="my-16">
-            <v-row justify="center">
-                <v-col cols="12" md="4" order-md="1">
-                    <v-list class="d-flex">
-                        <v-list-item
-                            to="/"
-                            :exact="true"
-                            title="CO2Runter"
-                            class="rounded-lg"
-                            prepend-avatar="../../public/apple-touch-icon.png"
-                            color="primary-darken-1"
-                        />
-                    </v-list>
-                </v-col>
-                <v-col cols="12" md="4" order-md="2">
-                    <v-list class="pa-4">
-                        <v-list-subheader
-                            >Rechtliche Informationen
-                        </v-list-subheader>
-
-                        <v-list-item
-                            href="https://www.karlsruhe.de/datenschutz"
-                            title="Datenschutz"
-                            prepend-icon="mdi-shield-account-outline"
-                            class="mb-1 rounded-lg"
-                            color="primary-darken-1"
-                        />
-
-                        <v-list-item
-                            href="https://www.karlsruhe.de/impressum"
-                            title="Impressum"
-                            prepend-icon="mdi-text-box-outline"
-                            class="mb-1 rounded-lg"
-                            color="primary-darken-1"
-                        />
-                    </v-list>
-                </v-col>
-                <v-col cols="12" md="4" order-md="2">
-                    <v-list class="pa-4">
-                        <v-list-subheader
-                            >Technische Informationen
-                        </v-list-subheader>
-
-                        <v-list-item
-                            href="https://github.com/stadt-karlsruhe/CO2-Runter"
-                            title="Quelltext"
-                            prepend-icon="mdi-file-code-outline"
-                            class="mb-1 rounded-lg"
-                            color="primary-darken-1"
-                        />
-                    </v-list>
-                </v-col>
-            </v-row>
+            <Datenschutz-Impressum
         </v-container>
     </div>
 
@@ -793,56 +470,7 @@ Einmal die Logos der Partner, dann die rechtlichen Informationen und die technis
                 />
             </v-col>
         </v-row>
-
-        <v-row class="d-flex flex-column flex-md-row my-16">
-            <v-col class="d-flex align-center justify-center" cols="12" md="5">
-                <v-img
-                    width="360px"
-                    height="200px"
-                    src="../assets/undraw_environment_iaus.svg"
-                />
-            </v-col>
-            <v-col cols="12" md="7" class="text-center text-md-start">
-                <h1 class="text-primary-darken-1">Sie sind dran</h1>
-                <p class="text-secondary my-8">
-                    Text 2
-                </p>
-                <v-btn
-                    variant="tonal"
-                    :rounded="true"
-                    color="primary-darken-1"
-                    append-icon="mdi-chevron-right"
-                    size="large"
-                >
-                    Aktion 2
-                </v-btn>
-            </v-col>
-        </v-row>
-
-        <v-row class="d-flex flex-column-reverse flex-md-row my-16">
-            <v-col cols="12" md="7" class="text-center text-md-start">
-                <h1 class="text-primary-darken-1">Sie sind dran</h1>
-                <p class="text-secondary my-8">
-                    Text 3
-                </p>
-                <v-btn
-                    variant="tonal"
-                    :rounded="true"
-                    color="primary-darken-1"
-                    append-icon="mdi-chevron-right"
-                    size="large"
-                >
-                    Aktion 3
-                </v-btn>
-            </v-col>
-            <v-col class="d-flex align-center justify-center" cols="12" md="5">
-                <v-img
-                    width="360px"
-                    height="200px"
-                    src="../assets/undraw_waiting__for_you_ldha.svg"
-                />
-            </v-col>
-        </v-row>
+        ... weitere Reihen ...
     </v-container>
 </template>
 \end{lstlisting}
@@ -885,7 +513,7 @@ Wie in Abbildung \ref{fig:new-co2runter-calculator-design} zu sehen ist, wurde h
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/06/Calculator-New-Design.jpeg}
+    \includegraphics[width=0.7\textwidth]{images/06/Calculator-New-Design.jpeg}
     \caption{Design des neuen CO2-Rechners}
     \label{fig:new-co2runter-calculator-design}
 \end{figure}
