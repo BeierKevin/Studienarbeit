@@ -436,7 +436,6 @@ Auch der Footer dient dazu, Informationen darzustellen und besser über eine Web
 Um den Footer zu erzeugen, gibt es drei Bereiche.
 Einmal die Logos der Partner, dann die rechtlichen Informationen und die technischen Informationen und an Ende der Copyright.
 
-% TODO: Snippet anpassen!
 \begin{lstlisting}[language={JavaScript}, caption={Footer Definition}]
 <template>
     <div>
@@ -445,21 +444,17 @@ Einmal die Logos der Partner, dann die rechtlichen Informationen und die technis
             <Logos />
         </v-container>
         <v-container class="my-16">
-            <Datenschutz-Impressum
+            <Datenschutz-Impressum />
         </v-container>
     </div>
 
-    <v-footer
-        class="text-center d-flex justify-center align-center"
-        color="primary"
-    >
+    <v-footer>
         <div class="text-primary-darken-1">
             2023 - heute | CO2Runter. Alle Rechte vorbehalten.
         </div>
     </v-footer>
 </template>
 \end{lstlisting}
-% TODO: auch zu lang. Auf wesentliches kürzen
 
 \subsection{Kontent}
 
