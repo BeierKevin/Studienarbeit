@@ -285,9 +285,34 @@ Bevor es weitergeht, muss das Projekt aufgeräumt und strukturiert werden.
 Dies beinhaltet das Entfernen von ungenutzten Dateien und das Umbenennen von Dateien, um eine konsistente Namenskonvention zu gewährleisten.
 Außerdem müssen die Ordnerstruktur und die Dateistruktur überarbeitet werden, um eine bessere Übersichtlichkeit und Wartbarkeit des Projekts zu gewährleisten.
 Dies beinhaltet das Erstellen von Ordnern für Komponenten, Seiten, Services und anderen wichtigen Dateien.
-Die Ordnerstruktur könnte wie folgt aussehen:
+In Abbildung \ref{fig:ordnerstruktur_neu} ist die neue Ordnerstruktur zu erkennen.
+Der gesamte Code des Frontends befindet sich im Ordner \textit{client} auf der Root-Ebene.
+Innerhalb dessen befinden sich weitere Ordner.
+Der \textit{src}-Ordner ist hierbei der interessanteste und wichtigste Ordner des client-Ordners.
+\textit{src} ist eine Abkürzung für \textit{source} und beinhaltet sämtlichen Code für das Frontend Framework Vue.js, also Definitionen von Komponenten, Logik innerhalb der Komponenten sowie Konstanten, den Router und vieles mehr.
+In der folgenden Auflistung wird erklärt, was genau die einzelnen Unterordner beinhalten und welchen Part in der neuen UI sie dabei einnehmen.
+\begin{itemize}
+    \item \textbf{assets}: Der \textit{assets}-Ordner beinhaltet jene Dinge, die nicht durch Quellcode angegeben werden können. Dazu zählen unter anderem Bilder, wofür der \textit{assets}-Ordner im Falle der CO2-Runter-Webseite hauptsächlich genutzt wurde. Die Bilder werden hier an einem zentralen Ort gespeichert, damit diese innerhalb der Komponenten, die die Bilder beispielsweise implementieren, verwenden werden können uns nicht überall im Quellcode verteilt sind.
+    \item \textbf{components}: Das Herzstück des Projektes ist der \textit{components}-Ordner. In diesem Ordner liegen die Komponenten, aus welchen die finale Webseite später zusammengebaut wird. Man kann sich den \textit{components}-Ordner wie eine Art Baukasten vorstellen, aus dem die verschiedenen Seiten der CO2-Runter-Webseite schlußendlich zusammengebaut werden. Wie bereits in Kapitel \ref{chapter:neuerstellung_co2rechner} erwähnt, sind Beispiele für Komponenten unter anderem die QuestionStepper- oder CurrentCO2-Kompoenente.
+    \item \textbf{composables}: Im Kontext von Vue-Anwendungen ist ein Composable eine Funktion, um zustandsbehaftete Logik zu kapseln und wiederzuverwenden. Somit befinden sich im \textit{composables}-Ordner alle Hilfsfunktionen, die helfen solche Logik zu kapseln und damit wiederverwendbar zu machen. Ein Beispiel im Sinne der CO2-Runter-Webseite wäre das Composable, das den aktuellen CO2-Wert innerhalb des Rechners nach dem Auswählen einer Antwortmöglichkeit neu berechnet und an das Frontend schickt.
+    \item \textbf{constangs}: Der \textit{constants}-Ordner ist der Ablageort für Konstanten, die innerhalb der Applikation immer wieder verwendet werden oder Quellcode, der mithilfe von Konstanten einfacher bzw. kompakter dargestellt werden konnte. So werden zum Beispiel die Literaturquellen des FAQs in Konstanten gespeichert.
+    \item \textbf{layout}: Wie der Name bereits verrät, werden in diesem Ordner Layouts für die verschiedenen Seiten der Webseite definiert. Da im Kontext der CO2-Runter-Webseite nur ein Layout verwendet wird, ist dieser dementsprechend nur mit einer \textit{Default.vue}-Datei befüllt.
+    \item \textbf{plugins}: Plugins sind in sich geschlossener Code, die in der Regel Funktionen auf Anwendungsebene zu Vue hinzufügen. In unserem Fall musste das Plugin \textit{Vuetify} hinzugefügt werden, da über diese Anwendung Komponenten durch bereits vorher definierten Code aufgebaut wurde. Aus diesem Grund, wurde diese Plugininstallationsdatei im \textit{plugins}-Ordner abgelegt.
+    \item \textbf{router}: Der \textit{router}-Ordner beinhaltet die Logik für den sogenannten Router. Ein Router ist dafür zuständig, für die unterschiedlichen Webseiten und teilweise auch für einzelne Abschnitte von Webseiten, spezielle URLs zu definieren. So kann z.b. über die URL \"https://co2runter.karlsruhe.de/rechner\" auf den CO2-Rechner zugegriffen werden. Die Datei \textit{routes.ts} speichert hierbei jegliche Routen ab und liegt innerhalb des \textit{router}-Ordners.
+    \item \textbf{store}: Ein Store ist ein zentraler Ort, an dem Daten gespeichert werden, die über alle Anwendungskomponenten hinweg verfügbar sind und sein müssen. Jegliche Daten dieser Form werden im \textit{stores}-Ordner untergebracht. Beispiele für einen Store innerhalb der Anwendung ist das Loggen und abspeichern des CO2-Werts.
+    \item \textbf{types}: Wie der Name eventuell bereits verraten lässt, werden im Ordner \textit{types} Objekte, sogenannte Typen definiert. Die Typen sind hierbei als exportierbare Interfaces implementiert, die später vom Frontendcode für Logik oder andere Dinge wiederverwendet werden können. Ein Beispiel für einen solchen Typen ist eine Literaturquelle (\textit{LiteratureSource}), die jeweils immer aus fünf Strings besteht: einem Titel, einem Autor, einem Veröffentlicher, einem Veröffentlichungsjahr und einer URL zur Literaturquelle.
+    \item \textbf{views}: Innerhalb des \textit{views}-Ordner sind alle erreichbaren Seiten definiert und zu finden. Eine View setzt sich dabei aus den verschiedenen Komponenten zusammen, und sind somit die auf der Webseite zu sehenden Seiten, die durch die verschiedenen URLs (=Routen) aufgerufen werden können.
+\end{itemize}
 
-% TODO: Ordnerstruktur demonstrieren
+Zuguterletzt sind noch drei abschließende Dateien im \textit{src}-Ordner: \textit{App.vue} ist die oberste Schicht der UI, auf welcher die ganze Views durch den Router implementiert werden.
+\textit{main.ts} ist eine weitere Datei, die die Plugins, welche im \textit{plugins}-Ordner liegen, auf der Anwednungsebene registriert.
+Abschließend implementiert \textit{vite-env.d.ts} die Vite-Umgebung.\newpage
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{images/06/ordnerstruktur_projekt.png}
+    \caption{Neue Ordnerstruktur der CO2-Runter-Webseite}
+    \label{fig:ordnerstruktur_neu}
+\end{figure}
 
 \section{Erstellung der neuen Landing Page}
 
@@ -476,6 +501,7 @@ Einmal die Logos der Partner, dann die rechtlichen Informationen und die technis
 \end{lstlisting}
 
 \section{Neuerstellung des CO2-Rechners}
+\label{chapter:neuerstellung_co2rechner}
 
 % TODO: Anforderung [R19] umsetzen: Question.json anpassen
 % TODO: Anforderung [R11] umsetzen: Anzeige von weiteren Quellen/Infos im CO2 Rechner
