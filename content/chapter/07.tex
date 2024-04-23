@@ -3,14 +3,16 @@
 \chapter{Zusammenfassung und Fazit }
 \label{chapter:7}
 
+In diesem Kapitel wird eine Zusammenfassung der Erkenntnisse dieser Studienarbeit präsentiert. Es umfasst eine Rückblick auf die gewonnenen Erkenntnisse und darauf, was letztendlich implementiert wurde sowie die Ergebnisse der Arbeit. Darüber hinaus werden Schlussfolgerungen gezogen, die nicht nur auf vergangenen Ereignissen und Erkenntnissen basieren, sondern auch einen Ausblick auf die Zukunft der CO2-Runter-App geben und Empfehlungen für deren Weiterentwicklung enthalten.
+
 \section{Zusammenfassung der Arbeitsergebnisse}
 
-Um nun rückblickend auf die Arbeitsergebnisse zu schauen, wird nun geschaut ob und welche von den zuvor definierten Anforderungen letztlicher erfüllt werden konnte und welche nicht und was die Gründe dafür sind.
+Eine effektive Methode, um unsere Leistung und die Arbeitsergebnisse zu bewerten, besteht darin, die in \hyperref[chapter:5]{Kapitel 5} definierten Anforderungen zu betrachten. Diese Anforderungen wurden durch verschiedene Kategorien sowie vorangegangene Recherchen und \acs{UCD}/\acs{HCD}-Analysen definiert. Auf Basis dieser Erkenntnisse haben wir insgesamt \textbf{19} Anforderungen identifiziert.
+
+Ein einfacher Ansatz besteht darin zu ermitteln, wie viele der Anforderungen letztendlich implementiert wurden und welche genau. Von den \textbf{19} Anforderungen wurden \textbf{17} erfolgreich umgesetzt und implementiert. Die beiden nicht implementierten Anforderungen sind \textbf{R08} und \textbf{R13}. Diese Quote ist bereits sehr akzeptabel. Zudem ist zu beachten, dass beide nicht erfüllten Anforderungen der Kategorie der \textbf{Kann-Anforderungen} angehören, was ihre Nicht-Implementierung als nicht essentiell kennzeichnet. Eine Übersicht der implementierten Anforderungen findet sich in Tabelle \ref{table:completet-tasks}.
 
 % TODO: Schauen was davon wirklich implementiert wurde und was nicht
-
 \begin{longtable}{|c|l|c|c|}
-
     \hline
     \textbf{ID}          &
     \textbf{Anforderung} &
@@ -31,7 +33,7 @@ Um nun rückblickend auf die Arbeitsergebnisse zu schauen, wird nun geschaut ob 
 
     R01                  & Abrufen der Bestandsdaten von der Datenbank        & \checkmark \\ \hline
     R02                  & Berechnung von CO2 Fußabdruck                      & \checkmark \\ \hline
-    R03                  & Hochladen von CO2 Daten                            & X          \\ \hline
+    R03                  & Hochladen von CO2 Daten                            & \checkmark \\ \hline
     R04                  & Homepage                                           & \checkmark \\ \hline
     R05                  & Dashboard                                          & \checkmark \\ \hline
     R06                  & Gruppensystem einbindung                           & \checkmark \\ \hline
@@ -49,15 +51,21 @@ Um nun rückblickend auf die Arbeitsergebnisse zu schauen, wird nun geschaut ob 
     R18                  & Wartbarkeit und Erweiterbarkeit                    & \checkmark \\ \hline
     R19                  & Code Qualität und Styleguide Einhaltung            & \checkmark \\ \hline
     \caption{Übersicht der Erledigten funktionalen und nicht-funktionalen Anforderungen}
-    \\
+    \label{table:completet-tasks}
 \end{longtable}
 
-\section{Schlussfolgerungen und Ausblick }
+\section{Schlussfolgerungen und Ausblick}
+
+Da es sich hierbei um eine Studienarbeit mit einem begrenzten Zeitrahmen handelt, war es unser Fokus, die wesentlichen Aspekte der CO2-Runter-App zu entwickeln. Wir haben erfolgreich die Grundfunktionalitäten implementiert, um die alte Webseite durch unsere neu entwickelte zu ersetzen. In dem verfügbaren Zeitrahmen sind wir zu dem Schluss gekommen, dass wir unsere Ziele erreicht haben und sind sehr zufrieden mit dem, was wir erreicht haben und wie viel wir dabei gelernt haben.
+
+Wir hoffen, dass unsere Arbeit dazu beiträgt, die Welt ein Stückchen besser zu machen. Das Projekt ist damit jedoch hoffentlich nicht abgeschlossen. Wir hoffen, dass zukünftige StudentInnen an diesem Projekt teilnehmen und es weiterentwickeln und verbessern können, da sicherlich noch viele unentdeckte Möglichkeiten bestehen. Wir haben einige Empfehlungen und Vorschläge für die Zukunft des Projekts.
 
 \section{Empfehlungen für die Zukunft der CO2-Runter-App}
 
-Von Beginn an war es unser Ziel, die CO2-Runter-App so zu konzipieren und zu entwickeln, dass sie kontinuierlich weiterentwickelt und optimiert werden kann. Die Architektur der App wurde bewusst auf Flexibilität und Erweiterbarkeit ausgelegt. Wir haben TypeScript als grundlegende Entwicklungssprache gewählt und die Struktur der Anwendung entsprechend gestaltet, um zukünftige Erweiterungen nahtlos zu ermöglichen.
+Von Anfang an war es unser Ziel, die CO2-Runter-App so zu gestalten, dass sie kontinuierlich weiterentwickelt und optimiert werden kann. Die Architektur der Webseite wurde bewusst auf Flexibilität und Erweiterbarkeit ausgelegt. Wir haben \acl{TS} als Hauptentwicklungssprache gewählt und die Anwendungsstruktur entsprechend angepasst, um zukünftige Erweiterungen nahtlos zu ermöglichen. Dadurch besteht definitiv das Potenzial, die Webseite weiterzuentwickeln, indem beispielsweise weitere Funktionen und Features durch zusätzliche Recherchen und Analysen hinzugefügt werden oder Features, die wir aufgrund von Zeitmangel nicht implementieren konnten.
 
-Bei der Neugestaltung des Frontends wurden moderne Praktiken angewendet, die auch in Zukunft auf das Backend (\acs{API}) übertragen und mit TypeScript weiterentwickelt werden sollen. Insbesondere sollten die bisherigen praktischen Erfahrungen mit Vuetify und dem Styling im Frontend nicht vernachlässigt werden. Dieser Ansatz zielt darauf ab, die Wartbarkeit und Erweiterbarkeit der App zu verbessern, insbesondere durch eine konsequente Typisierung und effiziente Aufrufmöglichkeiten der \acs{API}-Endpunkte.
+Bei der Neuentwicklung der Webseite stießen wir auf Herausforderungen im Umgang mit der \acs{API}. Obwohl sie funktioniert, ist sie ausschließlich in \acl{JS} geschrieben, was zu Problemen bei der Typisierung und Fehlerbehandlung führte. Zudem war es schwierig zu verstehen, welche Daten der Endpunkt tatsächlich benötigt und zurückgibt. Für das Frontend haben wir deshalb zahlreiche Interfaces erstellt, um die Daten zu typisieren. Eine Verbesserung der \acs{API} wäre durch eine Neuschreibung in \acl{TS} möglich. Außerdem ist uns aufgefallen, dass die \acs{API} keine Möglichkeit bietet, dass NutzerInnen aus einer Gruppe austreten können. Nur der Gruppenadministrator kann NutzerInnen entfernen, indem er die Gruppe auflöst. Dies ist ein weiterer Punkt, der verbessert werden könnte. Dabei sollte auch darüber nachgedacht werden, welche weiteren Funktionen im Gruppensystem gewünscht sind, was ein hohes Potenzial für die EndnutzerInnen der Webseite darstellt.
 
-% TODO: Empfehlungen für die Zukunft der CO2-Runter-App wäre den Backend Server neu zu schreiben das er auch in TypeScript geschrieben ist und die Datenbankanbindung zu verbessern. Bessere Fehlerbehandlung in Front und Backend
+% Finale ableitung
+
+Zusammenfassend ist die CO2-Runter-App ein Projekt, das uns sehr am Herzen liegt und das wir gerne weiterentwickeln und verbessern möchten. Wir sind stolz auf das bisher Erreichte und freuen uns auf die Zukunft der Webseite. Unsere Hoffnung ist es, dass die Webseite dazu beiträgt, das Bewusstsein für den CO2-Fußabdruck zu schärfen und Menschen dazu inspiriert, ihren Beitrag zum Klimaschutz zu leisten. Wir sind zuversichtlich, dass die CO2-Runter-App ein nützliches Werkzeug für alle sein wird, die ihren CO2-Fußabdruck reduzieren möchten, und dass sie dazu beitragen wird, die Welt zu einem besseren Ort zu machen.
