@@ -314,6 +314,107 @@ Abschließend implementiert \textit{vite-env.d.ts} die Vite-Umgebung.\newpage
     \label{fig:ordnerstruktur_neu}
 \end{figure}
 
+\section{Anpassung der questions.json}
+\label{sec:anpassung-der-questions-json}
+Nachdem nun die Ordnerstruktur des Projekts aufgeräumt und neu strukturiert wurde, wird nun die \textit{questions.json} angegangen.
+Da die bisherige \textit{questions.json} sehr unübersichtlich und tief verschachtelt war, wurde diese neu aufgebaut und neu strukturiert.
+Die alte Struktur der \textit{questions.json} wird in \hyperref[lst:questions-json-old]{Listing 6.9} vereinfacht dargstellt.
+Dort ist zu beobachten, dass die \acs{JSON} die Kategorien bereits besitzt, wie sie später im CO2-Rechner angezeigt werden.
+Jede Kategorie beinhaltet den Namen der Kategorie, sowie eine Liste von Fragen.
+Innerhalb der Frageliste, werden die Fragen erneut über das Attribut \textit{name} in mögliche Unterkategorien unterteilt.
+Anschließened erkennt man ab Zeile 8 und Zeile 16 der \hyperref[lst:questions-json-old]{alten questions.json}, das sich hier ein \textit{quick}- und ein \textit{detailed}- Objekt eröffnen.
+Diese beinhalten jeweils die eigentlichen Fragen, die im CO2-Rechner verwendet werden.
+Standardmäßig werden die Fragen und Antworten aus dem \textit{quick}-Objekt geladen.
+Schaltet der Nutzer jedoch die Frage auf detailliert um, wie es beim alten CO2-Rechner beispielweise in \hyperref[fig:co2runterapp-rechner]{Abbildung 2.2} zu sehen ist, werden die Fragen aus dem \textit{detialed}-Objekt geladen. \newpage
+
+\begin{lstlisting}[language=JavaScript, caption=Aufbau der alten questions.json, label={lst:questions-json-old}]
+    {
+        "baseline": number,
+        "category":[
+            {
+                "name": string,
+                "questions": [
+                    "name": string,
+                    "quick": {
+                        "text": string,
+                        "typ": string,
+                        "replies": [],
+                        "values": [],
+                        "defaultValue": number,
+                        "selectedValue": number
+                    },
+                    "detailed": {
+                        "questions": {
+                            "text": string,
+                            "typ": string,
+                            "replies": [],
+                            "values": [],
+                            "defualtValue": number,
+                            "selectedValue": number
+                        },
+                    },
+                ],
+                "formula": string,
+            },
+            {
+                ...
+            },
+            {
+                ...
+            },
+            {
+                ...
+            }
+        ]
+    }
+\end{lstlisting} \newpage
+Da im neuen CO2-Rechner keine Möglichkeit mehr geboten wird, zwischen detaillierten und kurzen Fragen umzuschalten, enthält die alte, verschachtelte \acs{JSON} viele Dinge, die gar nicht mehr gebraucht werden.
+Aus diesem Grund wurde die \textit{questions.json} neu aufgebaut und strukturiert.
+\hyperref[lst:questions-json-new]{Listing 6.10} zeigt den neuen Grundaufbau der \textit{questions.json}, die im neuen CO2-Rechner zukünftig verwendet wird.
+\begin{lstlisting}[language=JavaScript, caption={Aufbau der neuen question.json}, label={lst:questions-json-new}]
+    {
+        "baseline": number,
+        "category": [
+            {
+                "name": string,
+                "questions": [
+                    {
+                        "text": string,
+                        "replies": [
+                            {
+                                "text": string,
+                                "value": number
+                            },
+                            {
+                                ...
+                            },
+                        ],
+                        "selected": {
+                            "text": string,
+                            "value" number
+                        }
+                    },
+                ],
+                "formula": string
+            },
+            {
+                ...
+            },
+            {
+                ...
+            },
+            {
+                ...
+            }
+        ],
+        "endFormula": string
+    }
+\end{lstlisting}
+Die neue \acs{JSON} zeichnet sich dadurch aus, dass die Antworten einer Frage in Objekten aus einem \textit{text}- und einem \textit{value}-Objekt gespeichert sind.
+Dadurch kann bei der Berechnung des CO2-Werts der Wert einer Antwortmöglichkeit, die im Frontend ausgewählt wurde, leichert gefunden werden und man muss muss sich nicht ewig durch die Datenstruktur der \acs{JSON} quälen.
+Zusätzlich wurde wie bereits vorher erwähnt, die Fragenunterteilung in \textit{quick} und \textit{detailed} entfernt, so dass man insgesamt eine verständlichere Datenstruktur hat.
+Somit wurde die Anforderung aus dem Kapitel 5.1.3 - \hyperref[sec:questions-json-anpassen]{[R14] Question.json anpassen} erledigt.
+
 \section{Erstellung der neuen Landing Page}
 
 Die Landing Page ist die erste Seite, die der NutzerInnen sieht, wenn er die Webseite besucht.
@@ -508,7 +609,6 @@ In der folgenden Abbildung ist der Code zum Kontent zu sehen:
 \section{Neuerstellung des CO2-Rechners}
 \label{chapter:neuerstellung_co2rechner}
 
-% TODO: Anforderung [R19] umsetzen: Question.json anpassen
 % TODO: Anforderung [R11] umsetzen: Anzeige von weiteren Quellen/Infos im CO2 Rechner
 % TODO: Anforderung [R09] umsetzen: Visualisierung und Vergleich des CO2-Fußabdrucks
 % TODO: Anforderung [R07] umsetzen: Durchführung des CO2-Rechner-Workflows
@@ -535,8 +635,7 @@ Die Fragen könnten wie folgt aussehen:
 
 Besonders viel hat sich nicht am Design einer Frage innerhalb des Rechners geändert.
 Es wurden jedoch mehr Fragen in den Rechner eingebaut, die im alten Design als "detailliert" beschrieben wurden.
-Zusätzlich wurde, wie bereits im Abschnitt
-% TODO: Abschnitt mit JSON Veränderung einfügen
+Zusätzlich wurde, wie bereits im Abschnitt %hier einfügen
 , der Wert hinter den Anwortmöglichkeiten angepasst sowie die gesamte Struktur des generierten \acs{JSON}.
 
 Die größte Veränderung erlebt der neue CO2-Rechner in Sachen Allgemeindesign und Nutzerfreundlichkeit.
