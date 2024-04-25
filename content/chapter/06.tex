@@ -928,14 +928,50 @@ Dieses Vorgehen konnte dann bei allen Grafiken und Diagrammen durchgeführt werd
 
 Eine essentielle Funktion der alten Webseite war die Funktion, sich in Gruppen zusammenzuschließen und gemeinsam den CO2-Fußabdruck der Gruppe zu messen und sich gegenseitig zu motivieren, diesen zu reduzieren. Um die \textbf{Anforderung [R06]} zu erfüllen, wurde das Gruppensystem in die neue Webseite integriert und verbessert. Das Gruppensystem besteht aus mehreren Komponenten, die jeweils für einen bestimmten Teil des Gruppensystems verantwortlich sind.
 
-Es gibt zunächst eine Seite zum Gruppensystem wo NutzerInnen Informationen zum Gruppensystem erhalten und die Möglichkeit haben, einer Gruppe beizutreten oder eine Gruppe zu erstellen. Die Gruppenerstelltung ist relativ einfach und besteht lediglich darin einen Gruppennamen einzugeben und dann wird dadurch ein Gruppencode generiert welcher von anderen NutzerInnen genutzt werden kann, um der Gruppe beizutreten. Dieser Gruppencode kann beim Gruppensystem Übersichtsseiten in ein Eingabefeld eingegeben werden, um der Gruppe beizutreten. All dies funktioniert natürlich nur wenn der Nutzer eingelogt ist, aber dann kann der/die NutzerIn über dein Konto auf eine Gruppeninformationen Seite gelangen, wo alle Informationen zu Gruppen dargestellt werden.
+Es gibt zunächst eine Seite zum Gruppensystem wo NutzerInnen Informationen zum Gruppensystem erhalten und die Möglichkeit haben, einer Gruppe beizutreten oder eine Gruppe zu erstellen.
+\hyperref[fig:gruppensystem-neues-design]{Abbildung 6.6} zeigt diese Seite.
+Wie zu erkennen ist, kann man im ersten Absatz eine neue Gruppe erstellen.
+Im letzten Absatz der Seite ist es möglich, über den Gruppencode einer neuen Gruppe beizutreten.
+Die Gruppenerstelltung ist relativ einfach und besteht lediglich darin einen Gruppennamen einzugeben und dann wird dadurch ein Gruppencode generiert welcher von anderen NutzerInnen genutzt werden kann, um der Gruppe beizutreten. Dieser Gruppencode kann beim Gruppensystem Übersichtsseiten in ein Eingabefeld eingegeben werden, um der Gruppe beizutreten.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/06/gruppensystem-design.png}
+    \caption{Design der neuen Gruppensystemseite}
+    \label{fig:gruppensystem-neues-design}
+\end{figure}
+
+All dies funktioniert natürlich nur wenn der Nutzer eingelogt ist, aber dann kann der/die NutzerIn über dein Konto auf eine Gruppeninformationen Seite gelangen, wo alle Informationen zu Gruppen dargestellt werden.
 
 Für die Implementierung besteht der schwere Teil lediglich herauszufinden welche Daten benötigt werden und welche \acs{API} Schnittstellen benötigt werden.
 
+Im folgenden Screenshot ist einmal die Seite zu erkennen, auf die man weitergeleitet wird, wenn ein/e NutzerIn eine neue Gruppe selbst erstellen möchte.
+Dort werden die NutzerInnen aufgefordert einen Name für ihre Gruppe einzugeben.
+Sobald die Gruppe erfolgreich erstellt wurde, erscheint dem/der NutzerIn eine Bestätigung mit einem Dashboardlink, Joinlink und dem Gruppencode.
+\hyperref[label]{Abbildung 6.7} zeigt die Ansicht, in der eine neue Gruppe erstellt werden kann.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/06/gruppe-erstellen-design.png}
+    \caption{Ansicht um eine neue Gruppe zu erstellen}
+    \label{fig:neue-gruppe-design}
+\end{figure}
+
+Die \hyperref[fig:gruppe-erfolgreich-erstellt]{nächste Abbildung} zeigt die Bestätigungsseite nachdem die Gruppe erfolgreich erstellt wurde.
+Zu beobachten sind zusätzlich die bereits erwähnten Links zur Dashboardansicht der Gruppe und ein Link, um andere Leute in die Gruppe einzuladen.
+Ebenfalls wird ein QR-Code erstellt, über welchen andere NutzerInnen der Gruppe beitreten können.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/06/gruppen-erstellung-bestätigung.png}
+    \caption{Bestätigungsansicht nach der erfolgreichen Erstellung einer Gruppe}
+    \label{fig:gruppe-erfolgreich-erstellt}
+\end{figure}
+
+\newpage
+
 % TODO: soll ich da mehr auf die Implementierung eingehen?
 
-% TODO: Bilder anzeigen von den Seiten
-test 123
+
 
 \section{FAQ-Seite}
 
