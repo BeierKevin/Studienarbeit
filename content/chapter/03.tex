@@ -176,8 +176,6 @@ Die Einführung von \acs{JSX} hat die Art und Weise, wie Webentwicklung betriebe
 
 Die Frontend-Entwicklung spielt eine entscheidende Rolle bei der Gestaltung der Benutzeroberfläche und der Benutzerinteraktion, welche wiederum Hand in Hand mit nutzerzentriertem Design eingeht. Es gibt verschiedene Frameworks, die Entwicklern helfen, leistungsstarke und ansprechende Benutzeroberflächen zu erstellen. Drei der prominentesten Frontend-Frameworks sind:
 
-% TODO: mehr in Detail ausarbeiten für die Frameworks ?, vlt ansprechen das man SPA macht und das es client seitiges Rendering ist
-
 \begin{itemize}
 
     \item \textbf{Angular:} Angular ist ein von Google entwickeltes \acl{TS}-basierendes Framework. Es bietet eine umfangreiche Sammlung von Werkzeugen und Bibliotheken, die Entwicklern helfen, dynamische \acf{SPA} zu erstellen. Die Struktur von Angular erleichtert die Organisation des Codes und bietet eine klare Trennung von Logik und Darstellung.\cite{angular}
@@ -226,6 +224,16 @@ Die Frontend-Entwicklung spielt eine entscheidende Rolle bei der Gestaltung der 
 \end{longtable}
 
 Diese Frameworks haben jeweils ihre eigenen Stärken und eignen sich für unterschiedliche Projekte je nach Anforderungen, Teampräferenzen und Zielen.\cite{angular-vuejs-reactjs-comparison:3, angular-vuejs-reactjs-comparison:4}
+Bei allen Frameworks steht eine Frontendtechnologie besonders im Vordergrund: Single-Page-Applications (\acs{SPA}).
+Eine \acs{SPA} hat den Hintergedanken, dass die gesamte Anwendung auf nur einer Webseiten dargstellt wird und läuft. \cite*{spa}
+Bei einer \acs{SPA} wird die gesamte Präsentationsschicht vom Browser durchgeführt.
+Dabei übernimmt der Client bzw. der Browser die Aufgabe, \acs{HTML}-Code und Daten zu vereinen. \cite{spa}
+Man kann sich das ganze in folgendem Beispiel vorstellen:\\
+Ein/e NutzerIn hat eine Webseite vor Augen. Auf der Webseite ist ein Button, der beim Drücken Daten anfordert und diese auf einer Webseite anzeigen soll.
+Anstatt die Daten von einem Server zu holen, auf einer Seite einzubauen und die gesamte Webseite neu zu laden, nutzen \acs{SPA}'s dynamisches Rendering.
+Es wird also vereinfacht gesagt, platzt auf der bereits vorhandenen Webseite gemacht, um den neuen Inhalt (die Daten) dynamisch ohne alles neu zu laden, anzuzeigen.
+Der/die NutzerIn merkt aufgrund des dynamischen Einfügens häufig gar nicht, dass im Hintergrund etwas passiert.
+Dieses Vorgehen nennt man in der Fachsprache auch \textbf{clientseitiges Rendering}.
 
 Die CO2-Runter-App wurde ursprünglich mit \textbf{React.js} entwickelt. Allerdings fiel die Entscheidung, das Framework zu wechseln, da die Entwickler mit \textbf{React.js} nicht zufrieden waren und auf diverse Probleme stießen. Als Alternative wurde \textbf{Vue} ausgewählt, da es eine leicht verständliche Lernkurve aufweist und die Entwickler bereits Erfahrung damit hatten. Zudem zeichnet sich \textbf{Vue} durch hohe Flexibilität aus und lässt sich gut mit anderen Bibliotheken und Frameworks kombinieren. Die Entscheidung für \textbf{Vue} wurde auch durch seine Performance und umfassende Dokumentation beeinflusst, was die Entwicklung erleichtert.
 
@@ -271,20 +279,18 @@ Beide Bibliotheken bieten eine Vielzahl von Komponenten, zum Beispiel Knöpfe, T
 
 \subsection{NGINX}
 
-% TODO: das vlt noch ausbauen
-
 Für die Entwicklung von Webanwendungen ist ein Webserver unerlässlich. \acf{NGINX} ist ein Open-Source-Webserver, der für seine Leistung, Skalierbarkeit und Zuverlässigkeit bekannt ist. Es wird häufig als Reverse-Proxy-Server, Lastausgleichs-Server und HTTP-Cache verwendet. \acs{NGINX} bietet eine Vielzahl von Funktionen, die es zu einem beliebten Webserver für die Entwicklung und Bereitstellung von Webanwendungen machen.
 
 NGINX ermöglicht es uns die Datenbank, die \acs{API} und das Frontend zu verbinden. Es ist ein wichtiger Bestandteil der Infrastruktur, da es die Kommunikation zwischen den verschiedenen Komponenten der Anwendung ermöglicht. \acs{NGINX} bietet eine leistungsstarke und flexible Plattform für die Bereitstellung von Webanwendungen und ist ein unverzichtbares Werkzeug für die Entwicklung und Bereitstellung von modernen Webanwendungen. \cite{nginx}
 
 \subsection{Docker}
 
-% TODO: das vlt noch ausbauen
-
 Docker ist eine Open-Source-Plattform, die es Entwicklern ermöglicht, Anwendungen in Containern zu erstellen, zu testen und zu bereitstellen. Container sind eine Art von Virtualisierung, die es ermöglichen, Anwendungen und ihre Abhängigkeiten in einer isolierten Umgebung auszuführen. Docker bietet eine Vielzahl von Funktionen, die die Entwicklung und Bereitstellung von Anwendungen erleichtern, darunter die Möglichkeit, Anwendungen in Containern zu verpacken, Container zu verwalten und Container in der Cloud zu bereitstellen.
 
 Es ermöglicht uns die Anwendung in einer isolierten Umgebung zu testen und zu entwickeln, ohne dass die Umgebung des Entwicklers beeinträchtigt wird. Docker bietet eine konsistente und zuverlässige Plattform für die Entwicklung und Bereitstellung von Anwendungen und ist ein unverzichtbares Werkzeug für die Entwicklung moderner Webanwendungen. \cite{docker}
 
-% Überleitung ins nächste Kapitel
-
 Nachdem die Grundlagen der nutzerzentrierten Design-Methoden und der Webentwicklung erläutert wurden, kann sich nun auf die Nutzerzentrierte Umfrage im nächste Kapitel konzentriert werden.
+Im folgenden Kapitel wird beschrieben, wie eine nutzerzentrierte Umfrage aufgebaut wird und welche verschiedenen Arten einer Umfrage es gibt.
+Anschließend wird erläutert, welche Faktoren bei der Auswahl der Zielgruppe entscheident sind und wie die tatsächliche Durchführung der nutzerzentrierten Umfrage verlief.
+Es werden die Ergebnisse der im Rahmen dieser Studienarbeit durchgeführten Umfrage offengelegt und analysiert.
+Abschließend wird das Thema Personas angesprochen.
