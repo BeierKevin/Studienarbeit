@@ -211,72 +211,76 @@ Ebenfalls erfordert es die Anpassung der \texttt{index.html}-Datei, um die im Ma
 </html>
 \end{lstlisting}
 
-Das Manifest ist eine \acf{JSON}-Datei, die im Hintergrund von Vite generiert wird und Informationen über die Webseite enthält, wie den Namen, die Beschreibung, das Icon und die Farbe. Der Service Worker ist ein Skript, das im Hintergrund ausgeführt wird und die Offline-Funktionalität der App ermöglicht. Nun ist die Webseite als \acs{PWA} konfiguriert und kann auf dem Homescreen des Smartphones installiert werden. Um dies zu erleichtern, kann eine Komponente erstellt werden, die den NutzerInnen dazu auffordert, die Webseite zu installieren. Diese könnte wie folgt aussehen:
+Das Manifest ist eine \acf{JSON}-Datei, die im Hintergrund von Vite generiert wird und Informationen über die Webseite enthält, wie den Namen, die Beschreibung, das Icon und die Farbe. Der Service Worker ist ein Skript, das im Hintergrund ausgeführt wird und die Offline-Funktionalität der App ermöglicht. Nun ist die Webseite als \acs{PWA} konfiguriert und kann auf dem Homescreen des Smartphones installiert werden. Dadurch wird die Nutzererfahrung verbessert und die Webseite kann auch offline genutzt werden, ähnlich wie eine native App. \cite{vite-plugin-pwa}
 
-\begin{lstlisting}[language={JavaScript}, caption={PWA Vue Komponente}]
-<script setup lang="ts">
-import { onBeforeMount, ref } from 'vue';
+% TODO: vlt das mit dem Popup rausmachen, weils bei der Webseite eh nicht geht
 
-const deferredPrompt = ref<any>(null);
+% Um dies zu erleichtern, kann eine Komponente erstellt werden, die den NutzerInnen dazu auffordert, die Webseite zu installieren. Diese könnte wie folgt aussehen:
 
-const beforeInstallPromptHandler = (e: Event) => {
-    e.preventDefault();
-    deferredPrompt.value = e;
-};
+% \begin{lstlisting}[language={JavaScript}, caption={PWA Vue Komponente}]
+% <script setup lang="ts">
+% import { onBeforeMount, ref } from 'vue';
 
-const appInstalledHandler = () => {
-    deferredPrompt.value = null;
-};
+% const deferredPrompt = ref<any>(null);
 
-onBeforeMount(() => {
-    window.addEventListener('beforeinstallprompt', beforeInstallPromptHandler);
-    window.addEventListener('appinstalled', appInstalledHandler);
-});
+% const beforeInstallPromptHandler = (e: Event) => {
+%     e.preventDefault();
+%     deferredPrompt.value = e;
+% };
 
-const dismiss = () => {
-    deferredPrompt.value = null;
-};
+% const appInstalledHandler = () => {
+%     deferredPrompt.value = null;
+% };
 
-const install = () => {
-    if (deferredPrompt.value) {
-        deferredPrompt.value.prompt();
-    }
-};
-</script>
+% onBeforeMount(() => {
+%     window.addEventListener('beforeinstallprompt', beforeInstallPromptHandler);
+%     window.addEventListener('appinstalled', appInstalledHandler);
+% });
 
-<template>
-    <v-alert
-        v-if="deferredPrompt"
-        icon="mdi-download"
-        color="info"
-        title="Alert title"
-        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!"
-    >
-        <br />
-        <v-btn @click="dismiss">Dismiss</v-btn>
-        <v-btn @click="install">Install</v-btn>
-    </v-alert>
+% const dismiss = () => {
+%     deferredPrompt.value = null;
+% };
 
-    <v-banner
-        v-if="deferredPrompt"
-        lines="one"
-        icon="mdi-download"
-        color="info"
-    >
-        <template v-slot:text>
-            Willst du diese Webseite installieren?
-        </template>
+% const install = () => {
+%     if (deferredPrompt.value) {
+%         deferredPrompt.value.prompt();
+%     }
+% };
+% </script>
 
-        <template v-slot:actions>
-            <v-btn @click="dismiss">Nein</v-btn>
-            <v-btn @click="install">Ja, installieren</v-btn>
-        </template>
-    </v-banner>
-</template>
+% <template>
+%     <v-alert
+%         v-if="deferredPrompt"
+%         icon="mdi-download"
+%         color="info"
+%         title="Alert title"
+%         text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!"
+%     >
+%         <br />
+%         <v-btn @click="dismiss">Dismiss</v-btn>
+%         <v-btn @click="install">Install</v-btn>
+%     </v-alert>
 
-\end{lstlisting}
+%     <v-banner
+%         v-if="deferredPrompt"
+%         lines="one"
+%         icon="mdi-download"
+%         color="info"
+%     >
+%         <template v-slot:text>
+%             Willst du diese Webseite installieren?
+%         </template>
 
-Die Integration dieser Komponente in die \texttt{App.vue}-Datei ist unkompliziert und wird dem NutzerInnen angezeigt, wenn die Webseite als \acs{PWA} installiert werden kann. Dadurch wird die Nutzererfahrung verbessert und die Webseite kann auch offline genutzt werden, ähnlich wie eine native App. \cite{vite-plugin-pwa}
+%         <template v-slot:actions>
+%             <v-btn @click="dismiss">Nein</v-btn>
+%             <v-btn @click="install">Ja, installieren</v-btn>
+%         </template>
+%     </v-banner>
+% </template>
+
+% \end{lstlisting}
+
+% Die Integration dieser Komponente in die \texttt{App.vue}-Datei ist unkompliziert und wird dem NutzerInnen angezeigt, wenn die Webseite als \acs{PWA} installiert werden kann. Dadurch wird die Nutzererfahrung verbessert und die Webseite kann auch offline genutzt werden, ähnlich wie eine native App. \cite{vite-plugin-pwa}
 
 \section{Projekt aufräumen und Strukturierung}
 
@@ -304,9 +308,8 @@ In der folgenden Auflistung wird erklärt, was genau die einzelnen Unterordner b
     \item \textbf{views}: Innerhalb des \textit{views}-Ordner sind alle erreichbaren Seiten definiert und zu finden. Eine View setzt sich dabei aus den verschiedenen Komponenten zusammen, und sind somit die auf der Webseite zu sehenden Seiten, die durch die verschiedenen URLs (=Routen) aufgerufen werden können.
 \end{itemize}
 
-Zuguterletzt sind noch drei abschließende Dateien im \textit{src}-Ordner: \textit{App.vue} ist die oberste Schicht der UI, auf welcher die ganze Views durch den Router implementiert werden.
-\textit{main.ts} ist eine weitere Datei, die die Plugins, welche im \textit{plugins}-Ordner liegen, auf der Anwednungsebene registriert.
-Abschließend implementiert \textit{vite-env.d.ts} die Vite-Umgebung.\newpage
+Zuguterletzt sind noch drei abschließende Dateien im \textit{src}-Ordner: \textit{App.vue} ist die oberste Schicht der UI, auf welcher die ganze Views durch den Router implementiert werden. \textit{main.ts} ist eine weitere Datei, die die Plugins, welche im \textit{plugins}-Ordner liegen, auf der Anwednungsebene registriert. Abschließend implementiert \textit{vite-env.d.ts} die Vite-Umgebung.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{images/06/ordnerstruktur_projekt.png}
@@ -316,104 +319,83 @@ Abschließend implementiert \textit{vite-env.d.ts} die Vite-Umgebung.\newpage
 
 \section{Anpassung der questions.json}
 \label{sec:anpassung-der-questions-json}
-Nachdem nun die Ordnerstruktur des Projekts aufgeräumt und neu strukturiert wurde, wird nun die \textit{questions.json} angegangen.
-Da die bisherige \textit{questions.json} sehr unübersichtlich und tief verschachtelt war, wurde diese neu aufgebaut und neu strukturiert.
-Die alte Struktur der \textit{questions.json} wird in \hyperref[lst:questions-json-old]{Listing 6.9} vereinfacht dargstellt.
-Dort ist zu beobachten, dass die \acs{JSON} die Kategorien bereits besitzt, wie sie später im CO2-Rechner angezeigt werden.
-Jede Kategorie beinhaltet den Namen der Kategorie, sowie eine Liste von Fragen.
-Innerhalb der Frageliste, werden die Fragen erneut über das Attribut \textit{name} in mögliche Unterkategorien unterteilt.
-Anschließened erkennt man ab Zeile 8 und Zeile 16 der \hyperref[lst:questions-json-old]{alten questions.json}, das sich hier ein \textit{quick}- und ein \textit{detailed}- Objekt eröffnen.
-Diese beinhalten jeweils die eigentlichen Fragen, die im CO2-Rechner verwendet werden.
-Standardmäßig werden die Fragen und Antworten aus dem \textit{quick}-Objekt geladen.
-Schaltet der Nutzer jedoch die Frage auf detailliert um, wie es beim alten CO2-Rechner beispielweise in \hyperref[fig:co2runterapp-rechner]{Abbildung 2.2} zu sehen ist, werden die Fragen aus dem \textit{detialed}-Objekt geladen. \newpage
+
+Nachdem nun die Ordnerstruktur des Projekts aufgeräumt und neu strukturiert wurde, wird nun die \textit{questions.json} angegangen. Da die bisherige \textit{questions.json} sehr unübersichtlich und tief verschachtelt war, wurde diese neu aufgebaut und neu strukturiert. Die alte Struktur der \textit{questions.json} wird in \hyperref[lst:questions-json-old]{Listing 6.9} vereinfacht dargstellt. Dort ist zu beobachten, dass die \acs{JSON} die Kategorien bereits besitzt, wie sie später im CO2-Rechner angezeigt werden. Jede Kategorie beinhaltet den Namen der Kategorie, sowie eine Liste von Fragen. Innerhalb der Frageliste, werden die Fragen erneut über das Attribut \textit{name} in mögliche Unterkategorien unterteilt. Anschließened erkennt man ab Zeile 8 und Zeile 16 der \hyperref[lst:questions-json-old]{alten questions.json}, das sich hier ein \textit{quick}- und ein \textit{detailed}- Objekt eröffnen. Diese beinhalten jeweils die eigentlichen Fragen, die im CO2-Rechner verwendet werden. Standardmäßig werden die Fragen und Antworten aus dem \textit{quick}-Objekt geladen. Schaltet der Nutzer jedoch die Frage auf detailliert um, wie es beim alten CO2-Rechner beispielweise in \hyperref[fig:co2runterapp-rechner]{Abbildung 2.2} zu sehen ist, werden die Fragen aus dem \textit{detialed}-Objekt geladen.
 
 \begin{lstlisting}[language=JavaScript, caption=Aufbau der alten questions.json, label={lst:questions-json-old}]
-    {
-        "baseline": number,
-        "category":[
-            {
+{
+    "baseline": number,
+    "category":[
+        {
+            "name": string,
+            "questions": [
                 "name": string,
-                "questions": [
-                    "name": string,
-                    "quick": {
+                "quick": {
+                    "text": string,
+                    "typ": string,
+                    "replies": [],
+                    "values": [],
+                    "defaultValue": number,
+                    "selectedValue": number
+                },
+                "detailed": {
+                    "questions": {
                         "text": string,
                         "typ": string,
                         "replies": [],
                         "values": [],
-                        "defaultValue": number,
+                        "defualtValue": number,
                         "selectedValue": number
                     },
-                    "detailed": {
-                        "questions": {
-                            "text": string,
-                            "typ": string,
-                            "replies": [],
-                            "values": [],
-                            "defualtValue": number,
-                            "selectedValue": number
-                        },
-                    },
-                ],
-                "formula": string,
-            },
-            {
-                ...
-            },
-            {
-                ...
-            },
-            {
-                ...
-            }
-        ]
-    }
-\end{lstlisting} \newpage
-Da im neuen CO2-Rechner keine Möglichkeit mehr geboten wird, zwischen detaillierten und kurzen Fragen umzuschalten, enthält die alte, verschachtelte \acs{JSON} viele Dinge, die gar nicht mehr gebraucht werden.
-Aus diesem Grund wurde die \textit{questions.json} neu aufgebaut und strukturiert.
-\hyperref[lst:questions-json-new]{Listing 6.10} zeigt den neuen Grundaufbau der \textit{questions.json}, die im neuen CO2-Rechner zukünftig verwendet wird.
-\begin{lstlisting}[language=JavaScript, caption={Aufbau der neuen question.json}, label={lst:questions-json-new}]
-    {
-        "baseline": number,
-        "category": [
-            {
-                "name": string,
-                "questions": [
-                    {
-                        "text": string,
-                        "replies": [
-                            {
-                                "text": string,
-                                "value": number
-                            },
-                            {
-                                ...
-                            },
-                        ],
-                        "selected": {
-                            "text": string,
-                            "value" number
-                        }
-                    },
-                ],
-                "formula": string
-            },
-            {
-                ...
-            },
-            {
-                ...
-            },
-            {
-                ...
-            }
-        ],
-        "endFormula": string
-    }
+                },
+            ],
+            "formula": string,
+        },
+        {
+            ...
+        }
+    ]
+}
 \end{lstlisting}
-Die neue \acs{JSON} zeichnet sich dadurch aus, dass die Antworten einer Frage in Objekten aus einem \textit{text}- und einem \textit{value}-Objekt gespeichert sind.
-Dadurch kann bei der Berechnung des CO2-Werts der Wert einer Antwortmöglichkeit, die im Frontend ausgewählt wurde, leichert gefunden werden und man muss muss sich nicht ewig durch die Datenstruktur der \acs{JSON} quälen.
-Zusätzlich wurde wie bereits vorher erwähnt, die Fragenunterteilung in \textit{quick} und \textit{detailed} entfernt, so dass man insgesamt eine verständlichere Datenstruktur hat.
-Somit wurde die Anforderung aus dem Kapitel 5.1.3 - \hyperref[sec:questions-json-anpassen]{[R14] Question.json anpassen} erledigt.
+
+Da im neuen CO2-Rechner keine Möglichkeit mehr geboten wird, zwischen detaillierten und kurzen Fragen umzuschalten, enthält die alte, verschachtelte \acs{JSON} viele Dinge, die gar nicht mehr gebraucht werden. Aus diesem Grund wurde die \textit{questions.json} neu aufgebaut und strukturiert. \hyperref[lst:questions-json-new]{Listing 6.10} zeigt den neuen Grundaufbau der \textit{questions.json}, die im neuen CO2-Rechner zukünftig verwendet wird.
+
+\begin{lstlisting}[language=JavaScript, caption={Aufbau der neuen question.json}, label={lst:questions-json-new}]
+{
+    "baseline": number,
+    "category": [
+        {
+            "name": string,
+            "questions": [
+                {
+                    "text": string,
+                    "replies": [
+                        {
+                            "text": string,
+                            "value": number
+                        },
+                        {
+                            ...
+                        },
+                    ],
+                    "selected": {
+                        "text": string,
+                        "value" number
+                    }
+                },
+            ],
+            "formula": string
+        },
+        {
+            ...
+        }
+    ],
+    "endFormula": string
+}
+\end{lstlisting}
+
+Die neue \acs{JSON} zeichnet sich dadurch aus, dass die Antworten einer Frage in Objekten aus einem \textit{text}- und einem \textit{value}-Objekt gespeichert sind. Dadurch kann bei der Berechnung des CO2-Werts der Wert einer Antwortmöglichkeit, die im Frontend ausgewählt wurde, leichert gefunden werden und man muss muss sich nicht ewig durch die Datenstruktur der \acs{JSON} quälen. Zusätzlich wurde wie bereits vorher erwähnt, die Fragenunterteilung in \textit{quick} und \textit{detailed} entfernt, so dass man insgesamt eine verständlichere Datenstruktur hat. Somit wurde die Anforderung aus dem Kapitel 5.1.3 - \hyperref[sec:questions-json-anpassen]{[R14] Question.json anpassen} erledigt.
+
 % TODO: beschreiben, dass letzte Kategorie im alten Rechner nicht richtig funktioniert hat und deshalb selbst angepasst wurde
 
 \section{Erstellung der neuen Landing Page}
@@ -427,7 +409,7 @@ Die Landing Page könnte wie folgt aussehen:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/06/HomePage-Design.jpeg}
+    \includegraphics[width=0.65\textwidth]{images/06/HomePage-Design.jpeg}
     \caption{Die neu erstellte CO2-Runter Landing Page}
     \label{fig:new-co2runter-homepage-design}
 \end{figure}
@@ -509,7 +491,6 @@ Dabei handelt es sich um die Komponenten der Navigationsleiste, des Kontents und
 Eine Navigationsleiste dient dem NutzerInnen einer Webseite dazu, den Überblick über den aktuell zu sehenden Bereich einer Webseite zu behalten und biete eine schnelle und einfache Navigation über die Webseite.
 Im Fall der CO2-Runter-App gibt es die Startseite, den CO2-Rechner, das Dashboard, sowie eine FAQ- und Gruppensystemseite.
 Diese sollen über die Navigationsleiste erreichbar sein.
-Die folgende Abbildung zeigt, wie die Navigationsleiste implementiert wurde: \newpage
 
 \begin{lstlisting}[language={JavaScript}, caption={Navigationsleiste für Web als auch Mobile}]
 <template>
@@ -610,19 +591,10 @@ In der folgenden Abbildung ist der Code zum Kontent zu sehen:
 \section{Neuerstellung des CO2-Rechners}
 \label{chapter:neuerstellung_co2rechner}
 
-% TODO: Anforderung [R11] umsetzen: Anzeige von weiteren Quellen/Infos im CO2 Rechner
-% TODO: Anforderung [R09] umsetzen: Visualisierung und Vergleich des CO2-Fußabdrucks
 % TODO: Anforderung [R03] umsetzen: Hochladen von CO2 Daten
 % TODO: Anforderung [R02] umsetzen: Berechnung von CO2 Fußabdruck
 
-Der CO2-Rechner ist ein wichtiges Feature der Webseite, da dem NutzerInnen dadurch ermöglicht wird, seinen CO2-Fußabdruck zu berechnen und Tipps zur Reduzierung zu erhalten.
-Bei der Neuerstellung hat man sich an der bisherigen Implementierung orientiert und diese verbessert.
-
-Der CO2-Rechner besteht aus mehreren Kategorien, die der NutzerInnen durchlaufen muss, um seinen CO2-Fußabdruck zu berechnen.
-Die Kategorien lauten: Mobilität, Ernährung, Wohnen und Konsum.
-Der NutzerInnen muss für jede Kategorie verschiedene Fragen beantworten, um seinen CO2-Fußabdruck zu berechnen.
-Die Fragen sind so gestaltet, dass der NutzerInnen sie leicht beantworten kann.
-Die Fragen könnten wie folgt aussehen:
+Der CO2-Rechner ist ein wichtiges Feature der Webseite, da dem NutzerInnen dadurch ermöglicht wird, seinen CO2-Fußabdruck zu berechnen. Bei der Neuerstellung hat man sich an der bisherigen Implementierung orientiert und diesen Workflow des CO2-Rechners beibehalten. Dadurch konnte dann die Anforderung \textbf{R09} erfüllt werden. Der CO2-Rechner besteht aus mehreren Kategorien, die der NutzerInnen durchlaufen muss, um seinen CO2-Fußabdruck zu berechnen. Die Kategorien lauten: Mobilität, Ernährung, Wohnen und Konsum. Der NutzerInnen muss für jede Kategorie verschiedene Fragen beantworten, um seinen CO2-Fußabdruck zu berechnen. Die Fragen sind so gestaltet, dass der NutzerInnen sie leicht beantworten kann. Die Fragen könnten wie folgt aussehen:
 
 \begin{figure}[H]
     \centering
@@ -640,7 +612,7 @@ Wie in Abbildung \ref{fig:new-co2runter-calculator-design} zu sehen ist, wurde h
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{images/06/Calculator-New-Design.jpeg}
+    \includegraphics[width=1\textwidth]{images/06/Calculator-New-Design.jpeg}
     \caption{Design des neuen CO2-Rechners}
     \label{fig:new-co2runter-calculator-design}
 \end{figure}
@@ -653,7 +625,7 @@ Bevor der NutzerInnen auf den eigentlichen Rechner stößt, wurde für jede Kate
 Diese Neuerung soll dafür sorgen, dass sich der NutzerInnen nicht direkt in den Rechner stürzt, sondern über das aktuelle Thema aufgeklärt und informiert wird.
 Außerdem bringt der Abschnitt mit dem Bild einen positiven Aspekt im Bereich der Nutzerfreundlichkeit.
 
-Für die Implementierung des neuen CO2-Rechner wurde eine neue Komponente namens "CalculatorView.vue" erstellt.
+Für die Implementierung des neuen CO2-Rechner wurde eine neue Komponente namens \texttt{CalculatorView.vue} erstellt.
 Diese bildet die Hauptansicht des Rechners und implementiert weitere, kleinere Komponenten, so genannte \textit{Components} und ist in der folgenden Abbildung zu sehen.
 
 \begin{lstlisting}[language={JavaScript}, caption={Aufbau der CalculatorView.vue Komponente}]
@@ -691,24 +663,7 @@ So auch die Komponenten \textit{QuestionStepper} und \textit{CurrentCO2}, die du
 CurrentCO2 ist dafür zuständig, aus den gegebenen Antworten des Nutzers den Wert des CO2-Fußabdrucks zu berechnen und diesen darzustellen.
 Diese importiert den \textit{totalCo2Emission Store}, der dafür zuständig ist, die Werte der gewählten Antworten aus einer \acs{JSON} zu nehmen und auf den Gesamtwert zu addieren.
 Anschließend wird der Gesamtwert in einer Card dargestellt.
-Der Code für die CurrentCO2-Komponente sieht dabei folgendermaßen aus:
-
-% TODO: readd Code-Snippet caused compilation problems
-\begin{lstlisting}[language={html}, caption={CurrentCO2.vue}]
-<template>
-    <v-card class="text-primary" elevation="0">
-        <v-card-text class="text-secondary">
-            Und Setzt sich wie folgt zusammen:
-        </v-card-text>
-    </v-card>
-</template>
-
-<script lang="ts" setup>
-import { useTotalCo2EmissionStore } from '@/store/totalCo2Emission';
-
-const totalCo2EmissionStore = useTotalCo2EmissionStore();
-</script>
-\end{lstlisting}
+Der Code für die CurrentCO2-Komponente besteht lediglich daraus den Store zu importieren und den Wert des CO2-Fußabdrucks darzustellen, welcher dort gespeichert ist.
 
 Der QuestionStepper ist für die Darstellung des eigentlichen Fragebogens zuständig.
 Der Fragebogen wird über den \textit{v-stepper} implementiert.
@@ -723,105 +678,45 @@ Für das Laden der Fragen und Antworten ist eine weitere Komponente zuständige,
 Nachfolgend ist der Code für QuestionBlock.vue und QuestionStepper.vue aufgelistet:
 
 \begin{lstlisting}[language={html}, caption={QuestionStepper.vue}]
-<template>
-    <v-stepper>
-        <v-stepper-header>
+<v-stepper>
+    <v-stepper-header>
         <v-stepper-item title="Mobilitaet" value="1"></v-stepper-item>
-
-        <v-divider></v-divider>
-
+        <v-divider/>
         <v-stepper-item title="Ernaehrung" value="2"></v-stepper-item>
-
-        <v-divider></v-divider>
-
+        <v-divider/>
         <v-stepper-item title="Wohnen" value="3"></v-stepper-item>
-
-        <v-divider></v-divider>
-
+        <v-divider/>
         <v-stepper-item title="Konsum" value="4"></v-stepper-item>
         </v-stepper-header>
-
-        <v-stepper-window>
-            <v-stepper-window-item>
-
-                .
-                .
-                .
-
-                <v-row class="my-16">
+    <v-stepper-window>
+        <v-stepper-window-item>
+            ...
+            <v-row class="my-16">
                 <v-col>
-                <QuestionsBlock
-                v-if="data"
-                :category-index="QuestionsIndices.MOBILITY"
-                :questions="
-                data.category[QuestionsIndices.MOBILITY]
-                "
-                />
+                    <QuestionsBlock :category-index="QuestionsIndices.MOBILITY"/>
                 </v-col>
-                </v-row>
-
-                .
-                .
-                .
-
-            </v-stepper-window-item>
-        </v-stepper-window>
-    </v-stepper>
-</template>
+            </v-row>
+            ...
+        </v-stepper-window-item>
+    </v-stepper-window>
+</v-stepper>
 \end{lstlisting}
 
 \begin{lstlisting}[language={html}, caption={QuestionBlock.vue}]
-<template>
-    <div
-    v-for="(item, index) in questions.questions"
+<div
+    v-for="(item, index) in questionStore.category[props.categoryIndex].questions"
     :key="index"
-    class="my-16"
-    >
-        <h3 class="text-center">{{ item.text }}</h3>
-        <v-select
-        v-model="item.selected.text"
-        :items="item.replies.map((replies) => replies.text)"
-        :return-object="true"
-        class="mt-16"
-        placeholder="Waehlen Sie eine Option"
+>
+    <v-select
+        v-model="item.selected"
+        :items="item.replies"
+        item-title="text"
+        :label="item.text"
         variant="outlined"
-        @update:modelValue="UpdateEmissions(index)"
-        ></v-select>
-    </div>
-</template>
-
-<script lang="ts" setup>
-import { Category, Replies } from '@/types/Questionnaire';
-import useQuestions from '@/composables/useQuestions';
-import { useTotalCo2EmissionStore } from '@/store/totalCo2Emission';
-
-const props = defineProps<{
-categoryIndex: number;
-questions: Category;
-}>();
-
-const { updateSelectedValue, calculateTotalCo2Emission } = useQuestions();
-const totalCo2EmissionStore = useTotalCo2EmissionStore();
-
-const UpdateEmissions = (questionIndex: number) => {
-const array = props.questions.questions[questionIndex].replies;
-const textValue = props.questions.questions[questionIndex].selected.text;
-
-const object = findObjectInArray(array, textValue);
-updateSelectedValue(props.categoryIndex, questionIndex, object!);
-
-totalCo2EmissionStore.calculateTotalCo2Emission(
-calculateTotalCo2Emission()
-);
-};
-
-function findObjectInArray(
-array: Replies[],
-textValue: string
-): Replies | undefined {
-return array.find((item) => item.text === textValue);
-}
-</script>
+        :return-object="true"
+        @update:modelValue="totalCo2EmissionStore.calculateCo2ValuesPerCategory()"
+    />
+</div>
 \end{lstlisting}
 
 \section{Übernahme und Anpassung des Dashboards}
@@ -867,10 +762,7 @@ onMounted(async () => {
 Um die Karte zu erstellen, wird wie zuvor erklärt die Vue-ECharts Bibliothek verwendet, die es ermöglicht, interaktive Karten zu erstellen. Die Karte soll die Stadtteile von Karlsruhe und den durchschnittlichen CO2-Verbrauch gemäß den Angaben der NutzerInnen, die ihren Stadtteilen zugeordnet sind, anzeigen. Die Karte wird in einer Vue-Komponente erstellt und die Daten aus der Datenbank abgerufen und entsprechend angepasst, um die Karte zu erstellen. Die Karte könnte wie folgt aussehen:
 
 \begin{lstlisting}[language={html}, caption={Vue-ECharts Diagramm Beispiel}]
-<v-chart
-    :option="chartOptions"
-    style="height: 600px; width: 100%"
-/>
+<v-chart :option="chartOptions" style="height: 600px; width: 100%"/>
 \end{lstlisting}
 
 Es ist relativ einfach, eine Karte mit Vue-ECharts zu erstellen, aber das Wichtigste ist, dass die Daten in das Diagramm gegeben werden und dass angegeben wird, wie das Diagramm aussehen soll (ob Karte, Balkendiagramm oder viele andere Möglichkeiten). Wichtig ist vor dem Eingehen auf die \textbf{chartOptions}, dass das Diagramm eine Höhe und Breite erhält, um korrekt angezeigt zu werden.
@@ -921,6 +813,8 @@ Dieses Vorgehen konnte dann bei allen Grafiken und Diagrammen durchgeführt werd
     \label{fig:new-co2runter-dashboard-design}
 \end{figure}
 
+Dadurch kann man nun die CO2-Emissionen in Karlsruhe pro Stadtteil sehen und vergleichen. Dies ist ein wichtiger Aspekt des Dashboards, da es dem NutzerInnen ermöglicht, die CO2-Emissionen in Karlsruhe zu visualisieren und zu vergleichen was in der Anforderung \textbf{R11} definiert wurde. Dies ist ein wichtiger Schritt, um das Bewusstsein für den Klimawandel zu schärfen und die NutzerInnen zu motivieren, ihren CO2-Fußabdruck zu reduzieren. Dazu helfen auch weitere Grafiken wie Balkendiagramme, die den CO2-Fußabdruck der NutzerInnen in verschiedenen Kategorien anzeigen.
+
 \section{Das neue Gruppensystem}
 
 Eine essentielle Funktion der alten Webseite war die Funktion, sich in Gruppen zusammenzuschließen und gemeinsam den CO2-Fußabdruck der Gruppe zu messen und sich gegenseitig zu motivieren, diesen zu reduzieren. Um die \textbf{Anforderung [R06]} zu erfüllen, wurde das Gruppensystem in die neue Webseite integriert und verbessert. Das Gruppensystem besteht aus mehreren Komponenten, die jeweils für einen bestimmten Teil des Gruppensystems verantwortlich sind.
@@ -944,7 +838,7 @@ Für die Implementierung besteht der schwere Teil lediglich herauszufinden welch
 Im folgenden Screenshot ist einmal die Seite zu erkennen, auf die man weitergeleitet wird, wenn ein/e NutzerIn eine neue Gruppe selbst erstellen möchte.
 Dort werden die NutzerInnen aufgefordert einen Name für ihre Gruppe einzugeben.
 Sobald die Gruppe erfolgreich erstellt wurde, erscheint dem/der NutzerIn eine Bestätigung mit einem Dashboardlink, Joinlink und dem Gruppencode.
-\hyperref[label]{Abbildung 6.7} zeigt die Ansicht, in der eine neue Gruppe erstellt werden kann.
+\hyperref[fig:neue-gruppe-design]{Abbildung 6.7} zeigt die Ansicht, in der eine neue Gruppe erstellt werden kann.
 
 \begin{figure}[H]
     \centering
@@ -963,8 +857,6 @@ Ebenfalls wird ein QR-Code erstellt, über welchen andere NutzerInnen der Gruppe
     \caption{Bestätigungsansicht nach der erfolgreichen Erstellung einer Gruppe}
     \label{fig:gruppe-erfolgreich-erstellt}
 \end{figure}
-
-\newpage
 
 \section{FAQ-Seite}
 
@@ -1003,7 +895,7 @@ Das finale Design der FAQ-Seite sieht sehr modern und übersichtlich aus und lä
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/06/FAQ-Design.jpeg}
+    \includegraphics[width=0.7\textwidth]{images/06/FAQ-Design.jpeg}
     \caption{Design der FAQ-Seite der neuen Webseite}
     \label{fig:new-co2runter-faq-design}
 \end{figure}
