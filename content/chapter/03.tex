@@ -3,18 +3,13 @@
 \chapter{Grundlagen}
 \label{chapter:3}
 
-Bevor mit der eigentlichen Arbeit der Studienarbeit begonnen wird, sollten wichtige Grundstrukturen geklärt werden.
-Das folgende Kapitel stellt die wichtigsten Grundstrukturen und Prinzipen vor, die im Laufe dieser Studienarbeit relevant werden.
-Es werden Konzepte zur Erstellung und Umsetzung der Umfrage, als auch zu Programmiertechnologien geboten.
+Bevor mit der eigentlichen Arbeit der Studienarbeit begonnen wird, sollten wichtige Grundstrukturen geklärt werden. Das folgende Kapitel stellt die wichtigsten Grundstrukturen und Prinzipien vor, die im Laufe dieser Studienarbeit relevant werden. Es werden Konzepte zur Erstellung und Umsetzung der Umfrage sowie zu Programmiertechnologien geboten.
 
 \section{Humanzentriertes Design}
 
-Beim Entwickeln neuer Software setzen erfahrene Softwareentwickler häufig auf einen gut durchdachten Plan und Struktur.
-Dabei wird auf bestimmte Entwicklerprozesse gesetzt.
-Einer der bekanntesten Prozesse in der Softwareentwicklung ist hierbei der “\acf{SDLC}” (kurz: \acs{SDLC}). Der \acs{SDLC} wird genutzt, um möglichst effiziente, kostengünstige Software mit hoher Qualität zu designen, entwickeln und zu produzieren.\cite{shylesh:2017}
-Es gibt eine Menge verschiedene Modelle des \acs{SDLC}, jedoch haben alle Modelle im Grunde dieselbe Struktur: Planen - Designen - Implementieren - Testen. Besonders auf den Baustein “Design” soll in diesem Kapitel tiefer eingegangen werden.
+Beim Entwickeln neuer Software setzen erfahrene Softwareentwickler häufig auf einen gut durchdachten Plan und Struktur. Dabei wird auf bestimmte Entwicklungsprozesse gesetzt. Einer der bekanntesten Prozesse in der Softwareentwicklung ist hierbei der “\acf{SDLC}” (kurz: \acs{SDLC}). Der \acs{SDLC} wird genutzt, um möglichst effiziente, kostengünstige Software mit hoher Qualität zu designen, entwickeln und zu produzieren.\cite{shylesh:2017} Es gibt eine Menge verschiedene Modelle des \acs{SDLC}, jedoch haben alle Modelle im Grunde dieselbe Struktur: Planen - Design - Implementieren - Testen. Besonders auf den Aspekt "Design" wird in diesem Kapitel genauer eingegangen.
 
-Eine der weitverbreitetsten Designmodelle ist das “\acf{HCD}” (kurz: \acs{HCD}, dt.: menschenzentriertes Design).  Dabei handelt es sich um eine Designtechnik, bei der der Mensch im Vordergrund des Entwicklungsprozesses steht.\cite{hbsc:2020} Laut der Webseite der Harvard Business School liegen die Ziele des \acs{HCD} darin, die Ziele, Wünsche und Vorlieben des Produktnutzers stetig im Auge zu behalten.\cite{hbsc:2020} Dort beschreibt ein Dekan der Harvard Business School vier grundlegende Phasen im \acs{HCD}. Diese sind laut Dekan Srikant Datar folgende Phasen: Clarify - Ideate - Develop - Implement.\cite{hbsc:2020} Wiederum definiert Sim van der Ryn in seinem Paper “Human Centered Design” aus dem Jahr 2013 das Vorgehen des \acs{HCD} ein wenig anders, jedoch ähnlich. Dieser schreibt, dass man sich zuerst mit den potenziellen NutzerInnen beschäftigen sollte.\cite{vanderryn:2013} Anschließend wird das Problem definiert, eine Idee erarbeitet, ein Prototyp erstellt und abschließend getestet.\cite{vanderryn:2013}
+Eine der weitverbreitetsten Designmodelle ist das “\acf{HCD}” (kurz: \acs{HCD}, dt.: menschenzentriertes Design). Dabei handelt es sich um eine Designtechnik, bei der der Mensch im Vordergrund des Entwicklungsprozesses steht. Laut der Webseite der Harvard Business School liegen die Ziele des \acs{HCD} darin, die Ziele, Wünsche und Vorlieben des Produktnutzers stetig im Auge zu behalten. Dort beschreibt ein Dekan der Harvard Business School vier grundlegende Phasen im \acs{HCD}. Diese sind laut Dekan Srikant Datar folgende Phasen: Clarify - Ideate - Develop - Implement. Wiederum definiert Sim van der Ryn in seinem Paper "Human Centered Design" aus dem Jahr 2013 das Vorgehen des \acs{HCD} ein wenig anders, jedoch ähnlich. Dieser schreibt, dass man sich zuerst mit den potenziellen Nutzern beschäftigen sollte. Anschließend wird das Problem definiert, eine Idee erarbeitet, ein Prototyp erstellt und abschließend getestet.\cite{vanderryn:2013, hbsc:2020}
 
 \begin{figure}[h]
     \centering
@@ -22,26 +17,29 @@ Eine der weitverbreitetsten Designmodelle ist das “\acf{HCD}” (kurz: \acs{HC
     \caption{Humand Centered Design Prozess}
 \end{figure}
 
-Zu den Vorteilen des \acs{HCD} gehören unter anderem eine hohe Nutzerzufriedenheit, da die Meinung von Personen unmittelbaren Einfluss auf das Design des Produkts nehmen und so sicherstellen, dass alle Bedürfnisse und Erwartungen an das Produkt garantiert werden. Zudem kann dadurch auf die Wechselwirkung zwischen Menschen und Objekten besser verstanden werden, da man durch die Designfrage wichtige Erkenntnisse über das Verhalten bzw. Bedürfnisse der Menschen oder zumindest einer Personengruppe bekommt.
+Zu den Vorteilen des \acs{HCD} gehört unter anderem eine hohe Nutzerzufriedenheit, da die Meinung der Personen direkten Einfluss auf das Design des Produkts hat und somit sichergestellt wird, dass alle Bedürfnisse und Erwartungen an das Produkt erfüllt werden (HCD, 2021). Zudem kann dadurch die Wechselwirkung zwischen Menschen und Objekten besser verstanden werden, da man durch die Designfrage wichtige Erkenntnisse über das Verhalten bzw. Bedürfnisse der Menschen oder zumindest einer Personengruppe bekommt (Let, 2022).
 
-Zu den Vorteilen des \acs{HCD} gehören unter anderem eine hohe Nutzerzufriedenheit, da die Meinung von Personen unmittelbaren Einfluss auf das Design des Produkts nehmen und so sicherstellen, dass alle Bedürfnisse und Erwartungen an das Produkt garantiert werden.\cite{hcd:2021} Zudem kann dadurch auf die Wechselwirkung zwischen Menschen und Objekten besser verstanden werden, da man durch die Designfrage wichtige Erkenntnisse über das Verhalten bzw. Bedürfnisse der Menschen oder zumindest einer Personengruppe bekommt.\cite{let:2022}
+Zu den Vorteilen des \acs{HCD} gehören unter anderem eine hohe Nutzerzufriedenheit, da die Meinung von Personen unmittelbaren Einfluss auf das Design des Produkts nimmt und so sicherstellt, dass alle Bedürfnisse und Erwartungen an das Produkt garantiert werden.\cite{hcd:2021} Zudem kann dadurch die Wechselwirkung zwischen Menschen und Objekten besser verstanden werden, da man durch die Designfrage wichtige Erkenntnisse über das Verhalten bzw. die Bedürfnisse der Menschen oder zumindest einer Personengruppe bekommt.\cite{let:2022}
 
-Jedoch gibt es auch einige Nachteile bzw. Probleme des \acs{HCD}. Ein Aspekt wäre die rapide Produktlebenszyklus. Durch die ständig wechselnden Bedürfnisse und Anforderungen an ein Produkt, stehen Designer und Designteams ständig unter großen Herausforderungen, um die Ansprüche treffen zu können. Häufig könnten aber auch eben diese menschlichen Anforderungen an ein Produkt zum Problem werden, da diese Anforderungen nicht umsetzbar und realisierbar sind.\cite{pod:2016}
+Allerdings gibt es auch einige Nachteile bzw. Probleme des \acs{HCD}. Ein Aspekt wäre der rapide Produktlebenszyklus. Durch die ständig wechselnden Bedürfnisse und Anforderungen an ein Produkt stehen Designer und Designteams ständig unter großen Herausforderungen, um die Ansprüche treffen zu können. Häufig könnten aber auch eben diese menschlichen Anforderungen an ein Produkt zum Problem werden, da diese Anforderungen nicht umsetzbar und realisierbar sind.\cite{pod:2016}
 
 \section{Nutzerzentriertes Design}
 
-Achtet man nun beim Entwickeln neuer Software besonders auf die NutzerInnen und baut diese nach seinen Wünschen und Anregungen auf, so spricht man in diesem Fall von "\acf{UCD}". Der wesentliche Unterschied zum Menschenzentrierten Design (\acs{HCD}) ist jedoch, dass das Nutzerzentrierte Design soziale und kulturelle Aspekte nicht mit in das Design einfließen lässt.\cite{hcd2:2021} Diese Aspekt spielen beim Menschenzentrierten Design eine wesentliche Rolle. Dennoch wird \acs{UCD} heutzutage auch mit HCD gleichgestellt.\cite{ucd1:2011}
+Wenn man sich beim Entwickeln neuer Software besonders auf die Nutzer:innen konzentriert und diese nach ihren Wünschen und Anregungen gestaltet, spricht man von "User-Centered Design" (\acs{UCD}). Ein wesentlicher Unterschied zum Humanzentrierten Design (\acs{HCD}) besteht darin, dass das Nutzerzentrierte Design soziale und kulturelle Aspekte nicht in das Design einfließen lässt (HCD2, 2021). Diese Aspekte spielen beim Humanzentrierten Design eine wesentliche Rolle. Dennoch wird \acs{UCD} heutzutage oft mit \acs{HCD} gleichgesetzt (UCD1, 2011).
 
-Einer der zentralen Aspekte beim \acs{UCD} sind so genannte Personas. Laut dem Buch "Persona Design in Participatory Agile Software Development" werden Personas häufig als Methode im \acs{UCD} genutzt, um fiktionale Charaktere zu erschaffen, die verschiedene NutzerInnen bzw. gesamte Nutzergruppen zu repräsentieren.\cite{personaDesign:2020} Eine Persona wird dabei meistens in einer Erzählung beschrieben.\cite{ucd1:2011} Das Ziel liegt laut dem Artikel "Personas and user-centered design: How can personas benefit product design processes?" darin, die Persona wie eine reale Person darzustellen und die Bedürfnisse der Persona anschaulich innerhalb einer Geschichte zu präsentieren, um diese in die Entwicklung des Produktes einfließen zu lassen.\cite{ucd1:2011}
-Grundsätzlich startet eine solche Erzählung mit einer Beschreibung der Person.\cite{ucd1:2011} Während der Beschreibung werden wichtige charakteristische Merkmale der Persona, wie z.B. Vorlieben und Abneigungen, Beruf etc. eingegangen.\cite{ucd1:2011}
+
+
+Ein zentraler Aspekt des \acs{UCD} sind sogenannte Personas. Laut dem Buch "Persona Design in Participatory Agile Software Development" werden Personas häufig als Methode im \acs{UCD} genutzt, um fiktionale Charaktere zu erschaffen, die verschiedene Nutzer:innengruppen repräsentieren (PersonaDesign, 2020). Eine Persona wird dabei meistens in Form einer Erzählung beschrieben (UCD1, 2011). Das Ziel besteht darin, die Persona wie eine reale Person darzustellen und ihre Bedürfnisse anschaulich innerhalb einer Geschichte zu präsentieren, um sie in die Entwicklung des Produkts einzubeziehen (UCD1, 2011).
+
+Grundsätzlich beginnt eine solche Erzählung mit einer Beschreibung der Person (UCD1, 2011). Während der Beschreibung werden wichtige charakteristische Merkmale der Persona wie Vorlieben, Abneigungen, Beruf usw. hervorgehoben (UCD1, 2011).
 
 \subsection{Erstellen einer Persona}
-Die Erstellung einer Persona zählt zu den wesentlichen Punkten im \acs{UCD}. In einem wissenschaften Paper der Universität Rostock wird der Bildungsprozess einer Persona beschrieben. Der komplette Entwicklungsprozesse einer Persona ist ebenfalls in der nachfolgenden \nameref{personaEntwicklungsPhasen} dargestellt:
+Die Erstellung einer Persona ist ein wesentlicher Bestandteil des \acs{UCD}. In einem wissenschaftlichen Paper der Universität Rostock wird der Prozess der Persona-Erstellung beschrieben. Der gesamte Entwicklungsprozess einer Persona ist in der folgenden Abbildung dargestellt:
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{images/03/entwicklungPersona.jpg}
-    \caption{Entwicklungsprozess Persona \cite{personamethode}}
+    \caption{Entwicklungsprozess der Persona \cite{personamethode}}
     \label{personaEntwicklungsPhasen}
 \end{figure}
 
@@ -65,7 +63,7 @@ Die Frontend-Entwicklung von Webanwendungen umfasst hierbei die Verwendung von F
 
 Wie zuvor angesprochen ist die Komponentenarchitektur ein grundlegendes Konzept in der Webentwicklung, das darauf abzielt, die Benutzeroberfläche in wiederverwendbare und modulare Komponenten zu strukturieren. Diese Komponenten können eigenständige Teile der Benutzeroberfläche sein, die bestimmte Funktionen oder Darstellungen bereitstellen. Durch die Verwendung einer Komponentenarchitektur können Entwickler die Komplexität von Webanwendungen reduzieren, den Entwicklungsprozess beschleunigen und die Wartbarkeit verbessern.
 
-Die Komponentenarchitektur zielt darauf ab diverse Prinzipien zu erfüllen. In der folgenden Auflistung sind einige der wichtigsten Prinzipien aufgeführt:
+Die Komponentenarchitektur zielt darauf ab, diverse Prinzipien zu erfüllen. In der folgenden Auflistung sind einige der wichtigsten Prinzipien aufgeführt:
 
 \begin{itemize}
     \item \textbf{Wiederverwendbarkeit:} Komponenten können in verschiedenen Teilen einer Anwendung wiederverwendet werden, was die Entwicklung beschleunigt und den Code reduziert.
@@ -171,10 +169,10 @@ Die Einführung von \acs{JSX} hat die Art und Weise, wie Webentwicklung betriebe
     \item \textbf{Bessere Wartbarkeit und Skalierbarkeit:} Die Verwendung von Typen trägt dazu bei, Bugs zu reduzieren und die Wartbarkeit von Codebasen zu verbessern. Dies ist besonders wichtig für größere Projekte.
 \end{enumerate}
 
-\subsection{Frontend Frameworks}
+\subsection{Moderne Frontend-Frameworks}
 \label{chapter:3-frontend-frameworks}
 
-Die Frontend-Entwicklung spielt eine entscheidende Rolle bei der Gestaltung der Benutzeroberfläche und der Benutzerinteraktion, welche wiederum Hand in Hand mit nutzerzentriertem Design eingeht. Es gibt verschiedene Frameworks, die Entwicklern helfen, leistungsstarke und ansprechende Benutzeroberflächen zu erstellen. Drei der prominentesten Frontend-Frameworks sind:
+Die Entwicklung von Webanwendungen hat sich in den letzten Jahren stark weiterentwickelt, und moderne Frontend-Frameworks spielen dabei eine entscheidende Rolle. Diese Frameworks erleichtern nicht nur die Erstellung von ansprechenden und interaktiven Benutzeroberflächen, sondern bieten auch viele Funktionen und Werkzeuge, die die Entwicklung effizienter und produktiver machen.
 
 \begin{itemize}
 
@@ -183,7 +181,6 @@ Die Frontend-Entwicklung spielt eine entscheidende Rolle bei der Gestaltung der 
     \item \textbf{Vue:} Vue.js ist ein progressives \acl{JS}-Framework, das sich durch seine leichte Integration, Flexibilität und eine sanfte Lernkurve auszeichnet. Es ermöglicht die Erstellung interaktiver Benutzeroberflächen und wird von einer aktiven Community unterstützt, die ständig zur Weiterentwicklung und Verbesserung beiträgt.\cite{vuejs}
 
     \item \textbf{React.js:} React.js, entwickelt von Facebook, ist eine beliebte \acl{JS}-Bibliothek, die sich auf die Erstellung wiederverwendbarer \acf{UI}-Komponenten konzentriert. Durch die Verwendung von \acf{JSX} können Entwickler eine hierarchische Struktur aufbauen, die zur Erstellung dynamischer Benutzeroberflächen beiträgt.\cite{reactjs}
-
 \end{itemize}
 
 \begin{longtable}{@{\extracolsep{\fill}}|l|l|l|l|@{}}
@@ -236,16 +233,16 @@ Die CO2-Runter-App wurde ursprünglich mit \textbf{React.js} entwickelt. Allerdi
 \section{Werkzeuge}
 \label{chapter:3-werkzeuge}
 
-Beim Weiterentwickeln der CO2-Runter-App werden zahlreiche Tools genutzt, um die Entwicklungsumgebung zu verbessern und die Entwicklung zu vereinfachen. Da jedoch einige Tools auf das Backend und die Datenbank bezogen sind, werden diese außen vor gelassen. Es wird ausschließlich auf diejenigen eingegangen, die für das Frontend Entwicklung relevant sind. Diese Tools sind wichtig für die Weiterentwicklung der CO2-Runter-App und spielen auch für das nutzerzentrierte Design eine Rolle.
+Bei der Weiterentwicklung der CO2-Runter-App kommen zahlreiche Tools zum Einsatz, um die Entwicklungsumgebung zu verbessern und die Entwicklung zu vereinfachen. Da jedoch einige Tools auf das Backend und die Datenbank bezogen sind, werden diese hier außen vor gelassen. Es wird ausschließlich auf diejenigen eingegangen, die für die Frontend-Entwicklung relevant sind. Diese Tools sind wichtig für die Weiterentwicklung der CO2-Runter-App und spielen auch für das nutzerzentrierte Design eine Rolle.
 
 \subsection{NPM - Node Package Manager}
 \label{chapter:3-werkzeuge-npm}
 
-\acs{NPM} ist die Abkürzung für \acf{NPM}. Wie der Name schon beschreibt, ist NPM ein Paketmanager, der bei der Installation von Node.js mitgeliefert wird. Er ermöglicht somit die Installation und Verwaltung von JavaScript-Paketen.
+\acs{NPM} ist die Abkürzung für \acf{NPM}. Wie der Name schon sagt, ist NPM ein Paketmanager, der bei der Installation von Node.js mitgeliefert wird. Er ermöglicht somit die Installation und Verwaltung von JavaScript-Paketen.
 
 Ein Paketmanager ist eine Software, die es ermöglicht, sogenannte Pakete herunterzuladen und in ein Projekt zu importieren. Unter einem Paket versteht man ein Projekt, das von einem Entwickler bereitgestellt wurde, um von anderen Entwicklern in deren Projekten eingebunden zu werden. Auf diese Weise können Entwickler ihre Arbeit miteinander teilen und Zeit sparen, indem sie bereits vorhandene Projekte verwenden, anstatt alles von Grund auf neu entwickeln zu müssen.
 
-Für jeden Paketmanager gibt es eine Paketzentrale oder auch Registry genannt. In der Registry von \acs{NPM} sind über 800.000 Pakete/Projekte zu finden. \acs{NPM} ermöglicht außerdem, eine bestimmte Version eines Pakets in ein Projekt zu importieren. Diese Funktion erlaubt es einem Entwickler, selbst mit veralteten Versionen eines Projektes weiterzuarbeiten. \acs{NPM} ist nur einer von vielen Paketmanagern, die es gibt, dennoch hat sich \acs{NPM} im JavaScript-Umfeld als das Standardwerkzeug für die Paketverwaltung herausgebildet.\cite{npm}
+Für jeden Paketmanager gibt es eine Paketzentrale oder auch Registry genannt. In der Registry von \acs{NPM} sind über 800.000 Pakete/Projekte zu finden. \acs{NPM} ermöglicht außerdem, eine bestimmte Version eines Pakets in ein Projekt zu importieren. Diese Funktion erlaubt es einem Entwickler, selbst mit veralteten Versionen eines Projekts weiterzuarbeiten. \acs{NPM} ist nur einer von vielen Paketmanagern, die es gibt, dennoch hat sich \acs{NPM} im JavaScript-Umfeld als das Standardwerkzeug für die Paketverwaltung herausgebildet.\cite{npm}
 
 \subsection{Vite}
 
@@ -269,13 +266,13 @@ Vite ist ein modernes Build-Tool, das speziell für die Entwicklung von Webanwen
 
 Material Design ist ein Designsystem, das von Google entwickelt wurde, um eine konsistente und ansprechende Benutzeroberfläche für Web- und Mobilanwendungen zu schaffen. Es basiert auf den Prinzipien von Material Design, die auf visueller Hierarchie, Bewegung und Interaktion basieren. Material Design bietet eine Reihe von Komponenten, Icons und Stilen, die Entwicklern helfen, moderne und benutzerfreundliche Benutzeroberflächen zu erstellen. \cite{materialdesign}
 
-Dadurch das Material Design Richtlinien von Google sind, werden von Drittentwicklern Bibliotheken erstellt, welche die Material Design Richtlinien umsetzen. Dabei gibt es jeweils dann Bibliotheken für die unterschiedlichen Frontend-Frameworks. Für Vue gibt es z. B. Vuetify, für React gibt es Material-UI und für Angular gibt es Angular Material. Dadurch das die vorherige CO2-Runter App auf React.js basiert, wurde dort die Material-UI Bibliothek verwendet. Um ein äquivalentes Design zu erreichen, wird in der Weiterentwicklung der CO2-Runter App die Vuetify-Bibliothek verwendet, weil diese speziell für Vue.js entwickelt wurde, aber dennoch die Material Design Richtlinien von Google umsetzt, wie auch die Material-UI (MUI) Bibliothek.
+Da Material Design Richtlinien von Google sind, entwickeln Dritte Bibliotheken, die diese Richtlinien umsetzen. Dabei gibt es jeweils Bibliotheken für die unterschiedlichen Frontend-Frameworks. Für Vue gibt es z. B. Vuetify, für React gibt es Material-UI und für Angular gibt es Angular Material. Da die vorherige CO2-Runter App auf React.js basierte, wurde dort die Material-UI Bibliothek verwendet. Um ein äquivalentes Design zu erreichen, wird in der Weiterentwicklung der CO2-Runter App die Vuetify-Bibliothek verwendet, die speziell für Vue.js entwickelt wurde, aber dennoch die Material Design Richtlinien von Google umsetzt, wie auch die Material-UI (MUI) Bibliothek.
 
-Beide Bibliotheken bieten eine Vielzahl von Komponenten, zum Beispiel Knöpfe, Textfelder etc., die einem Entwickler ermöglichen, schnell und einfach eine schöne und moderne Benutzeroberfläche zu erstellen. \acf{MUI} oder auch Vuetify sind dabei \acs{UI}-Komponenten-Bibliotheken, die auf React.js oder Vue basieren und die Material Design Richtlinien von Google anwendet, um ein einheitliches, schönes modulares Design zu schaffen, und somit die Entwicklung von Webanwendungen oder Prototypen zu vereinfachen.\cite{materialui, vuetify}
+Beide Bibliotheken bieten eine Vielzahl von Komponenten, zum Beispiel Knöpfe, Textfelder etc., die einem Entwickler ermöglichen, schnell und einfach eine schöne und moderne Benutzeroberfläche zu erstellen. \acf{MUI} oder auch Vuetify sind dabei \acs{UI}-Komponenten-Bibliotheken, die auf React.js oder Vue basieren und die Material Design Richtlinien von Google anwenden, um ein einheitliches, schönes modulares Design zu schaffen, und somit die Entwicklung von Webanwendungen oder Prototypen zu vereinfachen.\cite{materialui, vuetify}
 
 \subsection{NGINX}
 
-Für die Entwicklung von Webanwendungen ist ein Webserver unerlässlich. \acf{NGINX} ist ein Open-Source-Webserver, der für seine Leistung, Skalierbarkeit und Zuverlässigkeit bekannt ist. Es wird häufig als Reverse-Proxy-Server, Lastausgleichs-Server und HTTP-Cache verwendet. \acs{NGINX} bietet eine Vielzahl von Funktionen, die es zu einem beliebten Webserver für die Entwicklung und Bereitstellung von Webanwendungen machen.
+Für die Entwicklung von Webanwendungen ist ein Webserver unerlässlich. \acf{NGINX} ist ein Open-Source-Webserver, der für seine Leistung, Skalierbarkeit und Zuverlässigkeit bekannt ist. Er wird häufig als Reverse-Proxy-Server, Lastausgleichs-Server und HTTP-Cache verwendet. \acs{NGINX} bietet eine Vielzahl von Funktionen, die es zu einem beliebten Webserver für die Entwicklung und Bereitstellung von Webanwendungen machen.
 
 \acs{NGINX} fungiert als Reverse-Proxy-Server, der eingehende Anfragen an verschiedene Backend-Server weiterleitet. Diese Funktion ermöglicht eine flexible Konfiguration von Routen und eine effiziente Verteilung des Datenverkehrs. Zum Beispiel kann \acs{NGINX} den Datenverkehr basierend auf bestimmten Kriterien wie IP-Adresse, Header oder URL auf verschiedene Backend-Server verteilen. Dadurch können Anwendungen skalierbarer gestaltet werden, da \acs{NGINX} den Datenverkehr je nach Bedarf auf zusätzliche Server umleiten kann, um die Last zu verteilen und die Ausfallsicherheit zu erhöhen.
 
@@ -295,8 +292,6 @@ Ein weiterer Vorteil von Docker ist die Portabilität von Containern. Docker-Con
 
 Docker ermöglicht es uns, die Anwendung in einer isolierten Umgebung zu testen und zu entwickeln, ohne dass die Umgebung des Entwicklers beeinträchtigt wird. Es bietet eine konsistente und zuverlässige Plattform für die Entwicklung und Bereitstellung von Anwendungen und ist ein unverzichtbares Werkzeug für die Entwicklung moderner Webanwendungen. \cite{docker}
 
-Nachdem die Grundlagen der nutzerzentrierten Design-Methoden und der Webentwicklung erläutert wurden, kann sich nun auf die Nutzerzentrierte Umfrage im nächste Kapitel konzentriert werden.
-Im folgenden Kapitel wird beschrieben, wie eine nutzerzentrierte Umfrage aufgebaut wird und welche verschiedenen Arten einer Umfrage es gibt.
-Anschließend wird erläutert, welche Faktoren bei der Auswahl der Zielgruppe entscheident sind und wie die tatsächliche Durchführung der nutzerzentrierten Umfrage verlief.
-Es werden die Ergebnisse der im Rahmen dieser Studienarbeit durchgeführten Umfrage offengelegt und analysiert.
-Abschließend wird das Thema Personas angesprochen.
+% Überleitung ins nächste Kapitel
+
+Nachdem die Grundlagen der nutzerzentrierten Design-Methoden und der Webentwicklung erläutert wurden, wird im nächsten Kapitel auf die Nutzerzentrierte Umfrage eingegangen. Im folgenden Kapitel wird beschrieben, wie eine nutzerzentrierte Umfrage aufgebaut wird und welche verschiedenen Arten einer Umfrage es gibt. Anschließend wird erläutert, welche Faktoren bei der Auswahl der Zielgruppe entscheidend sind und wie die tatsächliche Durchführung der nutzerzentrierten Umfrage verlief. Es werden die Ergebnisse der im Rahmen dieser Studienarbeit durchgeführten Umfrage offengelegt und analysiert. Abschließend wird das Thema Personas angesprochen.
