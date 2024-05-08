@@ -85,7 +85,7 @@ ports:
     - "3000:3000"
 \end{lstlisting}
 
-Das alles funktioniert reibungslos. Außerdem muss in der \texttt{vite.config.ts}-Datei noch der Port angepasst werden, auf dem die Webseite laufen soll. Dieser muss mit dem Port in der Docker-Compose-Datei übereinstimmen.
+Das alles funktioniert reibungslos. Außerdem muss in der \textit{vite.config.ts}-Datei noch der Port angepasst werden, auf dem die Webseite laufen soll. Dieser muss mit dem Port in der Docker-Compose-Datei übereinstimmen.
 
 \begin{lstlisting}[language={JavaScript}, caption={Port Konfiguration für das Vue Projekt}]
 export default defineConfig({
@@ -159,7 +159,7 @@ export default defineConfig({
 });
 \end{lstlisting}
 
-Ebenfalls erfordert es die Anpassung der \texttt{index.html}-Datei, um die im Manifest definierten Grafiken zu laden.
+Ebenfalls erfordert es die Anpassung der \textit{index.html}-Datei, um die im Manifest definierten Grafiken zu laden.
 
 \begin{lstlisting}[language={JavaScript}, caption={Anpassungen an der index.html Datei}]
 <!DOCTYPE html>
@@ -254,7 +254,7 @@ Das Manifest ist eine \acf{JSON}-Datei, die im Hintergrund von Vite generiert wi
 
 % \end{lstlisting}
 
-% Die Integration dieser Komponente in die \texttt{App.vue}-Datei ist unkompliziert und wird dem NutzerInnen angezeigt, wenn die Webseite als \acs{PWA} installiert werden kann. Dadurch wird die Nutzererfahrung verbessert und die Webseite kann auch offline genutzt werden, ähnlich wie eine native App. \cite{vite-plugin-pwa}
+% Die Integration dieser Komponente in die \textit{App.vue}-Datei ist unkompliziert und wird dem NutzerInnen angezeigt, wenn die Webseite als \acs{PWA} installiert werden kann. Dadurch wird die Nutzererfahrung verbessert und die Webseite kann auch offline genutzt werden, ähnlich wie eine native App. \cite{vite-plugin-pwa}
 
 \section{Projekt aufräumen und Strukturierung}
 
@@ -419,7 +419,7 @@ const routes = [
 ];
 \end{lstlisting}
 
-Damit das Einbinden richtig funktioniert, muss in der \texttt{Default.vue} Datei mindestens ein \texttt{<router-view />} Tag existieren, damit die jeweilige Seite eingebunden und angezeigt wird. Die angepasste Layout der CO2-Runter-Webseite beinhaltet, dass auf jeder erreichbaren Seite die Navigationsleiste, der Kontent und der Footer angezeigt wird. Dieses Layout wird dann in der \texttt{App.vue} Datei wiederum über ein \texttt{<router-view />} Tag eingebunden und sieht wie folgt aus:
+Damit das Einbinden richtig funktioniert, muss in der \textit{Default.vue} Datei mindestens ein \textit{<router-view />} Tag existieren, damit die jeweilige Seite eingebunden und angezeigt wird. Die angepasste Layout der CO2-Runter-Webseite beinhaltet, dass auf jeder erreichbaren Seite die Navigationsleiste, der Kontent und der Footer angezeigt wird. Dieses Layout wird dann in der \textit{App.vue} Datei wiederum über ein \textit{<router-view />} Tag eingebunden und sieht wie folgt aus:
 
 \begin{lstlisting}[language={JavaScript}, caption={Layout Definition}]
 <template>
@@ -557,7 +557,7 @@ Bevor der NutzerInnen auf den eigentlichen Rechner stößt, wurde für jede Kate
 Diese Neuerung soll dafür sorgen, dass sich der NutzerInnen nicht direkt in den Rechner stürzt, sondern über das aktuelle Thema aufgeklärt und informiert wird.
 Außerdem bringt der Abschnitt mit dem Bild einen positiven Aspekt im Bereich der Nutzerfreundlichkeit.
 
-Für die Implementierung des neuen CO2-Rechner wurde eine neue Komponente namens \texttt{CalculatorView.vue} erstellt.
+Für die Implementierung des neuen CO2-Rechner wurde eine neue Komponente namens \textit{CalculatorView.vue} erstellt.
 Diese bildet die Hauptansicht des Rechners und implementiert weitere, kleinere Komponenten, so genannte \textit{Components} und ist in der folgenden Abbildung zu sehen.
 
 \begin{lstlisting}[language={JavaScript}, caption={Aufbau der CalculatorView.vue Komponente}]
