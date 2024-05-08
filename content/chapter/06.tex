@@ -3,23 +3,13 @@
 \chapter{Implementierung und Verbesserung der Webseite}
 \label{chapter:6}
 
-In den vorherigen Kapiteln wurde zunächst die bisherige Webseite analysiert, um ihre Stärken und Schwächen zu identifizieren.
-Anschließend wurde eine Nutzerumfrage durchgeführt, um die Zufriedenheit der NutzerInnen mit der Webseite zu ermitteln.
-Darauf aufbauend wurden aus den Ergebnissen der Nutzerumfrage Personas erstellt und Anforderungen abgeleitet.
-Diese Anforderungen wurden im \hyperref[chapter:5]{Kapitel 5} spezifiziert und in die Kategorien Muss-, Soll- und Kann-Anforderungen eingeteilt.
+In den vorherigen Kapiteln wurde zunächst die bisherige Webseite analysiert, um ihre Stärken und Schwächen zu identifizieren. Anschließend wurde eine Nutzerumfrage durchgeführt, um die Zufriedenheit der NutzerInnen mit der Webseite zu ermitteln. Darauf aufbauend wurden aus den Ergebnissen der Nutzerumfrage Personas erstellt und Anforderungen abgeleitet. Diese Anforderungen wurden im \hyperref[chapter:5]{Kapitel 5} spezifiziert und in die Kategorien Muss-, Soll- und Kann-Anforderungen eingeteilt.
 
-Diese Erkenntnisse sollen nun genutzt werden, um eine verbesserte Version der Webseite zu entwickeln.
-Bevor dies geschehen kann, muss jedoch die bisherige Codebasis auf ein neues Frontend-Framework migriert werden, da die Zufriedenheit mit dem vorherigen Framework nicht sehr hoch war.
-Nach der Migration werden trotzdem die Ergebnisse der Nutzerumfrage genutzt, um die Webseite zu optimieren.
-Dabei wird auf die Ergebnisse der Umfrage eingegangen, und die Webseite wird entsprechend angepasst, um die Nutzererfahrung zu verbessern.
-Außerdem werden neue Features und Funktionen hinzugefügt, die die Nutzererfahrung bereichern und die NutzerInnen dazu anregen sollen, die Webseite vermehrt zu nutzen.
+Diese Erkenntnisse sollen nun genutzt werden, um eine verbesserte Version der Webseite zu entwickeln. Bevor dies geschehen kann, muss jedoch die bisherige Codebasis auf ein neues Frontend-Framework migriert werden, da die Zufriedenheit mit dem vorherigen Framework nicht sehr hoch war. Nach der Migration werden trotzdem die Ergebnisse der Nutzerumfrage genutzt, um die Webseite zu optimieren. Dabei wird auf die Ergebnisse der Umfrage eingegangen, und die Webseite wird entsprechend angepasst, um die Nutzererfahrung zu verbessern. Außerdem werden neue Features und Funktionen hinzugefügt, die die Nutzererfahrung bereichern und die NutzerInnen dazu anregen sollen, die Webseite vermehrt zu nutzen.
 
-Bei jedem relevanten Kapitel werden die entsprechenden Anforderungen, welche dadurch Erfüllt werden, referenziert.
-Dadurch, dass manche Anforderungen keine explizite Umsetzung erfordern, da diese in jedem Implemtierungsschritt beachtet werden sollten, werden diese durch das Projekt hinweg konstant betrachtet.
-Folgende Anforderungen werden konstant beachtet und angewendet:
+Bei jedem relevanten Kapitel werden die entsprechenden Anforderungen, welche dadurch erfüllt werden, referenziert. Da einige Anforderungen keine explizite Umsetzung erfordern, da diese in jedem Implementierungsschritt beachtet werden sollten, werden diese durch das Projekt hinweg konstant betrachtet. Folgende Anforderungen werden konstant beachtet und angewendet:
 
 \begin{enumerate}
-
     \item \textbf{[R10] Integration von Grafiken}
     \item \textbf{[R12] Modernisierung des Designs}
     \item \textbf{[R15] Benutzerfreundlichkeit}
@@ -27,35 +17,25 @@ Folgende Anforderungen werden konstant beachtet und angewendet:
     \item \textbf{[R17] Zuverlässigkeit}
     \item \textbf{[R18] Wartbarkeit und Erweiterbarkeit}
     \item \textbf{[R19] Code Qualität und Styleguide Einhaltung}
-
 \end{enumerate}
 
 \section{Frameworkwechsel und Verbesserungen}
 
 \subsection{Motivation für den Frameworkwechsel}
 
-Die Webseite wurde bisher unter Verwendung des Frontend-Frameworks \textbf{React.js} entwickelt, das aufgrund seiner Beliebtheit bei vielen Entwicklern weit verbreitet ist.
-Dennoch wurde die Entscheidung getroffen, das Framework zu wechseln, bedingt durch verschiedene Herausforderungen und auch aufgrund von Kompetenzüberlegungen der Entwickler.
-Durch den Übergang zu einem anderen Framework soll die Webentwicklung vereinfacht und die Nutzererfahrung verbessert werden.
-Insbesondere sollen bekannte Probleme wie fehlerhaftes State Management vermieden werden.
+Die Webseite wurde bisher unter Verwendung des Frontend-Frameworks \textbf{React.js} entwickelt, das aufgrund seiner Beliebtheit bei vielen Entwicklern weit verbreitet ist. Dennoch wurde die Entscheidung getroffen, das Framework zu wechseln, bedingt durch verschiedene Herausforderungen und auch aufgrund von Kompetenzüberlegungen der Entwickler. Durch den Übergang zu einem anderen Framework soll die Webentwicklung vereinfacht und die Nutzererfahrung verbessert werden. Insbesondere sollen bekannte Probleme wie fehlerhaftes State Management vermieden werden.
 
-Wie bereits im \hyperref[chapter:3-frontend-frameworks]{Grundlagenkapitel} erläutert, wird als neue Framework \textbf{Vue} eingeführt, dass ebenfalls weit verbreitet ist und von vielen Entwicklern genutzt wird.
+Wie bereits im \hyperref[chapter:3-frontend-frameworks]{Grundlagenkapitel} erläutert, wird als neues Framework \textbf{Vue} eingeführt, das ebenfalls weit verbreitet ist und von vielen Entwicklern genutzt wird.
 
 \subsection{Umsetzung des Frameworkwechsels}
 
-Die Umsetzung ist dabei zunächst nicht zu kompliziert, da das gesamte Projekt in verschiedene Abschnitte unterteilt war, wie zum Beispiel das Frontend der Webseite, das Backend und die Datenbank.
-Somit musste lediglich der Ordner, der das Frontend beinhaltet, ausgetauscht werden.
-Das Backend und die Datenbank blieben unverändert.
-Um das Frontend mit dem neuen Framework (\textbf{Vue}) auszustatten, muss zunächst der Inhalt des bisherigen Ordners, der das Frontend beinhaltet, gelöscht werden.
-Daraufhin konnte über das Werkzeug \textbf{Vite} ein \textbf{Vue}-Projekt erstellt werden, dass auch direkt \textbf{TypeScript} unterstützt.
-Dies hilft beim Entwickeln schon frühzeitig Probleme zu entdecken und zu lösen.
-Im folgenden Code-Snippet ist zu sehen, wie das Projekt mit \textbf{Vite} erstellt wurde.
+Die Umsetzung ist dabei zunächst nicht zu kompliziert, da das gesamte Projekt in verschiedene Abschnitte unterteilt war, wie zum Beispiel das Frontend der Webseite, das Backend und die Datenbank. Somit musste lediglich der Ordner, der das Frontend beinhaltet, ausgetauscht werden. Das Backend und die Datenbank blieben unverändert. Um das Frontend mit dem neuen Framework (\textbf{Vue}) auszustatten, muss zunächst der Inhalt des bisherigen Ordners, der das Frontend beinhaltet, gelöscht werden. Daraufhin konnte über das Werkzeug \textbf{Vite} ein \textbf{Vue}-Projekt erstellt werden, das auch direkt \textbf{TypeScript} unterstützt. Dies hilft beim Entwickeln schon frühzeitig Probleme zu entdecken und zu lösen. Im folgenden Code-Snippet ist zu sehen, wie das Projekt mit \textbf{Vite} erstellt wurde.
 
 \begin{lstlisting}[language={bash}, caption={Initialisierung des Vue Projektes mit Vite \cite{vitejs-getting-started}}]
 npm create vite@latest
 \end{lstlisting}
 
-Nachdem das Projekt erstellt wurde, konnte der Inhalt des Projekts in den alten und leeren Ordner kopiert werden. Danach mussten lediglich noch Konfigurationen angepasst werden, ebenso wie Dockerfiles und Docker Compose. Die Konfigurationen betreffen das \textbf{TypeScript}- und \textbf{Vue}-Projekt, während die Dockerfiles und Docker Compose für die Containerisierung der Webseite zuständig sind. Die entsprechenden Konfigurationen und Dockerfiles sind im folgenden Code Snippet zu sehen.
+Nachdem das Projekt erstellt wurde, konnte der Inhalt des Projekts in den alten und leeren Ordner kopiert werden. Danach mussten lediglich noch Konfigurationen angepasst werden, ebenso wie Dockerfiles und Docker Compose. Die Konfigurationen betreffen das \textbf{TypeScript}- und \textbf{Vue}-Projekt, während die Dockerfiles und Docker Compose für die Containerisierung der Webseite zuständig sind. Die entsprechenden Konfigurationen und Dockerfiles sind im folgenden Code-Snippet zu sehen.
 
 \begin{lstlisting}[language={bash}, caption={Dockerfile für das Vue Projekt}]
 # Use the official Node.js image as the base image
@@ -121,11 +101,7 @@ Nach diesem Schritt ist das Projekt erfolgreich migriert und kann nun mit dem ne
 
 \section{Unterstützung von PWA für Mobile NutzerInnen}
 
-Zu Beginn dieser Arbeit wurde in \hyperref[chapter:2]{Kapitel 2} erwähnt, dass die Webseite trotz ihrer webbasierten Natur als App bezeichnet wird.
-Um die Nutzererfahrung zu optimieren und die Benutzerfreundlichkeit der Webseite zu erhöhen, wird die Integration von \acf{PWA} angestrebt.
-Eine \acs{PWA} ist eine Technologie, die es ermöglicht, Webseiten ähnlich wie native Mobile Apps zu nutzen.
-Dies bedeutet, dass die Webseite auch offline zugänglich ist und auf dem Startbildschirm eines Smartphones installiert werden kann.
-Dadurch wird die Interaktion mit der Webseite komfortabler und die Nutzererfahrung insgesamt verbessert. \cite{ms-pwa}
+Zu Beginn dieser Arbeit wurde in \hyperref[chapter:2]{Kapitel 2} erwähnt, dass die Webseite trotz ihrer webbasierten Natur als App bezeichnet wird. Um die Nutzererfahrung zu optimieren und die Benutzerfreundlichkeit der Webseite zu erhöhen, wird die Integration von \acf{PWA} angestrebt. Eine \acs{PWA} ist eine Technologie, die es ermöglicht, Webseiten ähnlich wie native Mobile Apps zu nutzen. Dies bedeutet, dass die Webseite auch offline zugänglich ist und auf dem Startbildschirm eines Smartphones installiert werden kann. Dadurch wird die Interaktion mit der Webseite komfortabler und die Nutzererfahrung insgesamt verbessert. \cite{ms-pwa}
 
 Die Implementierung von \acs{PWA} gestaltet sich vergleichsweise unkompliziert und erfordert nur wenige Schritte. Zunächst wird ein Plugin zu Vite hinzugefügt, das sich um die \acs{PWA}-Funktionalität kümmert. Dies kann einfach über die Konsole durch die Installation des entsprechenden Plugins erfolgen.
 
@@ -133,9 +109,7 @@ Die Implementierung von \acs{PWA} gestaltet sich vergleichsweise unkompliziert u
 npm i vite-plugin-pwa -D 
 \end{lstlisting}
 
-Danach müssen wir die Vite-Konfiguration anpassen, um das Plugin zu aktivieren und zu konfigurieren.
-Dies umfasst das Hinzufügen eines Manifests, eines Service Workers, sowie verschiedener Grafiken für mobile Geräte.
-Im folgenden Code-Snippet wird dargestellt, wie die Vite-Konfiguration angepasst wurde, um die Unterstützung für \acs{PWA} zu integrieren.
+Danach müssen wir die Vite-Konfiguration anpassen, um das Plugin zu aktivieren und zu konfigurieren. Dies umfasst das Hinzufügen eines Manifests, eines Service Workers sowie verschiedener Grafiken für mobile Geräte. Im folgenden Code-Snippet wird dargestellt, wie die Vite-Konfiguration angepasst wurde, um die Unterstützung für \acs{PWA} zu integrieren.
 
 \begin{lstlisting}[language={JavaScript}, caption={Angepasste Vite Konfiguration für PWA}]
 ...
@@ -284,31 +258,22 @@ Das Manifest ist eine \acf{JSON}-Datei, die im Hintergrund von Vite generiert wi
 
 \section{Projekt aufräumen und Strukturierung}
 
-Bisher wurden essentielle Veränderungen an dem Framework gemacht.
-Bevor es weitergeht, muss das Projekt aufgeräumt und strukturiert werden.
-Dies beinhaltet das Entfernen von ungenutzten Dateien und das Umbenennen von Dateien, um eine konsistente Namenskonvention zu gewährleisten.
-Außerdem müssen die Ordnerstruktur und die Dateistruktur überarbeitet werden, um eine bessere Übersichtlichkeit und Wartbarkeit des Projekts zu gewährleisten.
-Dies beinhaltet das Erstellen von Ordnern für Komponenten, Seiten, Services und anderen wichtigen Dateien.
-In Abbildung \ref{fig:ordnerstruktur_neu} ist die neue Ordnerstruktur zu erkennen.
-Der gesamte Code des Frontends befindet sich im Ordner \textit{client} auf der Root-Ebene.
-Innerhalb dessen befinden sich weitere Ordner.
-Der \textit{src}-Ordner ist hierbei der interessanteste und wichtigste Ordner des client-Ordners.
-\textit{src} ist eine Abkürzung für \textit{source} und beinhaltet sämtlichen Code für das Frontend Framework Vue.js, also Definitionen von Komponenten, Logik innerhalb der Komponenten sowie Konstanten, den Router und vieles mehr.
-In der folgenden Auflistung wird erklärt, was genau die einzelnen Unterordner beinhalten und welchen Part in der neuen UI sie dabei einnehmen.
+Bisher wurden essenzielle Veränderungen am Framework vorgenommen. Bevor es weitergeht, muss das Projekt aufgeräumt und strukturiert werden. Dies beinhaltet das Entfernen von ungenutzten Dateien und das Umbenennen von Dateien, um eine konsistente Namenskonvention zu gewährleisten. Außerdem müssen die Ordnerstruktur und die Dateistruktur überarbeitet werden, um eine bessere Übersichtlichkeit und Wartbarkeit des Projekts zu gewährleisten. Dies beinhaltet das Erstellen von Ordnern für Komponenten, Seiten, Services und andere wichtige Dateien. In Abbildung \ref{fig:ordnerstruktur_neu} ist die neue Ordnerstruktur zu erkennen. Der gesamte Code des Frontends befindet sich im Ordner \textit{client} auf der Root-Ebene. Innerhalb dessen befinden sich weitere Ordner. Der \textit{src}-Ordner ist hierbei der interessanteste und wichtigste Ordner des client-Ordners. \textit{src} ist eine Abkürzung für \textit{source} und beinhaltet sämtlichen Code für das Frontend-Framework Vue.js, also Definitionen von Komponenten, Logik innerhalb der Komponenten sowie Konstanten, den Router und vieles mehr. In der folgenden Auflistung wird erklärt, was genau die einzelnen Unterordner beinhalten und welchen Part in der neuen UI sie dabei einnehmen:
+
 \begin{itemize}
-    \item \textbf{assets}: Der \textit{assets}-Ordner beinhaltet jene Dinge, die nicht durch Quellcode angegeben werden können. Dazu zählen unter anderem Bilder, wofür der \textit{assets}-Ordner im Falle der CO2-Runter-Webseite hauptsächlich genutzt wurde. Die Bilder werden hier an einem zentralen Ort gespeichert, damit diese innerhalb der Komponenten, die die Bilder beispielsweise implementieren, verwenden werden können uns nicht überall im Quellcode verteilt sind.
-    \item \textbf{components}: Das Herzstück des Projektes ist der \textit{components}-Ordner. In diesem Ordner liegen die Komponenten, aus welchen die finale Webseite später zusammengebaut wird. Man kann sich den \textit{components}-Ordner wie eine Art Baukasten vorstellen, aus dem die verschiedenen Seiten der CO2-Runter-Webseite schlußendlich zusammengebaut werden. Wie bereits in Kapitel \ref{chapter:neuerstellung_co2rechner} erwähnt, sind Beispiele für Komponenten unter anderem die QuestionStepper- oder CurrentCO2-Kompoenente.
-    \item \textbf{composables}: Im Kontext von Vue-Anwendungen ist ein Composable eine Funktion, um zustandsbehaftete Logik zu kapseln und wiederzuverwenden. Somit befinden sich im \textit{composables}-Ordner alle Hilfsfunktionen, die helfen solche Logik zu kapseln und damit wiederverwendbar zu machen. Ein Beispiel im Sinne der CO2-Runter-Webseite wäre das Composable, das den aktuellen CO2-Wert innerhalb des Rechners nach dem Auswählen einer Antwortmöglichkeit neu berechnet und an das Frontend schickt.
-    \item \textbf{constangs}: Der \textit{constants}-Ordner ist der Ablageort für Konstanten, die innerhalb der Applikation immer wieder verwendet werden oder Quellcode, der mithilfe von Konstanten einfacher bzw. kompakter dargestellt werden konnte. So werden zum Beispiel die Literaturquellen des FAQs in Konstanten gespeichert.
+    \item \textbf{assets}: Der \textit{assets}-Ordner beinhaltet jene Dinge, die nicht durch Quellcode angegeben werden können. Dazu zählen unter anderem Bilder, wofür der \textit{assets}-Ordner im Falle der CO2-Runter-Webseite hauptsächlich genutzt wurde. Die Bilder werden hier an einem zentralen Ort gespeichert, damit sie innerhalb der Komponenten, die die Bilder beispielsweise implementieren, verwendet werden können und nicht überall im Quellcode verteilt sind.
+    \item \textbf{components}: Das Herzstück des Projekts ist der \textit{components}-Ordner. In diesem Ordner liegen die Komponenten, aus welchen die finale Webseite später zusammengebaut wird. Man kann sich den \textit{components}-Ordner wie eine Art Baukasten vorstellen, aus dem die verschiedenen Seiten der CO2-Runter-Webseite schlussendlich zusammengebaut werden. Wie bereits in Kapitel \ref{chapter:neuerstellung_co2rechner} erwähnt, sind Beispiele für Komponenten unter anderem die QuestionStepper- oder CurrentCO2-Komponente.
+    \item \textbf{composables}: Im Kontext von Vue-Anwendungen ist ein Composable eine Funktion, um zustandsbehaftete Logik zu kapseln und wiederzuverwenden. Somit befinden sich im \textit{composables}-Ordner alle Hilfsfunktionen, die helfen, solche Logik zu kapseln und damit wiederverwendbar zu machen. Ein Beispiel im Sinne der CO2-Runter-Webseite wäre das Composable, das den aktuellen CO2-Wert innerhalb des Rechners nach dem Auswählen einer Antwortmöglichkeit neu berechnet und an das Frontend schickt.
+    \item \textbf{constants}: Der \textit{constants}-Ordner ist der Ablageort für Konstanten, die innerhalb der Applikation immer wieder verwendet werden oder Quellcode, der mithilfe von Konstanten einfacher bzw. kompakter dargestellt werden konnte. So werden zum Beispiel die Literaturquellen des FAQs in Konstanten gespeichert.
     \item \textbf{layout}: Wie der Name bereits verrät, werden in diesem Ordner Layouts für die verschiedenen Seiten der Webseite definiert. Da im Kontext der CO2-Runter-Webseite nur ein Layout verwendet wird, ist dieser dementsprechend nur mit einer \textit{Default.vue}-Datei befüllt.
-    \item \textbf{plugins}: Plugins sind in sich geschlossener Code, die in der Regel Funktionen auf Anwendungsebene zu Vue hinzufügen. In unserem Fall musste das Plugin \textit{Vuetify} hinzugefügt werden, da über diese Anwendung Komponenten durch bereits vorher definierten Code aufgebaut wurde. Aus diesem Grund, wurde diese Plugininstallationsdatei im \textit{plugins}-Ordner abgelegt.
-    \item \textbf{router}: Der \textit{router}-Ordner beinhaltet die Logik für den sogenannten Router. Ein Router ist dafür zuständig, für die unterschiedlichen Webseiten und teilweise auch für einzelne Abschnitte von Webseiten, spezielle URLs zu definieren. So kann z.b. über die URL \"https://co2runter.karlsruhe.de/rechner\" auf den CO2-Rechner zugegriffen werden. Die Datei \textit{routes.ts} speichert hierbei jegliche Routen ab und liegt innerhalb des \textit{router}-Ordners.
-    \item \textbf{store}: Ein Store ist ein zentraler Ort, an dem Daten gespeichert werden, die über alle Anwendungskomponenten hinweg verfügbar sind und sein müssen. Jegliche Daten dieser Form werden im \textit{stores}-Ordner untergebracht. Beispiele für einen Store innerhalb der Anwendung ist das Loggen und abspeichern des CO2-Werts.
-    \item \textbf{types}: Wie der Name eventuell bereits verraten lässt, werden im Ordner \textit{types} Objekte, sogenannte Typen definiert. Die Typen sind hierbei als exportierbare Interfaces implementiert, die später vom Frontendcode für Logik oder andere Dinge wiederverwendet werden können. Ein Beispiel für einen solchen Typen ist eine Literaturquelle (\textit{LiteratureSource}), die jeweils immer aus fünf Strings besteht: einem Titel, einem Autor, einem Veröffentlicher, einem Veröffentlichungsjahr und einer URL zur Literaturquelle.
-    \item \textbf{views}: Innerhalb des \textit{views}-Ordner sind alle erreichbaren Seiten definiert und zu finden. Eine View setzt sich dabei aus den verschiedenen Komponenten zusammen, und sind somit die auf der Webseite zu sehenden Seiten, die durch die verschiedenen URLs (=Routen) aufgerufen werden können.
+    \item \textbf{plugins}: Plugins sind in sich geschlossene Codes, die in der Regel Funktionen auf Anwendungsebene zu Vue hinzufügen. In unserem Fall musste das Plugin \textit{Vuetify} hinzugefügt werden, da über diese Anwendung Komponenten durch bereits vorher definierten Code aufgebaut wurden. Aus diesem Grund wurde diese Plugininstallationsdatei im \textit{plugins}-Ordner abgelegt.
+    \item \textbf{router}: Der router-Ordner beinhaltet die Logik für den sogenannten Router. Ein Router ist dafür zuständig, für die unterschiedlichen Webseiten und teilweise auch für einzelne Abschnitte von Webseiten, spezielle URLs zu definieren. So kann z.B. über die URL \"https://co2runter.karlsruhe.de/rechner\" auf den CO2-Rechner zugegriffen werden. Die Datei \textit{routes.ts} speichert hierbei jegliche Routen ab und liegt innerhalb des \textit{router}-Ordners.
+    \item \textbf{store}: Ein Store ist ein zentraler Ort, an dem Daten gespeichert werden, die über alle Anwendungskomponenten hinweg verfügbar sind und sein müssen. Jegliche Daten dieser Form werden im \textit{stores}-Ordner untergebracht. Beispiele für einen Store innerhalb der Anwendung sind das Loggen und Abspeichern des CO2-Werts.
+    \item \textbf{types}: Wie der Name eventuell bereits verrät, werden im Ordner \textit{types} Objekte, sogenannte Typen, definiert. Die Typen sind hierbei als exportierbare Interfaces implementiert, die später vom Frontend-Code für Logik oder andere Dinge wiederverwendet werden können. Ein Beispiel für einen solchen Typen ist eine Literaturquelle (\textit{LiteratureSource}), die jeweils immer aus fünf Strings besteht: einem Titel, einem Autor, einem Veröffentlicher, einem Veröffentlichungsjahr und einer URL zur Literaturquelle.
+    \item \textbf{views}: Innerhalb des vie\textit{views}ws-Ordners sind alle erreichbaren Seiten definiert und zu finden. Eine View setzt sich dabei aus den verschiedenen Komponenten zusammen und sind somit die auf der Webseite zu sehenden Seiten, die durch die verschiedenen URLs (=Routen) aufgerufen werden können.
 \end{itemize}
 
-Zuguterletzt sind noch drei abschließende Dateien im \textit{src}-Ordner: \textit{App.vue} ist die oberste Schicht der UI, auf welcher die ganze Views durch den Router implementiert werden. \textit{main.ts} ist eine weitere Datei, die die Plugins, welche im \textit{plugins}-Ordner liegen, auf der Anwednungsebene registriert. Abschließend implementiert \textit{vite-env.d.ts} die Vite-Umgebung.
+Zuguterletzt sind noch drei abschließende Dateien im \textit{src}-Ordner: \textit{App.vue} ist die oberste Schicht der UI, auf welcher die ganze Views durch den Router implementiert werden. \textit{main.ts} ist eine weitere Datei, die die Plugins, welche im \textit{plugins}-Ordner liegen, auf der Anwendungsebene registriert. Abschließend implementiert \textit{vite-env.d.ts} die Vite-Umgebung.
 
 \begin{figure}[h]
     \centering
@@ -320,7 +285,7 @@ Zuguterletzt sind noch drei abschließende Dateien im \textit{src}-Ordner: \text
 \section{Anpassung der questions.json}
 \label{sec:anpassung-der-questions-json}
 
-Nachdem nun die Ordnerstruktur des Projekts aufgeräumt und neu strukturiert wurde, wird nun die \textit{questions.json} angegangen. Da die bisherige \textit{questions.json} sehr unübersichtlich und tief verschachtelt war, wurde diese neu aufgebaut und neu strukturiert. Die alte Struktur der \textit{questions.json} wird in \hyperref[lst:questions-json-old]{Listing 6.9} vereinfacht dargstellt. Dort ist zu beobachten, dass die \acs{JSON} die Kategorien bereits besitzt, wie sie später im CO2-Rechner angezeigt werden. Jede Kategorie beinhaltet den Namen der Kategorie, sowie eine Liste von Fragen. Innerhalb der Frageliste, werden die Fragen erneut über das Attribut \textit{name} in mögliche Unterkategorien unterteilt. Anschließened erkennt man ab Zeile 8 und Zeile 16 der \hyperref[lst:questions-json-old]{alten questions.json}, das sich hier ein \textit{quick}- und ein \textit{detailed}- Objekt eröffnen. Diese beinhalten jeweils die eigentlichen Fragen, die im CO2-Rechner verwendet werden. Standardmäßig werden die Fragen und Antworten aus dem \textit{quick}-Objekt geladen. Schaltet der Nutzer jedoch die Frage auf detailliert um, wie es beim alten CO2-Rechner beispielweise in \hyperref[fig:co2runterapp-rechner]{Abbildung 2.2} zu sehen ist, werden die Fragen aus dem \textit{detialed}-Objekt geladen.
+Nachdem nun die Ordnerstruktur des Projekts aufgeräumt und neu strukturiert wurde, wird nun die \textit{questions.json} angegangen. Da die bisherige \textit{questions.json} sehr unübersichtlich und tief verschachtelt war, wurde diese neu aufgebaut und neu strukturiert. Die alte Struktur der \textit{questions.json} wird in \hyperref[lst:questions-json-old]{Listing 6.9} vereinfacht dargestellt. Dort ist zu beobachten, dass die \acs{JSON} die Kategorien bereits besitzt, wie sie später im CO2-Rechner angezeigt werden. Jede Kategorie beinhaltet den Namen der Kategorie sowie eine Liste von Fragen. Innerhalb der Frageliste werden die Fragen erneut über das Attribut \textit{name} in mögliche Unterkategorien unterteilt. Anschließend erkennt man ab Zeile 8 und Zeile 16 der \hyperref[lst:questions-json-old]{alten questions.json}, dass sich hier ein \textit{quick}- und ein \textit{detailed}-Objekt eröffnen. Diese beinhalten jeweils die eigentlichen Fragen, die im CO2-Rechner verwendet werden. Standardmäßig werden die Fragen und Antworten aus dem \textit{quick}-Objekt geladen. Schaltet der Nutzer jedoch die Frage auf detailliert um, wie es beim alten CO2-Rechner beispielsweise in \hyperref[fig:co2runterapp-rechner]{Abbildung 2.2} zu sehen ist, werden die Fragen aus dem \textit{detailed}-Objekt geladen.
 
 \begin{lstlisting}[language=JavaScript, caption=Aufbau der alten questions.json, label={lst:questions-json-old}]
 {
@@ -394,18 +359,13 @@ Da im neuen CO2-Rechner keine Möglichkeit mehr geboten wird, zwischen detaillie
 }
 \end{lstlisting}
 
-Die neue \acs{JSON} zeichnet sich dadurch aus, dass die Antworten einer Frage in Objekten aus einem \textit{text}- und einem \textit{value}-Objekt gespeichert sind. Dadurch kann bei der Berechnung des CO2-Werts der Wert einer Antwortmöglichkeit, die im Frontend ausgewählt wurde, leichert gefunden werden und man muss muss sich nicht ewig durch die Datenstruktur der \acs{JSON} quälen. Zusätzlich wurde wie bereits vorher erwähnt, die Fragenunterteilung in \textit{quick} und \textit{detailed} entfernt, so dass man insgesamt eine verständlichere Datenstruktur hat. Somit wurde die Anforderung aus dem Kapitel 5.1.3 - \hyperref[sec:questions-json-anpassen]{[R14] Question.json anpassen} erledigt.
+Die neue \acs{JSON} zeichnet sich dadurch aus, dass die Antworten einer Frage in Objekten aus einem \textit{text}- und einem \textit{value}-Objekt gespeichert sind. Dadurch kann bei der Berechnung des CO2-Werts der Wert einer Antwortmöglichkeit, die im Frontend ausgewählt wurde, leichter gefunden werden und man muss sich nicht ewig durch die Datenstruktur der \acs{JSON} quälen. Zusätzlich wurde, wie bereits vorher erwähnt, die Fragenunterteilung in \textit{quick} und \textit{detailed} entfernt, sodass man insgesamt eine verständlichere Datenstruktur hat. Somit wurde die Anforderung aus dem Kapitel 5.1.3 - \hyperref[sec:questions-json-anpassen]{[R14] Question.json anpassen} erledigt.
 
 % TODO: beschreiben, dass letzte Kategorie im alten Rechner nicht richtig funktioniert hat und deshalb selbst angepasst wurde
 
 \section{Erstellung der neuen Landing Page}
 
-Die Landing Page ist die erste Seite, die der NutzerInnen sieht, wenn er die Webseite besucht.
-Sie ist somit das Aushängeschild der Webseite und sollte den NutzerInnen dazu animieren, die Webseite zu nutzen.
-Die Landing Page sollte also ansprechend und informativ sein, um den NutzerInnen zu überzeugen, die Webseite zu nutzen als auch die zuvor definierte Anforderung \textbf{[R04]} erfüllen.
-Die neue Landing Page wird mit \textbf{Vuetify} erstellt, einem Material Design Framework für Vue.js.
-Vuetify bietet viele vorgefertigte Komponenten, die es ermöglichen, schnell und einfach ansprechende Webseiten zu erstellen.
-Die Landing Page könnte wie folgt aussehen:
+Die Landing Page ist die erste Seite, die die NutzerInnen sehen, wenn sie die Webseite besuchen. Sie ist somit das Aushängeschild der Webseite und sollte die NutzerInnen dazu animieren, die Webseite zu nutzen. Die Landing Page sollte also ansprechend und informativ sein, um die NutzerInnen zu überzeugen, die Webseite zu nutzen, und gleichzeitig die zuvor definierte Anforderung \textbf{[R04]} erfüllen. Die neue Landing Page wird mit \textbf{Vuetify} erstellt, einem Material Design Framework für Vue.js. Vuetify bietet viele vorgefertigte Komponenten, die es ermöglichen, schnell und einfach ansprechende Webseiten zu erstellen. Die Landing Page könnte wie folgt aussehen:
 
 \begin{figure}[H]
     \centering
@@ -414,20 +374,13 @@ Die Landing Page könnte wie folgt aussehen:
     \label{fig:new-co2runter-homepage-design}
 \end{figure}
 
-Das Design, welches in der \hyperref[fig:new-co2runter-homepage-design]{vorheriger Abbildung} zu sehen war, wurde anhand der Evaluierung der Umfrage und der erstellten Personas erstellt.
-Dafür wurde das Tool Figma genutzt und auch direkt mit Vuetify Komponenten gearbeitet, wodurch die Entwicklungsarbeitszeit immens verkürzt wurde.
-Das ist deshalb der Fall, da das Design und die Komponenten im späteren Implementierungsverlauf 1:1 übernommen werden konnten.
+Das Design, das in der \hyperref[fig:new-co2runter-homepage-design]{vorheriger Abbildung} zu sehen war, wurde anhand der Evaluierung der Umfrage und der erstellten Personas erstellt. Dafür wurde das Tool Figma genutzt und auch direkt mit Vuetify Komponenten gearbeitet, wodurch die Entwicklungsarbeitszeit immens verkürzt wurde. Das ist deshalb der Fall, da das Design und die Komponenten im späteren Implementierungsverlauf 1:1 übernommen werden konnten.
 
-Die neue Homepage kann man in drei Sektionen unterteilen.
-Einmal die Navigationsleiste, den Kontent der Landing Page und den Footer mit desen relevanten Informationen.
-Zu beachten ist hierbei das die Navigationsleiste, als auch der Footer, auf allen Seiten identisch sein sollen.
-Einzig der Kontent einer Seite ist dynamisch und soll deshalb veränderbar sein.
-Daher werden die drei Sektionen im folgenden nacheinander durchgearbeitet.
-Zuvor aber werden wichtige Änderungen vorgenommen.
+Die neue Homepage kann man in drei Sektionen unterteilen. Einmal die Navigationsleiste, den Kontent der Landing Page und den Footer mit deren relevanten Informationen. Zu beachten ist hierbei, dass die Navigationsleiste, als auch der Footer, auf allen Seiten identisch sein sollen. Einzig der Kontent einer Seite ist dynamisch und soll deshalb veränderbar sein. Daher werden die drei Sektionen im folgenden nacheinander durchgearbeitet. Zuvor aber werden wichtige Änderungen vorgenommen.
 
 \subsection{Änderungen}
 
-Eine wichtige Änderung ist die Anpassung des Farbschemas, um die Webseite ansprechender zu gestalten. Dafür wird das Farbschema von Vuetify angepasst, um eine konsistente Farbgebung zu gewährleisten. Hierfür erstellen wir lediglich nach der Vuetify dokumentation ein neues Farbschema und passen die Farben an. Dieses Farbschema wird dann in der Vuetify Konfiguration eingebunden. Das Farbschema sieht dann wie folgt aus: \cite{vuetiy-custom-color-theme}
+Eine wichtige Änderung ist die Anpassung des Farbschemas, um die Webseite ansprechender zu gestalten. Dafür wird das Farbschema von Vuetify angepasst, um eine konsistente Farbgebung zu gewährleisten. Hierfür erstellen wir lediglich nach der Vuetify-Dokumentation ein neues Farbschema und passen die Farben an. Dieses Farbschema wird dann in der Vuetify-Konfiguration eingebunden. Das Farbschema sieht dann wie folgt aus: \cite{vuetiy-custom-color-theme}
 
 \begin{lstlisting}[language={JavaScript}, caption={Vuetify Farbschema anpassung}]
 export default createVuetify({
@@ -447,10 +400,7 @@ export default createVuetify({
 });
 \end{lstlisting}
 
-Nicht nur die Farben, sondern auch das Layout sollte angepasst werden.
-Dafür wird ein Layout erstellt, welches auf allen Seiten gleich ist und nur der Kontent variabel ist.
-Dieses Layout wird dann in jeder Seite durch die Vue Router Funktionalität eingebunden.
-Das Einbinden sieht wie folgt aus:
+Nicht nur die Farben, sondern auch das Layout sollte angepasst werden. Dafür wird ein Layout erstellt, das auf allen Seiten gleich ist und nur der Kontent variabel ist. Dieses Layout wird dann in jeder Seite durch die Vue Router Funktionalität eingebunden. Das Einbinden sieht wie folgt aus:
 
 \begin{lstlisting}[language={JavaScript}, caption={Einbindung des Layouts in der Vue Router Konfiguration}]
 const routes = [
@@ -469,9 +419,7 @@ const routes = [
 ];
 \end{lstlisting}
 
-Damit das Einbinden richtig funktioniert, muss in der \texttt{Default.vue} Datei mindestens ein \texttt{<router-view />} Tag existieren, damit die jeweilige Seite eingebunden und angezeigt wird.
-Das angepasste Layout der CO2-Runter-Webseite beinhaltet, dass auf jeder erreichbaren Seite die Navigationsleiste, der Kontent und der Footer angezeigt wird.
-Dieses Layout wird dann in der \texttt{App.vue} Datei wiederum über ein \texttt{<router-view />} Tag eingebunden und sieht wie folgt aus:
+Damit das Einbinden richtig funktioniert, muss in der \texttt{Default.vue} Datei mindestens ein \texttt{<router-view />} Tag existieren, damit die jeweilige Seite eingebunden und angezeigt wird. Die angepasste Layout der CO2-Runter-Webseite beinhaltet, dass auf jeder erreichbaren Seite die Navigationsleiste, der Kontent und der Footer angezeigt wird. Dieses Layout wird dann in der \texttt{App.vue} Datei wiederum über ein \texttt{<router-view />} Tag eingebunden und sieht wie folgt aus:
 
 \begin{lstlisting}[language={JavaScript}, caption={Layout Definition}]
 <template>
@@ -483,14 +431,11 @@ Dieses Layout wird dann in der \texttt{App.vue} Datei wiederum über ein \texttt
 </template>
 \end{lstlisting}
 
-Nachdem diese Schritte befolgt wurden und jede Seite das Layout eingebunden hat, sowie das Farbschema zu jeder Webseite angepasst wurde, kann sich nun um die restliche Komponenten gekümmert werden.
-Dabei handelt es sich um die Komponenten der Navigationsleiste, des Kontents und des Footers.
+Nachdem diese Schritte befolgt wurden und jede Seite das Layout eingebunden hat, sowie das Farbschema zu jeder Webseite angepasst wurde, kann sich nun um die restliche Komponenten gekümmert werden. Dabei handelt es sich um die Komponenten der Navigationsleiste, des Kontents und des Footers.
 
 \subsection{Navigationsleiste}
 
-Eine Navigationsleiste dient dem NutzerInnen einer Webseite dazu, den Überblick über den aktuell zu sehenden Bereich einer Webseite zu behalten und biete eine schnelle und einfache Navigation über die Webseite.
-Im Fall der CO2-Runter-App gibt es die Startseite, den CO2-Rechner, das Dashboard, sowie eine FAQ- und Gruppensystemseite.
-Diese sollen über die Navigationsleiste erreichbar sein.
+Eine Navigationsleiste dient den NutzerInnen einer Webseite dazu, den Überblick über den aktuell zu sehenden Bereich einer Webseite zu behalten und bietet eine schnelle und einfache Navigation über die Webseite. Im Fall der CO2-Runter-App gibt es die Startseite, den CO2-Rechner, das Dashboard, sowie eine FAQ- und Gruppensystemseite. Diese sollen über die Navigationsleiste erreichbar sein.
 
 \begin{lstlisting}[language={JavaScript}, caption={Navigationsleiste für Web als auch Mobile}]
 <template>
@@ -514,10 +459,8 @@ Diese sollen über die Navigationsleiste erreichbar sein.
 \end{lstlisting}
 
 \subsection{Footer}
-Ein Footer ist das Gegenstück zur Navigationsleiste und ist immer ganz am Ende bzw. am unteren Bereich einer Webseite zu finden.
-Auch der Footer dient dazu, Informationen darzustellen und besser über eine Webseite navigieren zu können.
-Um den Footer zu erzeugen, gibt es drei Bereiche.
-Einmal die Logos der Partner, dann die rechtlichen Informationen und die technischen Informationen und an Ende der Copyright.
+
+Ein Footer ist das Gegenstück zur Navigationsleiste und ist immer ganz am Ende bzw. am unteren Bereich einer Webseite zu finden. Auch der Footer dient dazu, Informationen darzustellen und besser über eine Webseite navigieren zu können. Um den Footer zu erzeugen, gibt es drei Bereiche. Einmal die Logos der Partner, dann die rechtlichen Informationen und die technischen Informationen und am Ende das Copyright.
 
 \begin{lstlisting}[language={JavaScript}, caption={Footer Definition}]
 <template>
@@ -540,21 +483,10 @@ Einmal die Logos der Partner, dann die rechtlichen Informationen und die technis
 \end{lstlisting}
 
 \subsection{Kontent}
-Der Hauptpart der neuen Landing Page ist selbstverständlich der Kontent.
-Hier ist es besonders wichtig, die NutzerInnen direkt anzusprechen und die Seite attraktiv und interessant wirken zu lassen.
-Aus diesem Grund wurde sich für ein Design entschieden, dass die wichtigsten Aspekte der Webseite mit interessanten Einführungstexten in Reihen auf der Landing Page zu sehen sind.
-Jede Reihe ist unterteilt in einen linken und in einen rechten Part, welche jeweils abwechselnd mit Text bzw. mit einem passenden Bild gefüllt sind.
-Dabei wechselt sich die Position des Textes und des Bilds nach jeder Reihe ab, sodass man auch ohne Trennlinien das Layout gut erkennen kann und dem Auge der NutzerInnen nicht langweilig wird.
-Der Textpart ist hierbei immer mit einer kleinen Überschrift, einem Einführungstext sowie einem Button gefüllt.
-Die Überschriften der insgesamt drei Reihen sind dabei so gewählt, dass die NutzerInnen angesprochen werden oder zumindest ein gewisses Grundinteresse geweckt wird.
-Im Einführungstext unter der Überschrift wird dieses Konzept aufgegriffen und weiter über das angesprochene Thema informiert.
-Durch den Button am Ende des Einführungstexts gelangen die NutzerInnen direkt auf die angesprochene und verlinkte Webseite und können sich unter anderem ihren CO2-Wert berechnen lassen oder sich weiter über den Klimaschutz auf der FAQ-Seite informieren.
-Das Bild ist hingegen so gewählt, dass es zur jeweiligen Überschrift bzw. Thema des Absatzes passt. \par
-Grundsätzlich ist auch der Kontent in den Hauptfarben der CO2-Runter-Webseite gehalten.
-Jedoch wurden die Überschriften und Texte innerhalb der Buttons etwas dunkler und auffälliger gestaltet, da diese ja vom Auge der NutzerInnen direkt registriert werden sollen.
-Dadurch wird der optimale Fokus gelenkt.
-In der folgenden Abbildung ist der Code zum Kontent zu sehen:
-\newpage
+
+Der Hauptpart der neuen Landing Page ist selbstverständlich der Kontent. Hier ist es besonders wichtig, die NutzerInnen direkt anzusprechen und die Seite attraktiv und interessant wirken zu lassen. Aus diesem Grund wurde sich für ein Design entschieden, das die wichtigsten Aspekte der Webseite mit interessanten Einführungstexten in Reihen auf der Landing Page zeigt. Jede Reihe ist unterteilt in einen linken und einen rechten Part, welche jeweils abwechselnd mit Text bzw. mit einem passenden Bild gefüllt sind. Dabei wechselt sich die Position des Textes und des Bilds nach jeder Reihe ab, sodass man auch ohne Trennlinien das Layout gut erkennen kann und dem Auge der NutzerInnen nicht langweilig wird. Der Textpart ist hierbei immer mit einer kleinen Überschrift, einem Einführungstext sowie einem Button gefüllt. Die Überschriften der insgesamt drei Reihen sind dabei so gewählt, dass die NutzerInnen angesprochen werden oder zumindest ein gewisses Grundinteresse geweckt wird. Im Einführungstext unter der Überschrift wird dieses Konzept aufgegriffen und weiter über das angesprochene Thema informiert. Durch den Button am Ende des Einführungstexts gelangen die NutzerInnen direkt auf die angesprochene und verlinkte Webseite und können sich unter anderem ihren CO2-Wert berechnen lassen oder sich weiter über den Klimaschutz auf der FAQ-Seite informieren. Das Bild ist hingegen so gewählt, dass es zur jeweiligen Überschrift bzw. zum Thema des Absatzes passt.
+
+Grundsätzlich ist auch der Kontent in den Hauptfarben der CO2-Runter-Webseite gehalten. Jedoch wurden die Überschriften und Texte innerhalb der Buttons etwas dunkler und auffälliger gestaltet, da diese ja vom Auge der NutzerInnen direkt registriert werden sollen. Dadurch wird der optimale Fokus gelenkt. In der folgenden Abbildung ist der Code für den Kontent zu sehen:
 
 \begin{lstlisting}[language={JavaScript}, caption={Home Page Kontent}]
 <template>
@@ -721,7 +653,7 @@ Nachfolgend ist der Code für QuestionBlock.vue und QuestionStepper.vue aufgelis
 
 \section{Übernahme und Anpassung des Dashboards}
 
-Das Dashboard spielt eine entscheidende Rolle auf der Webseite, indem es dem NutzerInnen ermöglicht, CO2-Emissionen zu verfolgen, zu analysieren und zu reduzieren. Es präsentiert dem NutzerInnen eine Vielzahl von Informationen über die Stadtteile von Karlsruhe. Insbesondere bietet das Dashboard eine interaktive Karte, die die Stadtteile von Karlsruhe und den durchschnittlichen CO2-Verbrauch gemäß den Angaben der NutzerInnen, die ihren Stadtteilen zugeordnet sind, darstellt. Um die \textbf{Anforderung [R05]} zu erfüllen, wird das Dashboard für die neue Webseite neu entwickelt und an das Framework sowie an die Benutzeroberfläche angepasst. Da dieses Feature bereits in der vorherigen Webseite implementiert war, kann darauf aufgebaut werden, um die \textbf{Anforderung [R05]} zu erfüllen. Das Dashboard wird in mehrere Komponenten unterteilt, die jeweils für einen bestimmten Teil des Dashboards verantwortlich sind.
+Das Dashboard spielt eine entscheidende Rolle auf der Webseite, indem es den NutzerInnen ermöglicht, CO2-Emissionen zu verfolgen, zu analysieren und zu reduzieren. Es präsentiert den NutzerInnen eine Vielzahl von Informationen über die Stadtteile von Karlsruhe. Insbesondere bietet das Dashboard eine interaktive Karte, die die Stadtteile von Karlsruhe und den durchschnittlichen CO2-Verbrauch gemäß den Angaben der NutzerInnen, die ihren Stadtteilen zugeordnet sind, darstellt. Um die \textbf{Anforderung [R05]} zu erfüllen, wird das Dashboard für die neue Webseite neu entwickelt und an das Framework sowie an die Benutzeroberfläche angepasst. Da dieses Feature bereits in der vorherigen Webseite implementiert war, kann darauf aufgebaut werden, um die \textbf{Anforderung [R05]} zu erfüllen. Das Dashboard wird in mehrere Komponenten unterteilt, die jeweils für einen bestimmten Teil des Dashboards verantwortlich sind.
 
 Die Herausforderung besteht darin, die Funktionsweise des React-Codes in den neuen Vue-Code zu überführen und sicherzustellen, dass alles einwandfrei funktioniert. Die Bibliothek ECharts, die für die Grafiken genutzt wurde, kann auch problemlos in Vue verwendet werden, wodurch die gleichen Grafikoptionen wie zuvor verfügbar sind. Es müssen lediglich die Daten aus der Datenbank abgerufen und entsprechend angepasst werden, um die \textbf{Anforderung [R01]} zu erfüllen.
 Anschließend müssen verschiedene Anpassungen vorgenommen werden, um sicherzustellen, dass alle Funktionalitäten problemlos funktionieren.
@@ -776,7 +708,7 @@ onMounted(async () => {
 });
 \end{lstlisting}
 
-Die \textbf{getData} Funktion ist dafür zuständig die Daten aus der Datenbank in ein Format zu bringen welches von der Vue-ECharts Bibliothek verstanden wird. Hierbei wird die Karte erstellt und die Daten aus der Datenbank abgerufen und entsprechend angepasst, um die Karte zu erstellen. Dabei konnten wir die bisherigen Konfigurationen von React-ECharts übernehmen und mussten lediglich die Daten anpassen. Um einen einblick zu erhalten was die \textbf{getData} beinhaltet hier ein Beispiel:
+Die \textbf{getData} Funktion ist dafür zuständig die Daten aus der Datenbank in ein Format zu bringen welches von der Vue-ECharts Bibliothek verstanden wird. Hierbei wird die Karte erstellt und die Daten aus der Datenbank abgerufen und entsprechend angepasst, um die Karte zu erstellen. Dabei konnten wir die bisherigen Konfigurationen von React-ECharts übernehmen und mussten lediglich die Daten anpassen. Um einen Einblick zu erhalten, was die \textbf{getData} beinhaltet, hier ein Beispiel:
 
 \begin{lstlisting}[language={JavaScript}, caption={Beispiel Konfiguration für ECharts Diagramme}]
 function getData() {
@@ -813,71 +745,65 @@ Dieses Vorgehen konnte dann bei allen Grafiken und Diagrammen durchgeführt werd
     \label{fig:new-co2runter-dashboard-design}
 \end{figure}
 
-Dadurch kann man nun die CO2-Emissionen in Karlsruhe pro Stadtteil sehen und vergleichen. Dies ist ein wichtiger Aspekt des Dashboards, da es dem NutzerInnen ermöglicht, die CO2-Emissionen in Karlsruhe zu visualisieren und zu vergleichen was in der Anforderung \textbf{R11} definiert wurde. Dies ist ein wichtiger Schritt, um das Bewusstsein für den Klimawandel zu schärfen und die NutzerInnen zu motivieren, ihren CO2-Fußabdruck zu reduzieren. Dazu helfen auch weitere Grafiken wie Balkendiagramme, die den CO2-Fußabdruck der NutzerInnen in verschiedenen Kategorien anzeigen.
+Dadurch können NutzerInnen nun die CO2-Emissionen in Karlsruhe pro Stadtteil sehen und vergleichen. Dies ist ein wichtiger Aspekt des Dashboards, da es den NutzerInnen ermöglicht, die CO2-Emissionen in Karlsruhe zu visualisieren und zu vergleichen, was in der Anforderung \textbf{R11} definiert wurde. Dies ist ein wichtiger Schritt, um das Bewusstsein für den Klimawandel zu schärfen und die NutzerInnen zu motivieren, ihren CO2-Fußabdruck zu reduzieren. Dazu helfen auch weitere Grafiken wie Balkendiagramme, die den CO2-Fußabdruck der NutzerInnen in verschiedenen Kategorien anzeigen.
 
 \section{Das neue Gruppensystem}
 
-Eine essentielle Funktion der alten Webseite war die Funktion, sich in Gruppen zusammenzuschließen und gemeinsam den CO2-Fußabdruck der Gruppe zu messen und sich gegenseitig zu motivieren, diesen zu reduzieren. Um die \textbf{Anforderung [R06]} zu erfüllen, wurde das Gruppensystem in die neue Webseite integriert und verbessert. Das Gruppensystem besteht aus mehreren Komponenten, die jeweils für einen bestimmten Teil des Gruppensystems verantwortlich sind.
+Eine essentielle Funktion der alten Webseite war die Möglichkeit, sich in Gruppen zusammenzuschließen und gemeinsam den CO2-Fußabdruck der Gruppe zu messen und sich gegenseitig zu motivieren, diesen zu reduzieren. Um die \textbf{Anforderung [R06]} zu erfüllen, wurde das Gruppensystem in die neue Webseite integriert und verbessert. Das Gruppensystem besteht aus mehreren Komponenten, die jeweils für einen bestimmten Teil des Gruppensystems verantwortlich sind.
 
-Es gibt zunächst eine Seite zum Gruppensystem wo NutzerInnen Informationen zum Gruppensystem erhalten und die Möglichkeit haben, einer Gruppe beizutreten oder eine Gruppe zu erstellen.
-\hyperref[fig:gruppensystem-neues-design]{Abbildung 6.6} zeigt diese Seite.
-Wie zu erkennen ist, kann man im ersten Absatz eine neue Gruppe erstellen.
-Im letzten Absatz der Seite ist es möglich, über den Gruppencode einer neuen Gruppe beizutreten.
-Die Gruppenerstelltung ist relativ einfach und besteht lediglich darin einen Gruppennamen einzugeben und dann wird dadurch ein Gruppencode generiert welcher von anderen NutzerInnen genutzt werden kann, um der Gruppe beizutreten. Dieser Gruppencode kann beim Gruppensystem Übersichtsseiten in ein Eingabefeld eingegeben werden, um der Gruppe beizutreten.
+Es gibt zunächst eine Seite zum Gruppensystem, auf der NutzerInnen Informationen zum Gruppensystem erhalten und die Möglichkeit haben, einer Gruppe beizutreten oder eine Gruppe zu erstellen. \hyperref[fig:gruppensystem-neues-design]{Abbildung 6.6} zeigt diese Seite. Wie zu erkennen ist, kann man im ersten Absatz eine neue Gruppe erstellen. Im letzten Absatz der Seite ist es möglich, über den Gruppencode einer neuen Gruppe beizutreten.
+
+Die Gruppenerstellung ist relativ einfach und besteht lediglich darin, einen Gruppennamen einzugeben, woraufhin ein Gruppencode generiert wird, den andere NutzerInnen nutzen können, um der Gruppe beizutreten. Dieser Gruppencode kann auf den Seiten des Gruppensystems in ein Eingabefeld eingegeben werden, um einer Gruppe beizutreten.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{images/06/gruppensystem-design.png}
-    \caption{Design der neuen Gruppensystemseite}
+    \caption{Design des neuen Gruppensystems}
     \label{fig:gruppensystem-neues-design}
 \end{figure}
 
-All dies funktioniert natürlich nur wenn der Nutzer eingelogt ist, aber dann kann der/die NutzerIn über dein Konto auf eine Gruppeninformationen Seite gelangen, wo alle Informationen zu Gruppen dargestellt werden.
+All dies funktioniert natürlich nur, wenn der/die NutzerIn eingeloggt ist, aber dann kann der/die NutzerIn über sein/ihr Konto auf eine Gruppeninformationsseite gelangen, wo alle Informationen zu Gruppen dargestellt werden.
 
-Für die Implementierung besteht der schwere Teil lediglich herauszufinden welche Daten benötigt werden und welche \acs{API} Schnittstellen benötigt werden.
+Für die Implementierung besteht die Herausforderung hauptsächlich darin, die benötigten Daten und die erforderlichen \acs{API}-Schnittstellen zu identifizieren.
 
-Im folgenden Screenshot ist einmal die Seite zu erkennen, auf die man weitergeleitet wird, wenn ein/e NutzerIn eine neue Gruppe selbst erstellen möchte.
-Dort werden die NutzerInnen aufgefordert einen Name für ihre Gruppe einzugeben.
-Sobald die Gruppe erfolgreich erstellt wurde, erscheint dem/der NutzerIn eine Bestätigung mit einem Dashboardlink, Joinlink und dem Gruppencode.
-\hyperref[fig:neue-gruppe-design]{Abbildung 6.7} zeigt die Ansicht, in der eine neue Gruppe erstellt werden kann.
+Im folgenden Screenshot ist einmal die Seite zu erkennen, auf die man weitergeleitet wird, wenn ein/e NutzerIn eine neue Gruppe selbst erstellen möchte. Dort werden die NutzerInnen aufgefordert, einen Namen für ihre Gruppe einzugeben. Sobald die Gruppe erfolgreich erstellt wurde, erscheint dem/der NutzerIn eine Bestätigung mit einem Dashboardlink, Joinlink und dem Gruppencode. \hyperref[fig:neue-gruppe-design]{Abbildung 6.7} zeigt die Ansicht, in der eine neue Gruppe erstellt werden kann.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{images/06/gruppe-erstellen-design.png}
-    \caption{Ansicht um eine neue Gruppe zu erstellen}
+    \caption{Ansicht zur Erstellung einer neuen Gruppe}
     \label{fig:neue-gruppe-design}
 \end{figure}
 
-Die \hyperref[fig:gruppe-erfolgreich-erstellt]{nächste Abbildung} zeigt die Bestätigungsseite nachdem die Gruppe erfolgreich erstellt wurde.
-Zu beobachten sind zusätzlich die bereits erwähnten Links zur Dashboardansicht der Gruppe und ein Link, um andere Leute in die Gruppe einzuladen.
-Ebenfalls wird ein QR-Code erstellt, über welchen andere NutzerInnen der Gruppe beitreten können.
+Die nächste Abbildung zeigt die Bestätigungsseite nach der erfolgreichen Erstellung einer Gruppe. Zu beobachten sind zusätzlich die bereits erwähnten Links zur Dashboardansicht der Gruppe und ein Link, um andere Leute in die Gruppe einzuladen. Ebenfalls wird ein QR-Code erstellt, über den andere NutzerInnen der Gruppe beitreten können.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{images/06/gruppen-erstellung-bestätigung.png}
-    \caption{Bestätigungsansicht nach der erfolgreichen Erstellung einer Gruppe}
+    \caption{Bestätigungsansicht nach erfolgreicher Erstellung einer Gruppe}
     \label{fig:gruppe-erfolgreich-erstellt}
 \end{figure}
 
 \section{FAQ-Seite}
 
-Und zu guter Letzt wurde noch eine FAQ-Seite der neuen CO2-Runter Webseite hinzugefügt. Der Hintergrund dafür besteht darin, dass es bisher keine Möglichkeit gab, NutzerInnen Informationen zu geben, die nicht direkt mit dem CO2-Rechner oder dem Dashboard zu tun haben. Dadurch will man die Anforderung \textbf{[R07]} erfüllen.
+Und zu guter Letzt wurde noch eine FAQ-Seite auf der neuen CO2-Runter Webseite hinzugefügt. Der Hintergrund hierfür ist, dass es bisher keine Möglichkeit gab, NutzerInnen Informationen zur Verfügung zu stellen, die nicht direkt mit dem CO2-Rechner oder dem Dashboard zusammenhängen.
 
-Die FAQ-Seite soll NutzerInnen die Möglichkeit geben, Antworten auf häufig gestellte Fragen zu finden und zusätzlich eine Literaturliste enthalten, die die NutzerInnen nutzen können, um sich weiter zu informieren.
+Die FAQ-Seite soll NutzerInnen die Möglichkeit geben, Antworten auf häufig gestellte Fragen zu finden und zusätzlich eine Literaturliste enthalten, die den NutzerInnen ermöglicht, sich weiter zu informieren.
 
-Die Implementierung dieser Seite ist relativ einfach, da es sich um eine statische Seite handelt. Die Daten für die FAQ-Seite werden aus einer \acs{JSON}-Datei abgerufen und entsprechend angepasst, um die FAQ-Seite zu erstellen. Hierfür wurden viele Designaspekte übernommen, die bereits auf der Landing Page verwendet wurden. Das Einzige Neue ist die Literaturliste, die durch eine Tabelle realisiert wurde. Hierfür wird lediglich die \acs{JSON}-Datei abgerufen und die Daten in die Tabelle eingefügt. Dies geschieht wie folgt:
+Die Implementierung dieser Seite ist relativ einfach, da es sich um eine statische Seite handelt. Die Daten für die FAQ-Seite werden aus einer \acs{JSON}-Datei abgerufen und entsprechend angepasst, um die FAQ-Seite zu erstellen. Die einzige Neuigkeit besteht in der Implementierung einer Literaturliste, welche durch eine Tabelle dargestellt wird. Hierfür wird lediglich die \acs{JSON}-Datei abgerufen und die Daten in die Tabelle eingefügt. Dies geschieht wie folgt:
 
 \begin{lstlisting}[language={JavaScript}, caption={Laden der Literaturliste}]
 <v-data-table
     v-model:page="page"
     :headers="headers"
-    :items="LiteratureSources"
+    :items="literatureSources"
     :search="search"
 >...</v-data-table>
 \end{lstlisting}
 
 Die Literaturliste wird in einer Tabelle dargestellt, die es den NutzerInnen ermöglicht, die Literaturquellen zu durchsuchen und auf die Quellen zuzugreifen. Die Tabelle enthält eine Spalte für den Titel der Quelle, eine Spalte für den Autor, eine Spalte für das Erscheinungsjahr und eine Spalte für den Link zur Quelle. Die Tabelle ist durchsuchbar und paginiert, um die Benutzerfreundlichkeit zu verbessern.
 
-Alle Literaturelemente befinden sich in der \textbf{LiteratureSources}-Variable, die in einer separaten TypeScript-Datei definiert wurde. Dabei handelt es sich um ein Array von Objekten, die die Literaturquellen repräsentieren.
+Alle Literaturelemente befinden sich in der \textbf{literatureSources}-Variable, die in einer separaten TypeScript-Datei definiert wurde. Dabei handelt es sich um ein Array von Objekten, die die Literaturquellen repräsentieren.
 
 \begin{lstlisting}[language={JavaScript}, caption={Literaturelemente}]
 export default const literatureSources: LiteratureSource[] = [
@@ -891,17 +817,15 @@ export default const literatureSources: LiteratureSource[] = [
 ];
 \end{lstlisting}
 
-Das finale Design der FAQ-Seite sieht sehr modern und übersichtlich aus und lädt den NutzerInnen dazu ein, sich weiter zu informieren.
+Das finale Design der FAQ-Seite sieht sehr modern und übersichtlich aus und lädt die NutzerInnen dazu ein, sich weiter zu informieren.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{images/06/FAQ-Design.jpeg}
-    \caption{Design der FAQ-Seite der neuen Webseite}
+    \caption{Design der FAQ-Seite auf der neuen Webseite}
     \label{fig:new-co2runter-faq-design}
 \end{figure}
 
 % Überleitung ins nächste Kapitel
 
-Nachdem die neue Webseite erfolgreich implementiert wurde, wird im nächsten Kapitel noch einmal alles zusammengefasst und ein Fazit über die Arbeit und die Ergebnisse gezogen.
-In dem letzten Kapitel soll noch einmal der gesamte Projektverlauf reflektiert werden.
-Dazu gehört selbstverständlich eine Zusammenfassung über erreichte Dinge während der Projektlaufzeit, einer Schlussfolgerung sowie einem Ausblick und eine Empfehlung für zukünftige Studienarbeiten, die diese Projekt als grundlegendes Thema nutzen.
+Nachdem die neue Webseite erfolgreich implementiert wurde, wird im nächsten Kapitel noch einmal alles zusammengefasst und ein Fazit über die Arbeit und die Ergebnisse gezogen. In dem letzten Kapitel soll noch einmal der gesamte Projektverlauf reflektiert werden. Dazu gehört selbstverständlich eine Zusammenfassung über erreichte Dinge während der Projektlaufzeit, einer Schlussfolgerung sowie einem Ausblick und eine Empfehlung für zukünftige Studienarbeiten, die dieses Projekt als grundlegendes Thema nutzen.
