@@ -523,10 +523,7 @@ Grundsätzlich ist auch der Kontent in den Hauptfarben der CO2-Runter-Webseite g
 \section{Neuerstellung des CO2-Rechners}
 \label{chapter:neuerstellung_co2rechner}
 
-% TODO: Anforderung [R03] umsetzen: Hochladen von CO2 Daten
-% TODO: Anforderung [R02] umsetzen: Berechnung von CO2 Fußabdruck
-
-Der CO2-Rechner ist ein wichtiges Feature der Webseite, da dem NutzerInnen dadurch ermöglicht wird, seinen CO2-Fußabdruck zu berechnen. Bei der Neuerstellung hat man sich an der bisherigen Implementierung orientiert und diesen Workflow des CO2-Rechners beibehalten. Dadurch konnte dann die Anforderung \textbf{R09} erfüllt werden. Der CO2-Rechner besteht aus mehreren Kategorien, die der NutzerInnen durchlaufen muss, um seinen CO2-Fußabdruck zu berechnen. Die Kategorien lauten: Mobilität, Ernährung, Wohnen und Konsum. Der NutzerInnen muss für jede Kategorie verschiedene Fragen beantworten, um seinen CO2-Fußabdruck zu berechnen. Die Fragen sind so gestaltet, dass der NutzerInnen sie leicht beantworten kann. Die Fragen könnten wie folgt aussehen:
+Der CO2-Rechner ist ein wichtiges Feature der Webseite, da den NutzerInnen dadurch ermöglicht wird, ihren CO2-Fußabdruck zu berechnen. Bei der Neuerstellung hat man sich an der bisherigen Implementierung orientiert und diesen Workflow des CO2-Rechners beibehalten. Dadurch konnte dann die Anforderung \textbf{R09} erfüllt werden. Der CO2-Rechner besteht aus mehreren Kategorien, die die NutzerInnen durchlaufen müssen, um ihren CO2-Fußabdruck zu berechnen. Die Kategorien lauten: Mobilität, Ernährung, Wohnen und Konsum. Die NutzerInnen müssen für jede Kategorie verschiedene Fragen beantworten, um ihren CO2-Fußabdruck zu berechnen. Die Fragen sind so gestaltet, dass die NutzerInnen diese leicht beantworten können. Die Fragen sehen wie folgt aus:
 
 \begin{figure}[H]
     \centering
@@ -553,8 +550,8 @@ Der berechnete CO2-Wert aus den gewählten Antwortmöglichkeiten befindet sich n
 Um den berechneten Fußabdruck noch deutlicher in den Vordergrund zu setzen, wurde diesem die Primärfarbe verpasst, so dass er in einem dunkelgrün erscheint.
 
 Eine weitere grundlegende Veränderung des neuen CO2-Rechners findet man unmittelbar unterhalb der Kategorienauflistung.
-Bevor der NutzerInnen auf den eigentlichen Rechner stößt, wurde für jede Kategorie ein kleiner Einführungsabschnitt geschrieben und ein dazu passendes Bild hinzugefügt.
-Diese Neuerung soll dafür sorgen, dass sich der NutzerInnen nicht direkt in den Rechner stürzt, sondern über das aktuelle Thema aufgeklärt und informiert wird.
+Bevor die NutzerInnen auf den eigentlichen Rechner stoßen, wurde für jede Kategorie ein kleiner Einführungsabschnitt geschrieben und ein dazu passendes Bild hinzugefügt.
+Diese Neuerung soll dafür sorgen, dass sich die NutzerInnen nicht direkt in den Rechner stürzen, sondern über das aktuelle Thema aufgeklärt und informiert werden.
 Außerdem bringt der Abschnitt mit dem Bild einen positiven Aspekt im Bereich der Nutzerfreundlichkeit.
 
 Für die Implementierung des neuen CO2-Rechner wurde eine neue Komponente namens \textit{CalculatorView.vue} erstellt.
@@ -590,12 +587,7 @@ Diese bildet die Hauptansicht des Rechners und implementiert weitere, kleinere K
 Wie bereits eingangs erwähnt, implementiert die CalculatorView-Komponente weitere Components.
 In der Ordnerstruktur des Projekts findet man deshalb innerhalb des Components-Ordner einen Ordner mit dem Namen \textit{Calculator}.
 In diesem Ordner befinden sich alle weiteren Komponenten, die für die Darstellung des CO2-Rechners benötigt werden.
-So auch die Komponenten \textit{QuestionStepper} und \textit{CurrentCO2}, die durch die entsprechenden ".vue" Dateiendungen erzeugt werden und bereits in der vorherigen Abbildung erschienen sind.
-
-CurrentCO2 ist dafür zuständig, aus den gegebenen Antworten des Nutzers den Wert des CO2-Fußabdrucks zu berechnen und diesen darzustellen.
-Diese importiert den \textit{totalCo2Emission Store}, der dafür zuständig ist, die Werte der gewählten Antworten aus einer \acs{JSON} zu nehmen und auf den Gesamtwert zu addieren.
-Anschließend wird der Gesamtwert in einer Card dargestellt.
-Der Code für die CurrentCO2-Komponente besteht lediglich daraus den Store zu importieren und den Wert des CO2-Fußabdrucks darzustellen, welcher dort gespeichert ist.
+So auch die Komponenten \textit{QuestionStepper} und \textit{QUestionBlock}, die durch die entsprechenden ".vue" Dateiendungen erzeugt werden und bereits in der vorherigen Abbildung erschienen sind.
 
 Der QuestionStepper ist für die Darstellung des eigentlichen Fragebogens zuständig.
 Der Fragebogen wird über den \textit{v-stepper} implementiert.
@@ -650,6 +642,189 @@ Nachfolgend ist der Code für QuestionBlock.vue und QuestionStepper.vue aufgelis
     />
 </div>
 \end{lstlisting}
+
+Die Abbildungen sind hierbei vereinfacht dargstellt und sollten detailliert in der Codebase genauer betrachetet werden.
+
+Die Berechnung des Fußabdrucks wird nun innerhalb der Datei \textit{totalCo2Emission.ts} berechnet.
+Diese ist ein Store und berechnet die Werte aus den gewählten Antworten zusammen.
+Abschließend werden die Werte der Kategorien mit der Baseline addiert, um den endgültigen CO2-Fußabdruck zu berechnen.
+Wie die Werte innerhalb der Kategorien genau aufgeteilt sind, ist im \hyperref[sec:anpassung-der-questions-json]{Kapitel 6.4} genauer beschrieben.
+Die einzelnen Formeln sind auch hier in der Codebase festgehalten.
+
+Vereinfacht kann man sagen, dass der totalCo2Emission-Store durch die einzelnen Objekte und Werte so lange durchitteriert und die Werte der gewählten Anworten pro Kategorie gesammelt.
+Trifft die Iteration auf den Abschnitt "formula", wird die Formel genutzt um den gesamt CO2-Wert der Kategorie zu berechnen.
+Abschließend werden die Kategriewerte in die Variable \textit{totalEmission} geladen und somit der gesamte Wert des CO2-Fußabdrucks gespeichert.
+Auf diese Weise wurde \hyperref[sec:berechnung-des-co2abdrucks]{R02 - Berechnung des CO2-Fußabdrucks} umgesetzt.
+Die folgende Abbildung zeigt einen Ausschnitt aus dem totalCo2Emission-Store, der für die Berechnung der Werte pro Kategorie zuständig ist. \newpage
+\begin{lstlisting}[language={JavaScript}, caption={Ausschnitt aus dem totalCo2Emission.ts - Store}]
+    calculateCo2ValuesPerCategory() {
+            const questionStore = useQuestionStore();
+            this.base = questionStore.baseline;
+
+            const categoryTotals = questionStore.category.map((category) => {
+                const questionValues = category.questions.map((question) => {
+                    if (question.formula) {
+                        let result;
+                        try {
+                            const calculateQuestionValue = eval(
+                                `(${question.formula})`
+                            );
+                            result = calculateQuestionValue(
+                                question.selected.value
+                            );
+                        } catch (e) {
+                            console.error(
+                                'Error evaluating formula:',
+                                question.formula,
+                                'Error:',
+                                e
+                            );
+                        }
+                        return result;
+                    } else {
+                        return question.selected.value;
+                    }
+                });
+                console.log('Selected Values per Category', questionValues);
+                const calculateCategoryTotal = eval(`(${category.formula})`);
+                const categoryTotal = calculateCategoryTotal(questionValues);
+
+                return {
+                    categoryName: category.name,
+                    totalEmission: categoryTotal,
+                };
+            });
+\end{lstlisting}
+
+Nach dem Beenden des Fragebogens werden die NutzerInnen auf eine Zusammenfassungsseite weitergeleitet.
+Auf dieser Seite können die NutzerInnen ihre Daten einem Stadteil Karlsruhes zuordnen oder eine Gruppe auswhählen, mit der sie ihre Daten teilen möchten.
+Sollten die NutzerInnen einen Stadtteil auwählen, wird der CO2-Fußabdruck auf diesen berechnet und der Durchschnittswert des Stadtteils geupdatet.
+Jedoch besteht auch die Möglichkeit, fortzufahren ohne die Daten zu teilen.
+Die Abfrage nach der Datenverarbeitung sowie die Zuordnung eines Stadtteils sind in der folgenden Abbildung zu sehen:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{images/06/daten-verarbeitungs-seite.png}
+    \caption{Datenverarbeitungsabfrage nach Beenden des CO2-Fragebogens}
+    \label{fig:datenverarbeitungs-seite}
+\end{figure}
+
+Unabhängig davon, ob die NutzerInnen die Daten teilen oder nicht, wird eine persönliche Zusammenfassungsseite generiert, die die berechneten Werte der einzelnen Kategorien und den Gesamtwert des CO2-Fußabdruck noch einmal präsentiert.
+Den NutzerInnen werden die Werte der einzelnen Kategorien hierbei in einem Kuckendiagramm aufgezeigt.
+Eine beispielhafte Zusammenfassungsseite zeigt die nächste Abbildung:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/06/persoenliche-zusammenfassung.png}
+    \caption{Persönliche Zusammenfassungsseite}
+    \label{fig:persnöliche-zusammenfassungs}
+\end{figure}
+
+Sollten sich die NutzerInnen dazu entscheiden, die Daten zu teilen, werden diese an den Server gesendet und innerhalb einer Datenbank gespeichert.
+Dazu müssen die Daten zuerst einem Stadtteil bzw. einer Gruppe zugeordnet werden.
+Um die Namen der Stadtteile und der Gruppen anzuzeigen, wird eine Anfrage an den Server geschickt und diese Daten gefetcht.
+Dies erfolgt mithilfe einer einfachen GET-Anfrage an die Backend-API.
+Die folgende Abbildung zeigt zwei Methoden, die sich um das fetchen der Daten kümmert.
+
+\begin{lstlisting}[language={JavaScript}, caption={Laden der Stadtteile und Gruppen aus dem Backend}, label={lst:daten-aus-backend}]
+    const fetchCityDistricts = async () => {
+    isLoadingCityDistricts.value = true;
+    try {
+        const response = await fetch('/api/districts', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                co2token: `${localStorage.getItem('CO2Token')}`,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        cityDistricts.value = data as Array<CityDistrict>;
+    } catch (fetchError) {
+    }
+    isLoadingCityDistricts.value = false;
+};
+
+const fetchGroups = async () => {
+    isLoadingGroups.value = true;
+    try {
+        const response = await fetch('/api/groups/member', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                co2token: `${localStorage.getItem('CO2Token')}`,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        groups.value = data as Array<GroupData>;
+        // console.log(groups.value, 'here i havethe groups ith group codes');
+        // await postData(groups.value);
+    } catch (fetchError) {
+    }
+    isLoadingGroups.value = false;
+};
+\end{lstlisting}
+
+Das Abschicken der Werte des errechneten CO2-Fußabdrucks erfolgt über die Methode \textit{submitCo2EmissionUpload()}.
+Dort wird zuerst überprüft, ob ein Stadtteil ausgewählt wurde.
+Wurde ein Stadtteil ausgewählt, wird die ID des Stadtteils gespeichert und später in die gesendeten Daten übergeben, sodass der CO2-Fußabdruck später im Dashboard dem richtigen Stadtteil zugeordnet werden kann.
+Andernfalls wird als Wert 0 übergeben.
+Nun wird der eigentliche Part der Methode, nämlich die Anfrage an den Server, aufgebaut.
+Dazu wird ein Fetch aufgebaut, der als Parameter eine Anfragemethode, einen Anfrageheader und den eigentlichen Body beinhaltet.
+Als Anfragemethode wird eine POST-Anfrage definiert, die als Header den Content-Type \textit{application/json} besitzt.
+Im Body der Anfrage werden die eigentlich interessanten Daten gesendet.
+Diese werden als JSON gesendet und beinhalten die ausgewählten Gruppen, die ID des ausgewählten Stadtteils und die CO2-Werte jeder Kategorie aus dem Rechner.
+Abschließend werden diese an die URI \textit{/api/footprint} gesendet.
+Die nachfolgende Abbildung zeigt die implementierte Methode:
+
+\begin{lstlisting}[language={JavaScript}, caption={submitCo2EmissionUpload()-Methode}, label={lst:upload-methode}]
+    const submitCo2EmissionsUpload = async () => {
+    try {
+        const districtId = selectedDistricts.value
+            ? selectedDistricts.value.district_ID
+            : 0;
+
+        const response = await fetch('/api/footprint', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // Insert Authentication headers if needed
+            },
+            body: JSON.stringify({
+                groups: finalSelectedGroups.value,
+                district: districtId,
+                data: [
+                    categories.mobility,
+                    categories.housing,
+                    categories.consume,
+                    categories.nutrition,
+                ],
+            }),
+        });
+
+        if (!response.ok) {
+            const message = `An error has occurred: ${response.status}`;
+            throw new Error(message);
+        }
+
+        updateDataSend(true);
+        router.push('/rechner/submitted');
+    } catch (error) {
+        console.error(`Error submitting data: ${error}`);
+    }
+};
+\end{lstlisting}
+
+Die gerade vorgestellten Methoden um \hyperref[lst:daten-aus-backend]{Daten aus dem Backend zu Laden} und den \hyperref[lst:upload-methode]{CO2-Fußabdruck abzusenden} sind alle Teil der QuestionStepper-Komponente.
+Mithilfe der Methoden wurde erfolgreich die \hyperref[sec:hochladen-von-co2daten]{Anforderung R03} in den neuen Rechner implementiert.
 
 \section{Übernahme und Anpassung des Dashboards}
 
