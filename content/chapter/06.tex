@@ -533,11 +533,9 @@ Der CO2-Rechner ist ein wichtiges Feature der Webseite, da den NutzerInnen dadur
 \end{figure}
 
 Besonders viel hat sich nicht am Design einer Frage innerhalb des Rechners geändert.
-Es wurden jedoch mehr Fragen in den Rechner eingebaut, die im alten Design als "detailliert" beschrieben wurden.
-Zusätzlich wurde, wie bereits im Abschnitt \hyperref[sec:anpassung-der-questions-json]{6.4 Anpassung der questions.json}, der Wert hinter den Anwortmöglichkeiten angepasst sowie die gesamte Struktur des generierten \acs{JSON}.
+Es wurden jedoch mehr Fragen in den Rechner eingebaut, die im alten Design als "detailliert" beschrieben wurden. Zusätzlich wurde, wie bereits im Abschnitt \hyperref[sec:anpassung-der-questions-json]{6.4 Anpassung der questions.json}, der Wert hinter den Anwortmöglichkeiten angepasst sowie die gesamte Struktur des generierten \acs{JSON}.
 
-Die größte Veränderung erlebt der neue CO2-Rechner in Sachen Allgemeindesign und Nutzerfreundlichkeit.
-Wie in Abbildung \ref{fig:new-co2runter-calculator-design} zu sehen ist, wurde hier besonders darauf geachtet, dem NutzerInnen eine ansprechende Webseite zu präsentieren, die nicht nur als langweiliger und stumpfer Fragebogen durchgeht.
+Die größte Veränderung erlebt der neue CO2-Rechner in Sachen Allgemeindesign und Nutzerfreundlichkeit. Wie in Abbildung \ref{fig:new-co2runter-calculator-design} zu sehen ist, wurde hier besonders darauf geachtet, dem NutzerInnen eine ansprechende Webseite zu präsentieren, die nicht nur als langweiliger und stumpfer Fragebogen durchgeht.
 
 \begin{figure}[H]
     \centering
@@ -546,16 +544,11 @@ Wie in Abbildung \ref{fig:new-co2runter-calculator-design} zu sehen ist, wurde h
     \label{fig:new-co2runter-calculator-design}
 \end{figure}
 
-Der berechnete CO2-Wert aus den gewählten Antwortmöglichkeiten befindet sich nun direkt am Start der Webseite.
-Um den berechneten Fußabdruck noch deutlicher in den Vordergrund zu setzen, wurde diesem die Primärfarbe verpasst, so dass er in einem dunkelgrün erscheint.
+Der berechnete CO2-Wert aus den gewählten Antwortmöglichkeiten befindet sich nun direkt am Start der Webseite. Um den berechneten Fußabdruck noch deutlicher in den Vordergrund zu setzen, wurde diesem die Primärfarbe verpasst, so dass er in einem dunkelgrün erscheint.
 
-Eine weitere grundlegende Veränderung des neuen CO2-Rechners findet man unmittelbar unterhalb der Kategorienauflistung.
-Bevor die NutzerInnen auf den eigentlichen Rechner stoßen, wurde für jede Kategorie ein kleiner Einführungsabschnitt geschrieben und ein dazu passendes Bild hinzugefügt.
-Diese Neuerung soll dafür sorgen, dass sich die NutzerInnen nicht direkt in den Rechner stürzen, sondern über das aktuelle Thema aufgeklärt und informiert werden.
-Außerdem bringt der Abschnitt mit dem Bild einen positiven Aspekt im Bereich der Nutzerfreundlichkeit.
+Eine weitere grundlegende Veränderung des neuen CO2-Rechners findet man unmittelbar unterhalb der Kategorienauflistung. Bevor die NutzerInnen auf den eigentlichen Rechner stoßen, wurde für jede Kategorie ein kleiner Einführungsabschnitt geschrieben und ein dazu passendes Bild hinzugefügt. Diese Neuerung soll dafür sorgen, dass sich die NutzerInnen nicht direkt in den Rechner stürzen, sondern über das aktuelle Thema aufgeklärt und informiert werden. Außerdem bringt der Abschnitt mit dem Bild einen positiven Aspekt im Bereich der Nutzerfreundlichkeit.
 
-Für die Implementierung des neuen CO2-Rechner wurde eine neue Komponente namens \textit{CalculatorView.vue} erstellt.
-Diese bildet die Hauptansicht des Rechners und implementiert weitere, kleinere Komponenten, so genannte \textit{Components} und ist in der folgenden Abbildung zu sehen.
+Für die Implementierung des neuen CO2-Rechner wurde eine neue Komponente namens \textit{CalculatorView.vue} erstellt. Diese bildet die Hauptansicht des Rechners und implementiert weitere, kleinere Komponenten, so genannte \textit{Components} und ist in der folgenden Abbildung zu sehen.
 
 \begin{lstlisting}[language={JavaScript}, caption={Aufbau der CalculatorView.vue Komponente}]
 <template>
@@ -584,38 +577,24 @@ Diese bildet die Hauptansicht des Rechners und implementiert weitere, kleinere K
 </template>
 \end{lstlisting}
 
-Wie bereits eingangs erwähnt, implementiert die CalculatorView-Komponente weitere Components.
-In der Ordnerstruktur des Projekts findet man deshalb innerhalb des Components-Ordner einen Ordner mit dem Namen \textit{Calculator}.
-In diesem Ordner befinden sich alle weiteren Komponenten, die für die Darstellung des CO2-Rechners benötigt werden.
-So auch die Komponenten \textit{QuestionStepper} und \textit{QUestionBlock}, die durch die entsprechenden ".vue" Dateiendungen erzeugt werden und bereits in der vorherigen Abbildung erschienen sind.
+Wie bereits eingangs erwähnt, implementiert die CalculatorView-Komponente weitere Components. In der Ordnerstruktur des Projekts findet man deshalb innerhalb des Components-Ordner einen Ordner mit dem Namen \textit{Calculator}. In diesem Ordner befinden sich alle weiteren Komponenten, die für die Darstellung des CO2-Rechners benötigt werden. So auch die Komponenten \textit{QuestionStepper} und \textit{QUestionBlock}, die durch die entsprechenden ".vue" Dateiendungen erzeugt werden und bereits in der vorherigen Abbildung erschienen sind.
 
-Der QuestionStepper ist für die Darstellung des eigentlichen Fragebogens zuständig.
-Der Fragebogen wird über den \textit{v-stepper} implementiert.
-Dieser wird von Vuetify geliefert und ist in zwei Teile aufgeteilt: v-stepper-header und v-stepper-window.
-Der \textit{v-stepper-header} ist für die Kategorienauflistung zuständig und begleitet den NutzerInnen durch den Fragebogen.
-Durch den \textit{v-stepper-header} wird genau angezeigt, in welcher Kategorie des Fragebogens man sich gerade befindet und wie viele Kategorien es noch zu erledigen gibt.
-Auf der anderen Seite ist das \textit{v-stepper-window} für die Auflistung der Fragen und somit für den Fragebogen zuständig.
-Über so genannte \textit{v-stepper-window-items} werden die einzelnen Fragen dargestellt.
-Für das Laden der Fragen und Antworten ist eine weitere Komponente zuständige, die in QuestionStepper.vue importiert wird: \textit{QuestionBlock}
+Der QuestionStepper ist für die Darstellung des eigentlichen Fragebogens zuständig. Der Fragebogen wird über den \textit{v-stepper} implementiert. Dieser wird von Vuetify geliefert und ist in zwei Teile aufgeteilt: v-stepper-header und v-stepper-window. Der \textit{v-stepper-header} ist für die Kategorienauflistung zuständig und begleitet den NutzerInnen durch den Fragebogen. Durch den \textit{v-stepper-header} wird genau angezeigt, in welcher Kategorie des Fragebogens man sich gerade befindet und wie viele Kategorien es noch zu erledigen gibt. Auf der anderen Seite ist das \textit{v-stepper-window} für die Auflistung der Fragen und somit für den Fragebogen zuständig. Über so genannte \textit{v-stepper-window-items} werden die einzelnen Fragen dargestellt. Für das Laden der Fragen und Antworten ist eine weitere Komponente zuständige, die in QuestionStepper.vue importiert wird: \textit{QuestionBlock}
 
-\textit{QuestionBlock} ist dafür zuständig, die Fragen und Antworten aus der \textit{questions.json} zu laden und diese so darzustellen, dass QuestionStepper diese nur noch im richtigen Format einfügen muss.
-Nachfolgend ist der Code für QuestionBlock.vue und QuestionStepper.vue aufgelistet:
+\textit{QuestionBlock} ist dafür zuständig, die Fragen und Antworten aus der \textit{questions.json} zu laden und diese so darzustellen, dass QuestionStepper diese nur noch im richtigen Format einfügen muss. Nachfolgend ist der Code für QuestionBlock.vue und QuestionStepper.vue aufgelistet:
 
 \begin{lstlisting}[language={html}, caption={QuestionStepper.vue}]
 <v-stepper>
     <v-stepper-header>
-        <v-stepper-item title="Mobilitaet" value="1"></v-stepper-item>
-        <v-divider/>
-        <v-stepper-item title="Ernaehrung" value="2"></v-stepper-item>
-        <v-divider/>
-        <v-stepper-item title="Wohnen" value="3"></v-stepper-item>
-        <v-divider/>
-        <v-stepper-item title="Konsum" value="4"></v-stepper-item>
-        </v-stepper-header>
+        <v-stepper-item title="Mobilitaet" value="1"/>
+        <v-stepper-item title="Ernaehrung" value="2"/>
+        <v-stepper-item title="Wohnen" value="3"/>
+        <v-stepper-item title="Konsum" value="4"/>
+    </v-stepper-header>
     <v-stepper-window>
         <v-stepper-window-item>
             ...
-            <v-row class="my-16">
+            <v-row>
                 <v-col>
                     <QuestionsBlock :category-index="QuestionsIndices.MOBILITY"/>
                 </v-col>
@@ -625,6 +604,8 @@ Nachfolgend ist der Code für QuestionBlock.vue und QuestionStepper.vue aufgelis
     </v-stepper-window>
 </v-stepper>
 \end{lstlisting}
+
+\newpage
 
 \begin{lstlisting}[language={html}, caption={QuestionBlock.vue}]
 <div
@@ -643,64 +624,44 @@ Nachfolgend ist der Code für QuestionBlock.vue und QuestionStepper.vue aufgelis
 </div>
 \end{lstlisting}
 
-Die Abbildungen sind hierbei vereinfacht dargstellt und sollten detailliert in der Codebase genauer betrachetet werden.
+Die Abbildungen sind hierbei vereinfacht dargstellt und sollten detailliert in der Codebase genauer betrachetet werden. Die Berechnung des Fußabdrucks wird nun innerhalb der Datei \textit{totalCo2Emission.ts} berechnet. Diese ist ein Store und berechnet die Werte aus den gewählten Antworten zusammen. Abschließend werden die Werte der Kategorien mit der Baseline addiert, um den endgültigen CO2-Fußabdruck zu berechnen. Wie die Werte innerhalb der Kategorien genau aufgeteilt sind, ist im \hyperref[sec:anpassung-der-questions-json]{Kapitel 6.4} genauer beschrieben. Die einzelnen Formeln sind auch hier in der Codebase festgehalten.
 
-Die Berechnung des Fußabdrucks wird nun innerhalb der Datei \textit{totalCo2Emission.ts} berechnet.
-Diese ist ein Store und berechnet die Werte aus den gewählten Antworten zusammen.
-Abschließend werden die Werte der Kategorien mit der Baseline addiert, um den endgültigen CO2-Fußabdruck zu berechnen.
-Wie die Werte innerhalb der Kategorien genau aufgeteilt sind, ist im \hyperref[sec:anpassung-der-questions-json]{Kapitel 6.4} genauer beschrieben.
-Die einzelnen Formeln sind auch hier in der Codebase festgehalten.
+Vereinfacht kann man sagen, dass der totalCo2Emission-Store durch die einzelnen Objekte und Werte so lange durchitteriert und die Werte der gewählten Anworten pro Kategorie gesammelt. Trifft die Iteration auf den Abschnitt "formula", wird die Formel genutzt um den gesamt CO2-Wert der Kategorie zu berechnen. Abschließend werden die Kategriewerte in die Variable \textit{totalEmission} geladen und somit der gesamte Wert des CO2-Fußabdrucks gespeichert. Auf diese Weise wurde \hyperref[sec:berechnung-des-co2abdrucks]{R02 - Berechnung des CO2-Fußabdrucks} umgesetzt. Die folgende Abbildung zeigt einen Ausschnitt aus dem totalCo2Emission-Store, der für die Berechnung der Werte pro Kategorie zuständig ist.
 
-Vereinfacht kann man sagen, dass der totalCo2Emission-Store durch die einzelnen Objekte und Werte so lange durchitteriert und die Werte der gewählten Anworten pro Kategorie gesammelt.
-Trifft die Iteration auf den Abschnitt "formula", wird die Formel genutzt um den gesamt CO2-Wert der Kategorie zu berechnen.
-Abschließend werden die Kategriewerte in die Variable \textit{totalEmission} geladen und somit der gesamte Wert des CO2-Fußabdrucks gespeichert.
-Auf diese Weise wurde \hyperref[sec:berechnung-des-co2abdrucks]{R02 - Berechnung des CO2-Fußabdrucks} umgesetzt.
-Die folgende Abbildung zeigt einen Ausschnitt aus dem totalCo2Emission-Store, der für die Berechnung der Werte pro Kategorie zuständig ist. \newpage
 \begin{lstlisting}[language={JavaScript}, caption={Ausschnitt aus dem totalCo2Emission.ts - Store}]
-    calculateCo2ValuesPerCategory() {
-            const questionStore = useQuestionStore();
-            this.base = questionStore.baseline;
+calculateCo2ValuesPerCategory() {
+        const questionStore = useQuestionStore();
+        this.base = questionStore.baseline;
 
-            const categoryTotals = questionStore.category.map((category) => {
-                const questionValues = category.questions.map((question) => {
-                    if (question.formula) {
-                        let result;
-                        try {
-                            const calculateQuestionValue = eval(
-                                `(${question.formula})`
-                            );
-                            result = calculateQuestionValue(
-                                question.selected.value
-                            );
-                        } catch (e) {
-                            console.error(
-                                'Error evaluating formula:',
-                                question.formula,
-                                'Error:',
-                                e
-                            );
-                        }
-                        return result;
-                    } else {
-                        return question.selected.value;
-                    }
-                });
-                console.log('Selected Values per Category', questionValues);
-                const calculateCategoryTotal = eval(`(${category.formula})`);
-                const categoryTotal = calculateCategoryTotal(questionValues);
-
-                return {
-                    categoryName: category.name,
-                    totalEmission: categoryTotal,
-                };
+        const categoryTotals = questionStore.category.map((category) => {
+            const questionValues = category.questions.map((question) => {
+                if (question.formula) {
+                    let result;
+                    try {
+                        const calculateQuestionValue = eval(
+                            `(${question.formula})`
+                        );
+                        result = calculateQuestionValue(
+                            question.selected.value
+                        );
+                    } catch (e) {...}
+                    return result;
+                } else {
+                    return question.selected.value;
+                }
             });
+            
+            const calculateCategoryTotal = eval(`(${category.formula})`);
+            const categoryTotal = calculateCategoryTotal(questionValues);
+            return {
+                categoryName: category.name,
+                totalEmission: categoryTotal,
+            };
+        });
 \end{lstlisting}
 
-Nach dem Beenden des Fragebogens werden die NutzerInnen auf eine Zusammenfassungsseite weitergeleitet.
-Auf dieser Seite können die NutzerInnen ihre Daten einem Stadteil Karlsruhes zuordnen oder eine Gruppe auswhählen, mit der sie ihre Daten teilen möchten.
-Sollten die NutzerInnen einen Stadtteil auwählen, wird der CO2-Fußabdruck auf diesen berechnet und der Durchschnittswert des Stadtteils geupdatet.
-Jedoch besteht auch die Möglichkeit, fortzufahren ohne die Daten zu teilen.
-Die Abfrage nach der Datenverarbeitung sowie die Zuordnung eines Stadtteils sind in der folgenden Abbildung zu sehen:
+Nach dem Beenden des Fragebogens werden die NutzerInnen auf eine Zusammenfassungsseite weitergeleitet. Auf dieser Seite können die NutzerInnen ihre Daten einem Stadteil Karlsruhes zuordnen oder eine Gruppe auswhählen, mit der sie ihre Daten teilen möchten. Sollten die NutzerInnen einen Stadtteil auwählen, wird der CO2-Fußabdruck auf diesen berechnet und der Durchschnittswert des Stadtteils geupdatet. Jedoch besteht auch die Möglichkeit, fortzufahren ohne die Daten zu teilen. Die Abfrage nach der Datenverarbeitung sowie die Zuordnung eines Stadtteils sind in der folgenden Abbildung zu sehen:
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{images/06/daten-verarbeitungs-seite.png}
@@ -708,25 +669,19 @@ Die Abfrage nach der Datenverarbeitung sowie die Zuordnung eines Stadtteils sind
     \label{fig:datenverarbeitungs-seite}
 \end{figure}
 
-Unabhängig davon, ob die NutzerInnen die Daten teilen oder nicht, wird eine persönliche Zusammenfassungsseite generiert, die die berechneten Werte der einzelnen Kategorien und den Gesamtwert des CO2-Fußabdruck noch einmal präsentiert.
-Den NutzerInnen werden die Werte der einzelnen Kategorien hierbei in einem Kuckendiagramm aufgezeigt.
-Eine beispielhafte Zusammenfassungsseite zeigt die nächste Abbildung:
+Unabhängig davon, ob die NutzerInnen die Daten teilen oder nicht, wird eine persönliche Zusammenfassungsseite generiert, die die berechneten Werte der einzelnen Kategorien und den Gesamtwert des CO2-Fußabdruck noch einmal präsentiert. Den NutzerInnen werden die Werte der einzelnen Kategorien hierbei in einem Kuckendiagramm aufgezeigt. Eine beispielhafte Zusammenfassungsseite zeigt die nächste Abbildung:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/06/persoenliche-zusammenfassung.png}
+    \includegraphics[width=1\textwidth]{images/06/persoenliche-zusammenfassung.png}
     \caption{Persönliche Zusammenfassungsseite}
     \label{fig:persnöliche-zusammenfassungs}
 \end{figure}
 
-Sollten sich die NutzerInnen dazu entscheiden, die Daten zu teilen, werden diese an den Server gesendet und innerhalb einer Datenbank gespeichert.
-Dazu müssen die Daten zuerst einem Stadtteil bzw. einer Gruppe zugeordnet werden.
-Um die Namen der Stadtteile und der Gruppen anzuzeigen, wird eine Anfrage an den Server geschickt und diese Daten gefetcht.
-Dies erfolgt mithilfe einer einfachen GET-Anfrage an die Backend-API.
-Die folgende Abbildung zeigt zwei Methoden, die sich um das fetchen der Daten kümmert.
+Sollten sich die NutzerInnen dazu entscheiden, die Daten zu teilen, werden diese an den Server gesendet und innerhalb einer Datenbank gespeichert. Dazu müssen die Daten zuerst einem Stadtteil bzw. einer Gruppe zugeordnet werden. Um die Namen der Stadtteile und der Gruppen anzuzeigen, wird eine Anfrage an den Server geschickt und diese Daten gefetcht. Dies erfolgt mithilfe einer einfachen GET-Anfrage an die Backend-API. Die folgende Abbildung zeigt zwei Methoden, die sich um das fetchen der Daten kümmert.
 
 \begin{lstlisting}[language={JavaScript}, caption={Laden der Stadtteile und Gruppen aus dem Backend}, label={lst:daten-aus-backend}]
-    const fetchCityDistricts = async () => {
+const fetchCityDistricts = async () => {
     isLoadingCityDistricts.value = true;
     try {
         const response = await fetch('/api/districts', {
@@ -737,14 +692,11 @@ Die folgende Abbildung zeigt zwei Methoden, die sich um das fetchen der Daten k�
             },
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) { throw new Error(response.status); }
 
         const data = await response.json();
         cityDistricts.value = data as Array<CityDistrict>;
-    } catch (fetchError) {
-    }
+    } catch (e) {...}
     isLoadingCityDistricts.value = false;
 };
 
@@ -759,34 +711,19 @@ const fetchGroups = async () => {
             },
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) { throw new Error(response.status); }
 
         const data = await response.json();
         groups.value = data as Array<GroupData>;
-        // console.log(groups.value, 'here i havethe groups ith group codes');
-        // await postData(groups.value);
-    } catch (fetchError) {
-    }
+    } catch (e) {...}
     isLoadingGroups.value = false;
 };
 \end{lstlisting}
 
-Das Abschicken der Werte des errechneten CO2-Fußabdrucks erfolgt über die Methode \textit{submitCo2EmissionUpload()}.
-Dort wird zuerst überprüft, ob ein Stadtteil ausgewählt wurde.
-Wurde ein Stadtteil ausgewählt, wird die ID des Stadtteils gespeichert und später in die gesendeten Daten übergeben, sodass der CO2-Fußabdruck später im Dashboard dem richtigen Stadtteil zugeordnet werden kann.
-Andernfalls wird als Wert 0 übergeben.
-Nun wird der eigentliche Part der Methode, nämlich die Anfrage an den Server, aufgebaut.
-Dazu wird ein Fetch aufgebaut, der als Parameter eine Anfragemethode, einen Anfrageheader und den eigentlichen Body beinhaltet.
-Als Anfragemethode wird eine POST-Anfrage definiert, die als Header den Content-Type \textit{application/json} besitzt.
-Im Body der Anfrage werden die eigentlich interessanten Daten gesendet.
-Diese werden als JSON gesendet und beinhalten die ausgewählten Gruppen, die ID des ausgewählten Stadtteils und die CO2-Werte jeder Kategorie aus dem Rechner.
-Abschließend werden diese an die URI \textit{/api/footprint} gesendet.
-Die nachfolgende Abbildung zeigt die implementierte Methode:
+Das Abschicken der Werte des errechneten CO2-Fußabdrucks erfolgt über die Methode \textit{submitCo2EmissionUpload()}. Dort wird zuerst überprüft, ob ein Stadtteil ausgewählt wurde. Wurde ein Stadtteil ausgewählt, wird die ID des Stadtteils gespeichert und später in die gesendeten Daten übergeben, sodass der CO2-Fußabdruck später im Dashboard dem richtigen Stadtteil zugeordnet werden kann. Andernfalls wird als Wert 0 übergeben. Nun wird der eigentliche Part der Methode, nämlich die Anfrage an den Server, aufgebaut. Dazu wird ein Fetch aufgebaut, der als Parameter eine Anfragemethode, einen Anfrageheader und den eigentlichen Body beinhaltet. Als Anfragemethode wird eine POST-Anfrage definiert, die als Header den Content-Type \textit{application/json} besitzt. Im Body der Anfrage werden die eigentlich interessanten Daten gesendet. Diese werden als JSON gesendet und beinhalten die ausgewählten Gruppen, die ID des ausgewählten Stadtteils und die CO2-Werte jeder Kategorie aus dem Rechner. Abschließend werden diese an die URI \textit{/api/footprint} gesendet. Die nachfolgende Abbildung zeigt die implementierte Methode:
 
 \begin{lstlisting}[language={JavaScript}, caption={submitCo2EmissionUpload()-Methode}, label={lst:upload-methode}]
-    const submitCo2EmissionsUpload = async () => {
+const submitCo2EmissionsUpload = async () => {
     try {
         const districtId = selectedDistricts.value
             ? selectedDistricts.value.district_ID
@@ -796,7 +733,6 @@ Die nachfolgende Abbildung zeigt die implementierte Methode:
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                // Insert Authentication headers if needed
             },
             body: JSON.stringify({
                 groups: finalSelectedGroups.value,
@@ -810,29 +746,20 @@ Die nachfolgende Abbildung zeigt die implementierte Methode:
             }),
         });
 
-        if (!response.ok) {
-            const message = `An error has occurred: ${response.status}`;
-            throw new Error(message);
-        }
-
+        if (!response.ok) { throw new Error(response.status); }
         updateDataSend(true);
         router.push('/rechner/submitted');
-    } catch (error) {
-        console.error(`Error submitting data: ${error}`);
-    }
+    } catch (e) {...}
 };
 \end{lstlisting}
 
-Die gerade vorgestellten Methoden um \hyperref[lst:daten-aus-backend]{Daten aus dem Backend zu Laden} und den \hyperref[lst:upload-methode]{CO2-Fußabdruck abzusenden} sind alle Teil der QuestionStepper-Komponente.
-Mithilfe der Methoden wurde erfolgreich die \hyperref[sec:hochladen-von-co2daten]{Anforderung R03} in den neuen Rechner implementiert.
+Die gerade vorgestellten Methoden um \hyperref[lst:daten-aus-backend]{Daten aus dem Backend zu Laden} und den \hyperref[lst:upload-methode]{CO2-Fußabdruck abzusenden} sind alle Teil der QuestionStepper-Komponente. Mithilfe der Methoden wurde erfolgreich die \hyperref[sec:hochladen-von-co2daten]{Anforderung R03} in den neuen Rechner implementiert.
 
 \section{Übernahme und Anpassung des Dashboards}
 
 Das Dashboard spielt eine entscheidende Rolle auf der Webseite, indem es den NutzerInnen ermöglicht, CO2-Emissionen zu verfolgen, zu analysieren und zu reduzieren. Es präsentiert den NutzerInnen eine Vielzahl von Informationen über die Stadtteile von Karlsruhe. Insbesondere bietet das Dashboard eine interaktive Karte, die die Stadtteile von Karlsruhe und den durchschnittlichen CO2-Verbrauch gemäß den Angaben der NutzerInnen, die ihren Stadtteilen zugeordnet sind, darstellt. Um die \textbf{Anforderung [R05]} zu erfüllen, wird das Dashboard für die neue Webseite neu entwickelt und an das Framework sowie an die Benutzeroberfläche angepasst. Da dieses Feature bereits in der vorherigen Webseite implementiert war, kann darauf aufgebaut werden, um die \textbf{Anforderung [R05]} zu erfüllen. Das Dashboard wird in mehrere Komponenten unterteilt, die jeweils für einen bestimmten Teil des Dashboards verantwortlich sind.
 
-Die Herausforderung besteht darin, die Funktionsweise des React-Codes in den neuen Vue-Code zu überführen und sicherzustellen, dass alles einwandfrei funktioniert. Die Bibliothek ECharts, die für die Grafiken genutzt wurde, kann auch problemlos in Vue verwendet werden, wodurch die gleichen Grafikoptionen wie zuvor verfügbar sind. Es müssen lediglich die Daten aus der Datenbank abgerufen und entsprechend angepasst werden, um die \textbf{Anforderung [R01]} zu erfüllen.
-Anschließend müssen verschiedene Anpassungen vorgenommen werden, um sicherzustellen, dass alle Funktionalitäten problemlos funktionieren.
-Die Umsetzung ist weniger kompliziert, als es zunächst erscheinen mag, erfordert jedoch Zeit, um die Integration in das neue Framework zu vollenden und den bestehenden React-Code zu verstehen.
+Die Herausforderung besteht darin, die Funktionsweise des React-Codes in den neuen Vue-Code zu überführen und sicherzustellen, dass alles einwandfrei funktioniert. Die Bibliothek ECharts, die für die Grafiken genutzt wurde, kann auch problemlos in Vue verwendet werden, wodurch die gleichen Grafikoptionen wie zuvor verfügbar sind. Es müssen lediglich die Daten aus der Datenbank abgerufen und entsprechend angepasst werden, um die \textbf{Anforderung [R01]} zu erfüllen. Anschließend müssen verschiedene Anpassungen vorgenommen werden, um sicherzustellen, dass alle Funktionalitäten problemlos funktionieren. Die Umsetzung ist weniger kompliziert, als es zunächst erscheinen mag, erfordert jedoch Zeit, um die Integration in das neue Framework zu vollenden und den bestehenden React-Code zu verstehen.
 
 \subsection{React Echarts alternative für Vue.js}
 
